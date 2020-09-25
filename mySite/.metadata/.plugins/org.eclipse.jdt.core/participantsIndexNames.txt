@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+D:\mySite\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3600864919.index
+\youtubeSite\src
+D:\mySite\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3453540437.index
+\myWebSite\src
+D:\mySite\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3437886694.index
+\myWebSite\src
