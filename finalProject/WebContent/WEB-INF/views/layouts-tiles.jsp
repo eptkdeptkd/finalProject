@@ -23,7 +23,6 @@
 
 	<div class="header_wrap">
 		<tiles:insertAttribute name="header"/>
-		<tiles:insertAttribute name="header_sub"/>
 	</div>
 	
 	<div class="main_wrap">

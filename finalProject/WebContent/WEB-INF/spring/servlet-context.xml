@@ -25,7 +25,7 @@
 	</bean>
 		
 	<!-- java 공통 팩키지 -->
-	<context:component-scan base-package="bit.com.a" />
+	<context:component-scan base-package="cc.factory.com" />
 		
 	<!-- ajax 주석문 사용 허가 -->
 	<mvc:annotation-driven/>
@@ -41,18 +41,6 @@
 		<property name="defaultEncoding" value="utf-8"/>
 		<property name="uploadTempDir" value="upload"/>
 	</bean>
-	
-	<!-- download -->
-	<bean id="downloadView" class="bit.com.a.util.DownloadView"/>
-	
-	<bean id="downloadViewResolver"
-		class="org.springframework.web.servlet.view.BeanNameViewResolver">
-		<property name="order">
-			<value>0</value>
-		</property>
-	</bean>
-	
-	
 	
 </beans>
 

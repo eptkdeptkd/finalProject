@@ -8,9 +8,20 @@
 <definition name="main.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
 	<put-attribute name="header_link" value="/WEB-INF/views/commons/header_link.jsp"/>
 	<put-attribute name="header" value="/WEB-INF/views/commons/header.jsp"/>
-	<put-attribute name="header_sub" value="/WEB-INF/views/commons/header_sub.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/main/main.jsp"/>
 	<put-attribute name="footer" value="/WEB-INF/views/commons/footer.jsp"/>
+</definition>
+
+<definition name="coffeeDetailMove.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/main/coffee_detail.jsp"/>
+</definition>
+
+<definition name="coffeeAddMove.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/admin/admin_coffee_add.jsp"/>
+</definition>
+
+<definition name="cartMove.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/main/cart.jsp"/>
 </definition>
 
 </tiles-definitions>

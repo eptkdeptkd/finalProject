@@ -1,5 +1,0 @@
-package cc.factory.com.dao;
-
-public interface coffeeDetailDao {
-
-}

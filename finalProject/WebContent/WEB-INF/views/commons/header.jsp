@@ -6,8 +6,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:requestEncoding value="utf-8"/>    
 
-<div id="test" style="background-color:grey">
-<h2> header </h2>
+<div id="test" style="background-color:grey; color: black;">
+<a href="coffeeAddMove.do">커피추가</a>
+<a href="coffeeDetailMove.do?seq=1">커피이동</a>
+<a href="cartMove.do?">장바구니이동</a>
+
+
 </div>
 
 

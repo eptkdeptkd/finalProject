@@ -1,5 +1,0 @@
-package cc.factory.com.service;
-
-public interface coffeeService {
-
-}
