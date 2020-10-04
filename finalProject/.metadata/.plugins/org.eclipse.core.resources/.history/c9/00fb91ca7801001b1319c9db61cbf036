@@ -1,0 +1,8 @@
+package cc.factory.com.service;
+
+import cc.factory.com.dto.coffeeDto;
+
+public interface coffeeService {
+
+	public coffeeDto getDetailOne(int seq);
+}

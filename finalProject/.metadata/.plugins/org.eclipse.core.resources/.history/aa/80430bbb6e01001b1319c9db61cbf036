@@ -1,0 +1,12 @@
+package cc.factory.com.dto;
+
+import java.io.Serializable;
+
+public class coffeeDto implements Serializable {
+
+	private int seq;
+	private String name;
+	private String price;
+	
+	
+}

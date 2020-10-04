@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+
+<table>
+<thead>
+ <th></th>
+ <th></th>
+ <th></th>
+</thead>
+<c:if test="${empty list }">
+	<tr>
+		<td colspan="4" style="text-align:center;"></td>
+	</tr>
+</c:if>
+<c:if test="${not empty list }">
+	<c:forEach items="${list }" var="dto" varStatus="vs" >
+		<tr>
+			<td>
+				<input type="checkbox" class="chk" value="${dto.coffee_seq}">
+			</td>
+			<td>
+				${dto.name }
+			</td>
+			<td>
+				shot : <button type="button" onclick="minbtn">-</button>&nbsp;
+				<input type="text" value="2" id="shot">&nbsp;<button type="button" onclick="plusbtn">+</button> <br>
+				syrupt : <select id="sel">
+							<option value="0" selected>no syrup</option>
+							<c:if test="${not empty sidelist }">
+								<c:forEach items="${sidelist }" var="sy" varStatus="vss">
+									<option value="${sy.price }">${sy.name }</option>
+								</c:forEach>
+							</c:if>
+						 </select>
+				
+				
+				
+			</td>
+		</tr>
+	</c:forEach>
+</c:if>
+</table>
