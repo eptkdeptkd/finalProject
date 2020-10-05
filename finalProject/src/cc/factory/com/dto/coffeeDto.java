@@ -9,18 +9,22 @@ public class coffeeDto implements Serializable {
 	private String originname;
 	private String newname;
 	private String price;
+	private String info;
 	
 	public coffeeDto() {
 	}
 
-
-	public coffeeDto(int seq, String name, String originname, String newname, String price) {
+	public coffeeDto(int seq, String name, String originname, String newname, String price, String info) {
+		super();
 		this.seq = seq;
 		this.name = name;
 		this.originname = originname;
 		this.newname = newname;
 		this.price = price;
+		this.info = info;
 	}
+
+
 
 	public int getSeq() {
 		return seq;
@@ -63,10 +67,18 @@ public class coffeeDto implements Serializable {
 	}
 
 
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
 	@Override
 	public String toString() {
 		return "coffeeDto [seq=" + seq + ", name=" + name + ", originname=" + originname + ", newname=" + newname
-				+ ", price=" + price + "]";
+				+ ", price=" + price + ", info=" + info + "]";
 	}
-	
+
 }

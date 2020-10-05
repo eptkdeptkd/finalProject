@@ -24,6 +24,10 @@
 	<put-attribute name="main" value="/WEB-INF/views/main/cart.jsp"/>
 </definition>
 
+<definition name="ofinish.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/main/order_finish.jsp"/>
+</definition>
+
 </tiles-definitions>
 
 
