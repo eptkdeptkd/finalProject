@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Admin">
+
+<insert id="uploadFile" parameterType="cc.factory.com.dto.coffeeDto">
+	INSERT INTO CC_COFFEE(SEQ, NAME, PRICE, NEWNAME, ORIGINNAME,INFO,ORDER_COUNT,KIND)
+	VALUES(SEQ_COFFEE.NEXTVAL, #{name}, #{price}, #{newname}, #{originname},#{info},0,#{kind} )
+</insert>
+
+<select id="getOrderList" parameterType="cc.factory.com.dto.orderParam" resultType="cc.factory.com.dto.orderParam">
+	<![CDATA[SELECT ID, SEQ, COFFEE_NAME, SHOT, SYRUP, ASK
+	FROM (
+	 SELECT ROW_NUMBER()OVER(ORDER BY A.SEQ) AS RNUM,
+	  FROM CC_ORDER A
+	  JOIN CC_ORDER_DETAIL B ON A.SEQ = B.ORDER_SEQ
+	 WHERE A.ODATE >= #{today}
+	 ORDER BY A.SEQ
+	)
+	WHERE #{start} <= RNUM AND RNUM =< #{end} ]]>
+</select>
+
+</mapper>

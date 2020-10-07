@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="coffeeDetail">
+
+<select id="getDetailOne" parameterType="java.lang.Integer" resultType="cc.factory.com.dto.coffeeDto">
+	SELECT SEQ, NAME,PRICE, NEWNAME, ORIGINNAME
+	FROM CC_COFFEE
+	WHERE SEQ = #{seq}
+</select>
+
+<insert id="addCartOne" parameterType="cc.factory.com.dto.cartDto">
+	INSERT INTO CC_CART(SEQ, ID, COFFEE_SEQ, PRICE)
+	VALUES(SEQ_CART.NEXTVAL,#{id}, #{coffee_seq}, #{price})
+</insert>
+
+<select id="getCartAll" parameterType="java.lang.String" resultType="cc.factory.com.dto.cartDto">
+	SELECT A.SEQ,A.ID,A.COFFEE_SEQ,B.NAME, B.PRICE
+	FROM CC_CART A 
+	JOIN CC_COFFEE B ON A.COFFEE_SEQ = B.SEQ
+	WHERE A.ID = #{id}
+</select>
+
+<insert id="addOrder" parameterType="cc.factory.com.dto.orderDto">
+	INSERT INTO CC_ORDER (SEQ, ID, NAME, PRICE, ODATE)
+	VALUES(SEQ_ORDER.NEXTVAL, #{id}, #{name}, #{price}, SYSDATE)
+</insert>
+
+
+</mapper>
+
+
+
+
+
+
+
+

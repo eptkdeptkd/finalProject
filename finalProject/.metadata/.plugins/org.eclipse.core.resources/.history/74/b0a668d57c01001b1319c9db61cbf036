@@ -1,0 +1,8 @@
+package cc.factory.com.dto;
+
+import java.io.Serializable;
+
+public class cartDto implements Serializable {
+
+		
+}

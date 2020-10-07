@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Move &apos;upload&apos; to &apos;WEB-INF&apos;" description="Move &apos;upload&apos; to &apos;WEB-INF&apos;" destination="WebContent/WEB-INF" element1="WebContent/upload" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1601811021111" updateReferences="true"/>&#x0A;<refactoring comment="Move &apos;upload&apos; to &apos;WebContent&apos;" description="Move &apos;upload&apos; to &apos;WebContent&apos;" destination="WebContent" element1="WebContent/WEB-INF/upload" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1601811058752" updateReferences="true"/>
+</session>

@@ -1,0 +1,11 @@
+package cc.factory.com.dto;
+
+import java.io.Serializable;
+
+public class orderParam implements Serializable {
+	private String id;
+	private String today;
+	private int readPerPage;
+	private 
+	
+}
