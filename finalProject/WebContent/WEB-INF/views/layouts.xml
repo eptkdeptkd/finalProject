@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+<definition name="main.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+	<put-attribute name="header_link" value="/WEB-INF/views/commons/header_link.jsp"/>
+	<put-attribute name="header" value="/WEB-INF/views/commons/header.jsp"/>
+	<put-attribute name="header_sub" value="/WEB-INF/views/commons/header_sub.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/main/main.jsp"/>
+	<put-attribute name="footer" value="/WEB-INF/views/commons/footer.jsp"/>
+</definition>
+
+<definition name="infoimage.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/info/infoimage.jsp"/>
+</definition>
+
+<definition name="infolist.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/info/infolist.jsp"/>
+</definition>
+
+<definition name="infowrite.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/info/infowrite.jsp"/>
+</definition>
+
+<definition name="infodetail.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/info/infodetail.jsp"/>
+</definition>
+
+<definition name="infoupdate.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/info/infoupdate.jsp"/>
+</definition>
+
+
+
+<definition name="eventmain.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/event/eventmain.jsp"/>
+</definition>
+
+
+</tiles-definitions>
+
+
+
+
+
