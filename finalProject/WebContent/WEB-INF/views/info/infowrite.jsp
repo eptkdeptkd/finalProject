@@ -17,8 +17,8 @@
 	<tr class="id">
 		<th>아이디</th>
 		<td style="text-align: left">
-			<%-- <input type="text" name="id" readonly="readonly" value='${login.id}' size="60"/> --%>
-			<input type="text" name="id" size="60" value="aaa" />
+			<input type="text" name="id" readonly="readonly" value='${login.id}' size="60"/>
+			<!-- <input type="text" name="id" size="60" value="aaa" /> -->
 		</td>
 	</tr>
 	<tr>

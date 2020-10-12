@@ -9,7 +9,7 @@ public class InfoParam implements Serializable {
 	
 	// paging
 	private int pageNumber = 0;	// 현재 페이지
-	private int recordCountPerPage = 15;	// 표현할 페이지의 글수
+	private int recordCountPerPage = 9;	// 표현할 페이지의 글수
 	
 	private int start = 1;
 	private int end = 10;

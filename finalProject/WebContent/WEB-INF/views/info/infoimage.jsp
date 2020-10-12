@@ -74,7 +74,7 @@ $(document).ready(function(){
 </table>
 
 <a href="infolist.do" title="공지사항 게시판">리스트로 보기</a>		
-<a href="infoimage.do" title="공지사항 게시판">이미지로 보기</a>	
+<!-- <a href="infoimage.do" title="공지사항 게시판">이미지로 보기</a>	 -->
 
 <!-- 추가 기입 -->
 <input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber }">

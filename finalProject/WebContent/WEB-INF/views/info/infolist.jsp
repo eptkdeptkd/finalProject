@@ -72,7 +72,7 @@ $(document).ready(function(){
 	</td>
 </tr>
 </table>
-<a href="infolist.do" title="공지사항 게시판">리스트로 보기</a>		
+<!-- <a href="infolist.do" title="공지사항 게시판">리스트로 보기</a>	 -->	
 <a href="infoimage.do" title="공지사항 게시판">이미지로 보기</a>		
 
 <!-- 추가 기입 -->

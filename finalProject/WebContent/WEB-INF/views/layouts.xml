@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
-       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd"> 
 
 <tiles-definitions>
 
@@ -35,10 +35,26 @@
 
 
 
-<definition name="eventmain.tiles" extends="main.tiles">
-	<put-attribute name="main" value="/WEB-INF/views/event/eventmain.jsp"/>
+<definition name="polllist.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/polllist.jsp"/>
 </definition>
 
+<definition name="pollmake.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/pollmake.jsp"/>
+</definition>
+
+<definition name="polldetail.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/polldetail.jsp"/>
+</definition>
+
+<definition name="pollresult.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/pollresult.jsp"/>
+</definition>
+
+
+<definition name="login.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/login/login.jsp"/>
+</definition>
 
 </tiles-definitions>
 

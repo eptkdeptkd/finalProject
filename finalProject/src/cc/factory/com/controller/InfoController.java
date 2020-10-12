@@ -71,7 +71,7 @@ public class InfoController {
 
 		//System.out.println("choice:" + param.getChoice());
 		//System.out.println("searchWord:" + param.getSearchWord());
-
+		
 		// paging 처리
 		int sn = param.getPageNumber(); // 현재 페이지
 		int start = sn * param.getRecordCountPerPage() + 1; // 1 11 21
@@ -166,7 +166,7 @@ public class InfoController {
 			
 		}
 		
-		return "redirect:/infolist.do";
+		return "redirect:/infoimage.do";
 		
 		
 
@@ -195,11 +195,11 @@ public class InfoController {
 		 boolean Y = service.writeRe(infoRe); 
 		 System.out.println(Y);
 		 if (Y) {
-			 return "redirect:/infolist.do"; 
+			 return "redirect:/infoimage.do"; 
 			 //InfoDto info = service.getInfo(infoRe.getInfo_Seq());
 			 
 		}else {
-			return "redirect:/infolist.do"; 
+			return "redirect:/infoimage.do"; 
 		}
 	 }
 	 
@@ -207,7 +207,7 @@ public class InfoController {
 	@RequestMapping(value = "infodelete.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String deleteInfo(int seq, Model model) {
 		service.deleteInfo(seq);
-		return "redirect:/infolist.do";
+		return "redirect:/infoimage.do";
 	}
 
 	@RequestMapping(value = "infoupdate.do", method = { RequestMethod.GET, RequestMethod.POST })
@@ -220,6 +220,6 @@ public class InfoController {
 	@RequestMapping(value = "infoupdateAf.do", method = RequestMethod.POST)
 	public String infoupdateAf(InfoDto info, Model model) {
 		service.updateInfo(info);
-		return "redirect:/infolist.do";
+		return "redirect:/infoimage.do";
 	}
 }
