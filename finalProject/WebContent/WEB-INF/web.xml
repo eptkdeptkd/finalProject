@@ -21,6 +21,7 @@
   		<param-value>
   			/WEB-INF/spring/servlet-context.xml
   			/WEB-INF/spring/aop-context.xml
+  			/WEB-INF/spring/websocket-context.xml
   		</param-value>
   	</init-param>
   	

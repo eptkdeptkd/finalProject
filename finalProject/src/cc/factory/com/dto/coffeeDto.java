@@ -10,11 +10,12 @@ public class coffeeDto implements Serializable {
 	private String newname;
 	private String price;
 	private String info;
+	private int kind;
 	
 	public coffeeDto() {
 	}
 
-	public coffeeDto(int seq, String name, String originname, String newname, String price, String info) {
+	public coffeeDto(int seq, String name, String originname, String newname, String price, String info, int kind) {
 		super();
 		this.seq = seq;
 		this.name = name;
@@ -22,6 +23,7 @@ public class coffeeDto implements Serializable {
 		this.newname = newname;
 		this.price = price;
 		this.info = info;
+		this.kind = kind;
 	}
 
 
@@ -73,6 +75,14 @@ public class coffeeDto implements Serializable {
 
 	public void setInfo(String info) {
 		this.info = info;
+	}
+
+	public int getKind() {
+		return kind;
+	}
+
+	public void setKind(int kind) {
+		this.kind = kind;
 	}
 
 	@Override

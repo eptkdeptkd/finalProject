@@ -9,21 +9,20 @@ public class cartDto implements Serializable {
 		private int coffee_seq;
 		private String name;
 		private String price;
+		private int qty;
 		
 		public cartDto() {
 		}
-
-
-		public cartDto(int seq, String id, int coffee_seq, String name, String price) {
+		
+		public cartDto(int seq, String id, int coffee_seq, String name, String price, int qty) {
 			super();
 			this.seq = seq;
 			this.id = id;
 			this.coffee_seq = coffee_seq;
 			this.name = name;
 			this.price = price;
+			this.qty = qty;
 		}
-
-
 
 		public int getSeq() {
 			return seq;
@@ -67,8 +66,19 @@ public class cartDto implements Serializable {
 		}
 
 
+		public int getQty() {
+			return qty;
+		}
+
+		public void setQty(int qty) {
+			this.qty = qty;
+		}
+
 		@Override
 		public String toString() {
-			return "cartDto [seq=" + seq + ", id=" + id + ", coffee_seq=" + coffee_seq + ", price=" + price + "]";
+			return "cartDto [seq=" + seq + ", id=" + id + ", coffee_seq=" + coffee_seq + ", name=" + name + ", price="
+					+ price + ", qty=" + qty + "]";
 		}
+
+
 }

@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import cc.factory.com.dao.coffeeDetailDao;
+import cc.factory.com.dto.SideDto;
 import cc.factory.com.dto.cartDto;
 import cc.factory.com.dto.coffeeDto;
+import cc.factory.com.dto.orderDetailDto;
 import cc.factory.com.dto.orderDto;
 
 @Repository
@@ -36,7 +38,8 @@ public class coffeeDetailDaoImpl implements coffeeDetailDao {
 
 	@Override
 	public int addOrder(orderDto dto) {
-		return sqlSession.insert(ns+"addOrder",dto);
+		sqlSession.insert(ns+"addOrder",dto);
+		return dto.getSeq();
 	}
 
 	@Override
@@ -50,14 +53,33 @@ public class coffeeDetailDaoImpl implements coffeeDetailDao {
 	}
 
 	@Override
-	public int updateOrderCount(String seq) {
-		int count = 1;
-		String[] str = seq.split(",");
-		for(int i=0; i<str.length; i++) {
-			int c = sqlSession.update(ns+"updateOrderCount",Integer.parseInt(str[i]));
-			if(c<0) count = -1;
-		}
-		return count;
+	public int updateOrderCount(int seq) {
+		return sqlSession.update(ns+"updateOrderCount",seq);
+	}
+
+	@Override
+	public int addOrderDetail(orderDetailDto dto) {
+		return sqlSession.insert(ns+"addOrderDetail",dto);
+	}
+
+	@Override
+	public int delCart(int seq) {
+		return sqlSession.delete(ns+"delCart",seq);
+	}
+
+	@Override
+	public List<SideDto> getSyrupAll() {
+		return sqlSession.selectList(ns+"getSyrupAll");
+	}
+
+	@Override
+	public List<coffeeDto> getCoffeeList() {
+		return sqlSession.selectList(ns+"getCoffeeList");
+	}
+
+	@Override
+	public List<coffeeDto> getCoffeeKindList(int kind) {
+		return sqlSession.selectList(ns+"getCoffeeKindList",kind);
 	}
 
 }
