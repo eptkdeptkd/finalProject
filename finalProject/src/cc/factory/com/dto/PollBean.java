@@ -38,6 +38,10 @@ public class PollBean implements Serializable {
 	
 	private String pollnum[] = new String[10];
 	
+	private int polltotal;
+	private String filename;	
+	private String oldfilename;
+	
 	// 보기의 묶음
 	public String[] getPollnum() {
 		pollnum[0] = poll1;
@@ -73,6 +77,37 @@ public class PollBean implements Serializable {
 	
 
 	public PollBean() {
+	}
+
+	public PollBean(String id, int syear, int smonth, int sday, int eyear, int emonth, int eday, Date sdate, Date edate,
+			String question, int itemcount, String poll1, String poll2, String poll3, String poll4, String poll5,
+			String poll6, String poll7, String poll8, String poll9, String poll10, String[] pollnum, String filename,
+			String oldfilename) {
+		super();
+		this.id = id;
+		this.syear = syear;
+		this.smonth = smonth;
+		this.sday = sday;
+		this.eyear = eyear;
+		this.emonth = emonth;
+		this.eday = eday;
+		this.sdate = sdate;
+		this.edate = edate;
+		this.question = question;
+		this.itemcount = itemcount;
+		this.poll1 = poll1;
+		this.poll2 = poll2;
+		this.poll3 = poll3;
+		this.poll4 = poll4;
+		this.poll5 = poll5;
+		this.poll6 = poll6;
+		this.poll7 = poll7;
+		this.poll8 = poll8;
+		this.poll9 = poll9;
+		this.poll10 = poll10;
+		this.pollnum = pollnum;
+		this.filename = filename;
+		this.oldfilename = oldfilename;
 	}
 
 	public PollBean(String id, int syear, int smonth, int sday, int eyear, int emonth, int eday, Date sdate, Date edate,
@@ -254,6 +289,33 @@ public class PollBean implements Serializable {
 	public void setPoll10(String poll10) {
 		this.poll10 = poll10;
 	}
+	
+	
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
+	public String getOldfilename() {
+		return oldfilename;
+	}
+
+	public void setOldfilename(String oldfilename) {
+		this.oldfilename = oldfilename;
+	}
+
+	
+	public int getPolltotal() {
+		return polltotal;
+	}
+
+	public void setPolltotal(int polltotal) {
+		this.polltotal = polltotal;
+	}
 
 	@Override
 	public String toString() {
@@ -261,8 +323,13 @@ public class PollBean implements Serializable {
 				+ ", emonth=" + emonth + ", eday=" + eday + ", sdate=" + sdate + ", edate=" + edate + ", question="
 				+ question + ", itemcount=" + itemcount + ", poll1=" + poll1 + ", poll2=" + poll2 + ", poll3=" + poll3
 				+ ", poll4=" + poll4 + ", poll5=" + poll5 + ", poll6=" + poll6 + ", poll7=" + poll7 + ", poll8=" + poll8
-				+ ", poll9=" + poll9 + ", poll10=" + poll10 + ", pollnum=" + Arrays.toString(pollnum) + "]";
+				+ ", poll9=" + poll9 + ", poll10=" + poll10 + ", pollnum=" + Arrays.toString(pollnum) + ", polltotal="
+				+ polltotal + ", filename=" + filename + ", oldfilename=" + oldfilename + "]";
 	}
+
+
+
+
 	
 	
 }

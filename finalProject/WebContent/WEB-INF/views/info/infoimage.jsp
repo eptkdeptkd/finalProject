@@ -115,24 +115,39 @@ $(document).ready(function(){
 			
 			<c:if test="${info.del eq 1}">
 				<div  style="float: left; padding: 50px;" >
-					<img src="/image/infodelete.png" alt="" style="width: 350px; height: 300px;">	
+					<img src="image/infodelete.jpg" alt="" style="width: 350px; height: 300px;">	
 				</div>
 			</c:if>
 			
-	 		<c:if test="${info.del eq 0}">
-				<div  style="float: left; padding: 50px;" >
-					<%-- <jsp:getProperty property="arrow" name="ubbs"/> --%>
-					<a href="infodetail.do?seq=${info.seq }" style="color: #000">
-						<img src="http://localhost:8090/finalProject/upload/${info.filename }" style="width: 350px; height: 300px;">	
-						<br>${info.title}
-						<%-- <br>${info.id} --%>
-						<br>조회수 : ${info.readcount}
-					</a>	
-				</div>
-			</c:if>			
-		</div>		
-	</c:forEach>
-</div>
+		 		<c:if test="${info.del eq 0}">
+		 		
+					<c:if test="${info.oldfilename eq null}">
+						<div  style="float: left; padding: 50px;" >
+							<a href="infodetail.do?seq=${info.seq }" style="color: #000">
+								<img src="image/emptyimage.jpg" alt="" style="width: 350px; height: 300px;">	
+								<br>${info.title}
+								<%-- <br>${info.id} --%>
+								<br>조회수 : ${info.readcount}
+							</a>
+						</div>
+					</c:if>
+					
+			 		<c:if test="${info.oldfilename ne null}">
+						<div  style="float: left; padding: 50px;" >
+							<%-- <jsp:getProperty property="arrow" name="ubbs"/> --%>
+							<a href="infodetail.do?seq=${info.seq }" style="color: #000">
+								<img src="http://localhost:8090/finalProject/upload/${info.filename }" style="width: 350px; height: 300px;">	
+								<br>${info.title}
+								<%-- <br>${info.id} --%>
+								<br>조회수 : ${info.readcount}
+							</a>	
+						</div>
+					</c:if>
+				
+				</c:if>			
+			</div>		
+		</c:forEach>
+	</div>
 
 <!-- paging -->
 <div id="paging_wrap" align="center">

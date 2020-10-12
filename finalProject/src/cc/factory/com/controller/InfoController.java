@@ -138,11 +138,16 @@ public class InfoController {
 		
 		// file명을 취득
 		String f = info.getOldfilename();
-		String newfilename = PdsUtil.getNewFileName(f);	// 324324324324.txt
+		System.out.println("f == " + f);
+		
+		String newfilename = PdsUtil.getNewFileName(f);	
+		System.out.println("newfilename == " + newfilename);
 		
 		info.setFilename(newfilename);
 		
 		File file = new File(fupload + "/" + newfilename);
+		
+		System.out.println("file?" + file);
 		
 		//System.out.println(fupload);
 				
@@ -178,6 +183,9 @@ public class InfoController {
 
 		InfoDto info = service.getInfo(seq);
 		List<InfoReDto> infoReList = service.getInfoReList(seq);
+		
+		int count = service.getInfoReCount(seq);
+		System.out.println("count== "+count);
 		//System.out.println("Info Detail Dto = " + info.toString());
 
 		model.addAttribute("info", info);
@@ -195,7 +203,7 @@ public class InfoController {
 		 boolean Y = service.writeRe(infoRe); 
 		 System.out.println(Y);
 		 if (Y) {
-			 return "redirect:/infoimage.do"; 
+			 return "redirect:/infodetail.do?seq="+infoRe.getInfo_Seq(); 
 			 //InfoDto info = service.getInfo(infoRe.getInfo_Seq());
 			 
 		}else {

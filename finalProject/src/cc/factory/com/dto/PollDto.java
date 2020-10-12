@@ -28,6 +28,11 @@ INCREMENT BY 1;
 ALTER TABLE CC_POLL ADD CONSTRAINT CC_POLL_FK
 FOREIGN KEY(ID)
 REFERENCES CC_MEMBER(ID);
+
+alter table CC_POLL add FILENAME VARCHAR2(50)
+
+alter table CC_POLL add OLDFILENAME VARCHAR2(50)
+
 */
 
 // 투표 질의 
@@ -44,11 +49,37 @@ public class PollDto implements Serializable {
 	
 	private boolean vote;		// 투표를 했는지? 안했는지
 
+	private String filename;	
+	private String oldfilename;
+	
 	public PollDto() {
 	}
 		
+	public PollDto(String id, String question, Date sdate, Date edate, int itemcount, int polltotal) {
+		super();
+		this.id = id;
+		this.question = question;
+		this.sdate = sdate;
+		this.edate = edate;
+		this.itemcount = itemcount;
+		this.polltotal = polltotal;
+	}
+	
+	public PollDto(String id, String question, Date sdate, Date edate, int itemcount, int polltotal, String filename, String oldfilename) {
+		super();
+		this.id = id;
+		this.question = question;
+		this.sdate = sdate;
+		this.edate = edate;
+		this.itemcount = itemcount;
+		this.polltotal = polltotal;
+		this.filename = filename;
+		this.oldfilename = oldfilename;
+	}
+	
+
 	public PollDto(int pollid, String id, String question, Date sdate, Date edate, Date regdate, int itemcount,
-			int polltotal, boolean vote) {
+			int polltotal, boolean vote, String filename, String oldfilename) {
 		super();
 		this.pollid = pollid;
 		this.id = id;
@@ -59,17 +90,10 @@ public class PollDto implements Serializable {
 		this.itemcount = itemcount;
 		this.polltotal = polltotal;
 		this.vote = vote;
+		this.filename = filename;
+		this.oldfilename = oldfilename;
 	}
-	
-	public PollDto(String id, String question, Date sdate, Date edate, int itemcount, int polltotal) {
-		super();
-		this.id = id;
-		this.question = question;
-		this.sdate = sdate;
-		this.edate = edate;
-		this.itemcount = itemcount;
-		this.polltotal = polltotal;
-	}
+
 
 	public int getPollid() {
 		return pollid;
@@ -143,12 +167,29 @@ public class PollDto implements Serializable {
 		this.vote = vote;
 	}
 
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
+	public String getOldfilename() {
+		return oldfilename;
+	}
+
+	public void setOldfilename(String oldfilename) {
+		this.oldfilename = oldfilename;
+	}
+
 	@Override
 	public String toString() {
 		return "PollDto [pollid=" + pollid + ", id=" + id + ", question=" + question + ", sdate=" + sdate + ", edate="
 				+ edate + ", regdate=" + regdate + ", itemcount=" + itemcount + ", polltotal=" + polltotal + ", vote="
-				+ vote + "]";
+				+ vote + ", filename=" + filename + ", oldfilename=" + oldfilename + "]";
 	}
+
 	
 	
 }

@@ -9,7 +9,8 @@ int tmonth = cal.get(Calendar.MONTH) + 1;
 int tday = cal.get(Calendar.DATE);
 %>
 
-<form action="pollmakeAf.do" method="post">
+<form id="_frmForm" action="pollmakeAf.do" method="post" enctype="multipart/form-data">
+<input type="file" name="fileload" size="20" required="required">
 
 <table class="list_table" style="width: 85%">
 <colgroup>
@@ -127,7 +128,7 @@ int tday = cal.get(Calendar.DATE);
 
 <tr>
 	<td colspan="2">
-		<input type="submit" value="투표만들기">
+		<input onclick="Confirm()" value="투표만들기">
 	</td>
 </tr>
 </table>
@@ -158,10 +159,52 @@ function pollchange( sel ){
 		$("#poll" + i).show();
 	}	
 }
-
-
 </script>
 
+
+
+
+<script type="text/javascript">
+	var alert = function(msg, type) {
+		swal({
+			title : '',
+			text : msg,
+			type : type,
+			timer : 1500,
+			customClass : 'sweet-size',
+			showConfirmButton : false
+		});
+	}
+
+	var confirm = function(msg, title, resvNum) {
+		swal({
+			title : title,
+			text : msg,
+			type : "warning",
+			showCancelButton : true,
+			confirmButtonClass : "btn-danger",
+			confirmButtonText : "확인",
+			cancelButtonText : "취소",
+			closeOnConfirm : false,
+			closeOnCancel : false
+		}, function(isConfirm) {
+			if (isConfirm) {
+				swal('', '글이 작성되었습니다', "success");
+				$("#_frmForm").attr({ "target":"_self", "action":"pollmakeAf.do" }).submit();
+			}else{
+				 location.href="polllist.do";
+			}
+
+		});
+	}
+
+	function Alert() {
+		alert('gg', 'success');
+	}
+	function Confirm() {
+		confirm('', '투표를 만드시겠습니까?');
+	}
+</script>
 
 
 

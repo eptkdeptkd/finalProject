@@ -4,50 +4,27 @@
 
 <form action="polling.do" method="post">
 
-<table class="list_table" style="width: 95%">
-<colgroup>
-	<col width="200px"><col width="500px">
-</colgroup>
+	<c:if test="${poll.filename ne null}">
+		<img src="http://localhost:8090/finalProject/upload/${poll.filename }">	
+	</c:if>
 
-<tr>
-	<th>투표번호</th>
-	<td style="text-align: left;">
-		<input type="text" name="pollid" value="${poll.pollid}" size="50" readonly="readonly">
-	</td>
-</tr>
 
-<tr>
-	<th>아이디</th>
-	<td style="text-align: left;">
-		<input type="text" name="id" value="${login.id }" size="50" readonly="readonly">
-	</td>
-</tr>
 
-<tr>
-	<th>투표기한</th>
-	<td style="text-align: left;">
-		${poll.sdate} ~ ${poll.edate}
-	</td>	
-</tr>
-
-<tr>
-	<th>투표내용</th>
-	<td style="text-align: left;">
-		<textarea rows="10" cols="50" name="question">${poll.question}</textarea>
-	</td>
-</tr>
-
-<tr>
-	<th>투표 보기수</th>
-	<td style="text-align: left;">
-		${poll.itemcount }
-	</td>
-</tr>
-
-<tr>
-	<th>투표 보기들</th>
-	<td style="text-align: left;">
-		
+<br>
+	투표번호 : <input type="text" name="pollid" value="${poll.pollid}" size="50" readonly="readonly">
+<br>
+	아이디 : <input type="text" name="id" value="${login.id }" size="50" readonly="readonly">
+<br>
+	투표기한 : ${poll.sdate} ~ ${poll.edate}
+<br>
+	투표내용 : 
+<br>
+	<textarea rows="3" cols="40" name="question">${poll.question}</textarea>
+<br>
+	투표 보기수 : ${poll.itemcount }
+<br>
+	투표 보기들 : 
+<br>		
 		<c:forEach items="${pollsublist }" var="psub" varStatus="vs">
 		
 		${vs.count}번
@@ -60,16 +37,9 @@
 		<br>		
 		</c:forEach>
 		
-	</td>	
-</tr>
 
-<tr align="center">
-	<td colspan="2">
 		<input type="submit" value="투표하기">
-	</td>
-</tr>
 
-</table>
 
 </form>    
 

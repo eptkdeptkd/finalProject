@@ -23,8 +23,8 @@
 <!-- 투표 만들기 -->
 <!-- 투표 주제 -->
 <insert id="makePoll" parameterType="cc.factory.com.dto.PollDto">
-	INSERT INTO CC_POLL(POLLID, ID, QUESTION, SDATE, EDATE, ITEMCOUNT, POLLTOTAL, REGDATE)
-	VALUES(CC_POLL_SEQ.NEXTVAL, #{id}, #{question}, #{sdate}, #{edate}, #{itemcount}, 0, SYSDATE)
+	INSERT INTO CC_POLL(POLLID, ID, QUESTION, SDATE, EDATE, ITEMCOUNT, POLLTOTAL, REGDATE, FILENAME, OLDFILENAME )
+	VALUES(CC_POLL_SEQ.NEXTVAL, #{id}, #{question}, #{sdate}, #{edate}, #{itemcount}, 0, SYSDATE, #{filename}, #{oldfilename})
 </insert>
 <!-- 투표 보기 -->
 <insert id="makePollSub" parameterType="cc.factory.com.dto.PollSubDto">
@@ -37,7 +37,7 @@
 <!-- 투표질문 --> 
 <select id="getPoll" parameterType="cc.factory.com.dto.PollDto"
 	resultType="cc.factory.com.dto.PollDto">
-	SELECT POLLID, ID, QUESTION, SDATE, EDATE, ITEMCOUNT, POLLTOTAL, REGDATE
+	SELECT POLLID, ID, QUESTION, SDATE, EDATE, ITEMCOUNT, POLLTOTAL, REGDATE, FILENAME, OLDFILENAME 
 	FROM CC_POLL
 	WHERE POLLID=#{pollid}
 </select>
@@ -58,14 +58,14 @@
 
 <!-- 어느 주제에 투표를 했는지 카운트 -->
 <update id="pollingPoll" parameterType="cc.factory.com.dto.Voter">
-	UPDATE POLL
+	UPDATE CC_POLL
 	SET POLLTOTAL=POLLTOTAL+1
 	WHERE POLLID=#{pollid}
 </update>
 
 <!-- 어느 보기를 선택했는지 카운트 -->
 <update id="pollingSub" parameterType="cc.factory.com.dto.Voter">
-	UPDATE POLLSUB
+	UPDATE CC_POLLSUB
 	SET ACOUNT=ACOUNT+1
 	WHERE POLLSUBID=#{pollsubid} AND POLLID=#{pollid}
 </update>

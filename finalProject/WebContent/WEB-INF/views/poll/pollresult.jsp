@@ -5,8 +5,7 @@
     
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>    
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
     
 <%
 List<PollSubDto> list = (List<PollSubDto>)request.getAttribute("pollsublist");
@@ -74,15 +73,20 @@ request.setAttribute("jsonData", jsonData);
 <script>
 $(document).ready(function(){
 
+
+
+
 	Highcharts.chart('container', {
 		  chart: {
 		    plotBackgroundColor: null,
-		    plotBorderWidth: null,
-		    plotShadow: false,
-		    type: 'pie'
+		    plotBorderWidth: 0,
+		    plotShadow: false
 		  },
 		  title: {
-		    text: '투표 통계 결과'
+		    text: '투표 결과',
+		    align: 'center',
+		    verticalAlign: 'middle',
+		    y: 60
 		  },
 		  tooltip: {
 		    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -94,22 +98,43 @@ $(document).ready(function(){
 		  },
 		  plotOptions: {
 		    pie: {
-		      allowPointSelect: true,
-		      cursor: 'pointer',
 		      dataLabels: {
 		        enabled: true,
-		        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-		      }
+		        distance: -50,
+		        style: {
+		          fontWeight: 'bold',
+		          color: 'white'
+		        }
+		      },
+		      startAngle: -90,
+		      endAngle: 90,
+		      center: ['50%', '75%'],
+		      size: '110%'
 		    }
 		  },
 		  series: [{
-		    name: 'Brands',
-		    colorByPoint: true,
+		    type: 'pie',
+		    name: 'Browser share',
+		    innerSize: '50%',
 		    data: <%=request.getAttribute("jsonData") %>
 		  }]
 		});
-		
+
+
+
+
+
+
+	
 });
+
+
+
+
+
+
+
+
 </script>
 
 

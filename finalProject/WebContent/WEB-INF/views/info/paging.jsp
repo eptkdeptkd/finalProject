@@ -87,7 +87,7 @@
 			%>
 			<span style="font-size: 10pt; color: #000000; font-weight: bold;">
 				<%-- <%=i+1 %> --%>
-				<img src="image/paging.png" alt="" style="width: 50px; height: 50px;" />
+				<img src="image/paging.png" alt="" style="width: 35px; height: 35px;" />
 			</span>
 			<%
 		}
@@ -96,7 +96,7 @@
 			<a href="#none" title="<%=i+1 %>페이지" onclick="goPage(<%=i %>)"
 				style="font-size: 9.5pt; color: #000000; font-weight: normal;">
 				<%-- [<%=i+1 %>] --%>
-				<img src="image/paging.png" alt="" style="width: 30px; height: 30px;" />
+				<img src="image/paging.png" alt="" style="width: 25px; height: 25px;" />
 			</a>	
 			<%
 		}		

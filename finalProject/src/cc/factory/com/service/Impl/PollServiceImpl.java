@@ -52,8 +52,10 @@ public class PollServiceImpl implements PollService {
 									pbean.getQuestion(), 
 									pbean.getSdate(), 
 									pbean.getEdate(), 
-									pbean.getItemcount(), 
-									0);
+									pbean.getItemcount(),
+									0,
+									pbean.getFilename(),
+									pbean.getOldfilename());
 		dao.makePoll(poll);
 				
 		// 투표 보기들
@@ -62,7 +64,7 @@ public class PollServiceImpl implements PollService {
 		for (int i = 0; i < pbean.getItemcount(); i++) {
 			PollSubDto pollsub = new PollSubDto();
 			pollsub.setAnswer(answer[i]);
-			
+			System.out.println(answer[i]);
 			dao.makePollSub(pollsub);			
 		}
 	}

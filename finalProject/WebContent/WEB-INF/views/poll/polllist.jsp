@@ -16,6 +16,15 @@ MemberDto mem = (MemberDto)session.getAttribute("login");
 <%
 if(mem.getAuth() == 1){
 %>
+	<a href="pollmake.do">투표 만들기</a>
+<%
+}
+%>
+
+
+<%
+if(mem.getAuth() == 1){
+%>
 	<table class="list_table" style="width: 95%">
   	<col width="50"><col width="50"><col width="300">
   	<col width="100"><col width="100"><col width="50">
@@ -67,7 +76,7 @@ if(mem.getAuth() == 3){
 		for(int i = 0;i < plists.size(); i++){
 			PollDto poll = plists.get(i);
 			%>
-			<tr bgcolor="#aabbcc">
+			<tr bgcolor="#aeaeae">
 				<td><%=i+1 %></td>
 				<td><%=poll.getId() %></td>
 				
@@ -77,7 +86,7 @@ if(mem.getAuth() == 3){
 				// 투표했음				기간만료
 				if(isS == true || PollUtil.isEnd(poll.getEdate()) == true){	// 투표 못하게 처리함
 					%>
-					<td>[마감]<%=poll.getQuestion() %></td>
+					<td><기간만료 혹은 이미 투표하신 주제입니다>      <%=poll.getQuestion() %></td>
 					<%
 				}
 				else{	//  투표를 안했음 && 기간아직 만료되지 않음 
@@ -95,12 +104,12 @@ if(mem.getAuth() == 3){
 				<%
 				if(isS == true || PollUtil.isEnd(poll.getEdate()) == true){ // 결과확인 가능
 					%>
-					<a href="pollresult.do?pollid=<%=poll.getPollid() %>">결과</a>
+					<a href="pollresult.do?pollid=<%=poll.getPollid() %>">결과확인</a>
 					<%
 				}
 				else{	// 결과 확인을 할 수 없음
 					%>
-					<img alt="" src="image/pen.gif">
+					<!-- <img alt="" src="image/paging.png" style="width: 20px; height: 20px;"> -->
 					<%
 				}				
 				%>	
@@ -121,13 +130,7 @@ if(mem.getAuth() == 3){
 }
 %>
 
-<%
-if(mem.getAuth() == 1){
-%>
-	<a href="pollmake.do">투표 만들기</a>
-<%
-}
-%>
+
 
 
 
