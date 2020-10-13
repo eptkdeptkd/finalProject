@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -23,57 +24,46 @@ System.out.println(jsonData);
 
 request.setAttribute("jsonData", jsonData);
 %>
+<h1 align="center">투표 결과</h1>
+<figure class="highcharts-figure">
+  <div id="container"></div>		  
+</figure>
 
-<table class="list_table" style="width:95%">
-<colgroup>
-	<col width="200px"><col width="500px">
-</colgroup>
-
-<tr>
-	<th>투표번호</th>
-	<td style="text-align: left;">
+<h1 align="center">투표 내용</h1>
+<div align="center">
+	투표번호 : 
 		<input type="text" value="${poll.pollid}" size="50" readonly="readonly">
-	</td>
-</tr>
+	<br>
 
-<tr>
-	<th>아이디</th>
-	<td style="text-align: left">
+	아이디 : 
 		<input type="text" value="${login.id}" size="50" readonly="readonly">
-	</td>
-</tr>
+	<br>
 
-<tr>
-	<th>투표기한</th>
-	<td style="text-align: left;">
+	투표기한 : 
 		${poll.sdate } ~ ${poll.edate }
-	</td>
-</tr>
+	<br>
 
-<tr>
-	<th>투표내용</th>
-	<td style="text-align: left;">
-		<textarea rows="10" cols="50">${poll.question }</textarea>
-	</td>
-</tr>
 
-<tr>
-	<th>투표결과</th>
-	<td>	
+		<br>
+	<c:if test="${poll.filename eq null}">
+		<br>
+			<textarea rows="10" cols="50">${poll.question }</textarea>
+		<br>
+	</c:if>
 	
-		<figure class="highcharts-figure">
-		  <div id="container"></div>		  
-		</figure>
-			
-	</td>
-</tr>
+	<c:if test="${poll.filename ne null}">
+		<img src="http://localhost:8090/finalProject/upload/${poll.filename }" style="width: 600px; height: 550px;">	
+		<br>
+		<textarea rows="10" cols="50">${poll.question }</textarea>
+	</c:if>
+	
 
-</table>
+</div>
+
+<a href="polllist.do" title="돌아가기">돌아가기</a>	
 
 <script>
 $(document).ready(function(){
-
-
 
 
 	Highcharts.chart('container', {
@@ -83,7 +73,7 @@ $(document).ready(function(){
 		    plotShadow: false
 		  },
 		  title: {
-		    text: '투표 결과',
+		    text: '${poll.question }',
 		    align: 'center',
 		    verticalAlign: 'middle',
 		    y: 60

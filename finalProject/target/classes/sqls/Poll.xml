@@ -7,9 +7,9 @@
 
 <!-- 모든 투표의 목록 -->
 <select id="getPollAllList" resultType="cc.factory.com.dto.PollDto">
-	SELECT POLLID, ID, QUESTION, SDATE, EDATE, ITEMCOUNT, POLLTOTAL, REGDATE
+	SELECT POLLID, ID, QUESTION, SDATE, EDATE, ITEMCOUNT, POLLTOTAL, REGDATE, FILENAME, OLDFILENAME
 	FROM CC_POLL
-	ORDER BY SDATE DESC
+	ORDER BY POLLID DESC
 </select>
 
 <!-- 투표를 했는 지 확인 -->

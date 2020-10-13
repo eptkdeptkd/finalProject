@@ -63,8 +63,8 @@
 <div style="float: left; width: 96%; text-align: center;">
 	<!-- << -->
 	<a href="#none" title="처음페이지" onclick="goPage(0)">
-		<img src="image/arrow_left.png" alt="" style="width: 50px; height: 50px;" />
-		<!-- <img alt="" src="./image/arrow_first.gif" style="width: 10px; height: 10px"> -->
+	<i class="far fa-arrow-alt-circle-left"></i>
+		<!-- <img src="image/arrow_left.png" alt="" style="width: 20px; height: 20px;" /> -->
 	</a>
 	
 	<!-- < -->		<!-- 총 글 수가 100개가 넘어야 보인다 -->
@@ -87,7 +87,7 @@
 			%>
 			<span style="font-size: 10pt; color: #000000; font-weight: bold;">
 				<%-- <%=i+1 %> --%>
-				<img src="image/paging.png" alt="" style="width: 35px; height: 35px;" />
+				<img src="image/paging.png" alt="" style="width: 50px; height: 50px;" />
 			</span>
 			<%
 		}
@@ -96,7 +96,7 @@
 			<a href="#none" title="<%=i+1 %>페이지" onclick="goPage(<%=i %>)"
 				style="font-size: 9.5pt; color: #000000; font-weight: normal;">
 				<%-- [<%=i+1 %>] --%>
-				<img src="image/paging.png" alt="" style="width: 25px; height: 25px;" />
+				<img src="image/paging.png" alt="" style="width: 35px; height: 35px;" />
 			</a>	
 			<%
 		}		
@@ -122,7 +122,8 @@
 	
 	<!-- >> -->
 	<a href="#none" title="마지막페이지" onclick="goPage(<%=end_page %>)">
-		<img src="image/arrow_right.png" alt="" style="width: 50px; height: 50px;" />
+	<i class="far fa-arrow-alt-circle-right"></i>
+		<!-- <img src="image/arrow_right.png" alt="" style="width: 20px; height: 20px;" /> -->
 	</a>
 </div>
 

@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<form action="polling.do" method="post">
+<form id="_frmForm" action="polling.do" method="post">
 
 	<c:if test="${poll.filename ne null}">
-		<img src="http://localhost:8090/finalProject/upload/${poll.filename }">	
+		<img src="http://localhost:8090/finalProject/upload/${poll.filename }" style="width: 300px; height: 250px;">	
 	</c:if>
 
 
@@ -38,12 +38,52 @@
 		</c:forEach>
 		
 
-		<input type="submit" value="투표하기">
-
+		<input type="submit" onclick="Confirm()" value="투표하기">
+<a href="polllist.do" title="돌아가기">돌아가기</a>	
 
 </form>    
 
+<script type="text/javascript">
+	var alert = function(msg, type) {
+		swal({
+			title : '',
+			text : msg,
+			type : type,
+			timer : 1500,
+			customClass : 'sweet-size',
+			showConfirmButton : false
+		});
+	}
 
+	var confirm = function(msg, title, resvNum) {
+		swal({
+			title : title,
+			text : msg,
+			type : "warning",
+			showCancelButton : true,
+			confirmButtonClass : "btn-danger",
+			confirmButtonText : "확인",
+			cancelButtonText : "취소",
+			closeOnConfirm : false,
+			closeOnCancel : false
+		}, function(isConfirm) {
+			if (isConfirm) {
+				swal('', '투표가 추가되었습니다', "success");
+				$("#_frmForm").attr({ "target":"_self", "action":"polling.do" }).submit();
+			}else{
+				 location.href="polllist.do";
+			}
+
+		});
+	}
+
+	function Alert() {
+		alert('gg', 'success');
+	}
+	function Confirm() {
+		confirm('', '투표를 추가하시겠습니까?');
+	}
+</script>
 
 
 
