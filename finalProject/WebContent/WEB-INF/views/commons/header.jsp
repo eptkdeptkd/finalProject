@@ -11,7 +11,7 @@
   <!--Header-->
   <nav id="navbar">
     <div class="navbar_logo">
-      <a href="main.do"><img src="imgs/logo.png" alt="logo" /></a>
+      <a href="main.do"><img src="image/logo.png" alt="logo" /></a>
     </div>
     <ul class="navbar_menu">
       <li class="navbar_menu_item">
@@ -47,6 +47,14 @@
       
       <li class="navbar_menu_item">
       	<a href="pslist.do">후기 게시판</a>
+      </li>
+      
+      <li class="navbar_menu_item">
+      	<a href="infoimage.do">공지사항</a>
+      </li>
+      
+      <li class="navbar_menu_item">
+      	<a href="polllist.do">설문조사</a>
       </li>
       
       <c:if test="${empty login }">
