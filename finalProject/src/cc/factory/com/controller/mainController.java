@@ -67,8 +67,6 @@ public class mainController {
 		System.out.println("mainController coffeeDetailMove()");	
 		
 		coffeeDto dto = service.getDetailOne(seq);
-		System.out.println(dto.toString());
-		
 		
 		model.addAttribute("dto", dto);
 		
@@ -89,10 +87,9 @@ public class mainController {
 	public String cartMove(Model model, HttpServletRequest req ) {
 		System.out.println("mainController cartMove()");	
 		
-		String id = (String) req.getSession().getId();
-		id = "OJEA";
+		MemberDto dto = (MemberDto) req.getSession().getAttribute("login");
 		
-		List<cartDto> list = service.getCartAll(id);
+		List<cartDto> list = service.getCartAll(dto.getId());
 		model.addAttribute("list",list);
 		
 		// syrup
@@ -115,7 +112,6 @@ public class mainController {
 	@ResponseBody
 	@RequestMapping(value = "order.do", method = RequestMethod.POST, produces ="application/String; charset=UTF-8")
 	public String order(orderDto dto) { 
-		System.out.println("mainController order() ");	
 		System.out.println("mainController order -> "+dto.getDetail());
 		
 		String msg = "";

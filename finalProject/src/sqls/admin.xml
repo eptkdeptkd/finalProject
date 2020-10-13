@@ -42,7 +42,7 @@
 </delete>
 
 <delete id="orderFin" parameterType="java.lang.Integer">
-	DELETE FROM CC_ORDER WHERE WHERE SEQ = #{seq} 
+	DELETE FROM CC_ORDER WHERE SEQ = #{seq} 
 </delete>
 
 <delete id="delCoffee" parameterType="java.lang.Integer">

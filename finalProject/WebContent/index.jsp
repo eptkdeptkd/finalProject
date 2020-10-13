@@ -12,9 +12,5 @@
 response.sendRedirect("main.do");
 %>
 
-<script type="text/javascript">
-	connect();
-</script>
-
 </body>
 </html>

@@ -55,11 +55,18 @@
      	 </li>
       </c:if>
       <c:if test="${not empty login }">
+      	<c:if test="${login.auth ==3 }">
 	      <li class="navbar_menu_item">
 	      	<a href="mypage.do">마이페이지</a>
 	      </li>
+	     </c:if>
+	     <c:if test="${login.auth ==1 }">
 	      <li class="navbar_menu_item">
-			<a href="sessionOut.do">Sign Out</a>
+	      	<a href="admin.do">관리자페이지</a>
+	      </li>
+	     </c:if>
+	      <li class="navbar_menu_item">
+			<a onclick="logOut()">Sign Out</a>
 		  </li>
       </c:if>
       
@@ -88,6 +95,9 @@
 		wsocket.onopen = onOpen; // 함수명을 넣어줘서 초기화
 		wsocket.onmessage = onMessage;
 		wsocket.close = onClose;
+		wsocket.onerror = function(err) {
+			console.log("Error = " +err);
+		};
 	}
 
 	function disconnect(){
@@ -95,16 +105,33 @@
 	}
 
 	function onOpen(evt){ // 연결 되었을 때 
+		console.log("연결");
 	}
 
 	function onClose(){ // 끊겼을 때 
+		console.log("연결 끊김");
 	}
 
 	function onMessage(evt){ // 실제 메세지가 수신(recv)
 		var data = evt.data;
+		var index = data.indexOf(":");
+		data = data.substr(index+1,data.length);
+		console.log(data+","+index);
 		alert(data);
 	}
 
+	$(document).ready(function(){
+		// 추가
+		var dto = "${login.id}";
+		if(dto!=null || dto.id != ""){
+			connect();
+		}
+	});
+
+	function logOut(){
+		disconnect();
+		location.href="sessionOut.do";
+	}
     </script>
 
 

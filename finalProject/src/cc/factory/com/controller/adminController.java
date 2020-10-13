@@ -55,7 +55,6 @@ public class adminController {
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyyMMdd");
 		Date time = new Date();
 		String t = format1.format(time);
-		t = "20201005";
 		param.setToday(t);
 		
 		List<orderParam> list = service.getOrderList(param);
@@ -101,7 +100,6 @@ public class adminController {
 	public boolean orderFin(int seq) {
 		
 		boolean b = service.orderFin(seq);
-		
 		return b;
 	}
 	
@@ -112,11 +110,10 @@ public class adminController {
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyyMMdd");
 		Date time = new Date();
 		String t = format1.format(time);
-		t = "20201005";
 		param.setToday(t);
 		
 		List<orderParam> list = service.getOrderList(param);
-		
+
 		return list;
 	}
 	

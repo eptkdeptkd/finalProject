@@ -1,9 +1,0 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<img src="<%=request.getContextPath() %>/upload/"+${newname } width="60" height="80">
-<br>
-<h3>${name }</h3>  
-<h6>${price }</h6>
-<input type="button" id="minusbtn" value="+">
-<input type="text" id="qty" value="1">

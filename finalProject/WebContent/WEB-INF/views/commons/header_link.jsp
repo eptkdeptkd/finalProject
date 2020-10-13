@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/coffeedetail.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/coffeeadd.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/cart.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/jquery/main.js">
 
 

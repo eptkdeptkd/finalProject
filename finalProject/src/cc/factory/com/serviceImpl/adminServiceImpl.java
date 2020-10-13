@@ -35,7 +35,6 @@ public class adminServiceImpl implements adminService {
 		param.setEnd(e);
 		
 		List<orderParam> getlist = new ArrayList<>(); // 총 받아오는 곳
-		
 		List<orderParam> seqlist = dao.getOrderSeqList(param);
 		
 		for(int i=0; i<seqlist.size(); i++) {
@@ -74,7 +73,7 @@ public class adminServiceImpl implements adminService {
 	public boolean orderFin(int seq) {
 		int b1 =dao.orderDetailFin(seq);
 		int b2 =dao.orderFin(seq);
-		return (b1>1 && b2>1)?true:false;
+		return (b1>0 && b2>0)?true:false;
 	}
 
 	@Override

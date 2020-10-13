@@ -67,7 +67,7 @@ public class MemberController {
 		if(login != null && !login.getId().equals("")) {
 			// session
 			req.getSession().setAttribute("login", login);
-			req.getSession().setMaxInactiveInterval(60 * 60 * 8);
+			//req.getSession().setMaxInactiveInterval(60 * 60 * 8);
 			
 			return "redirect:/main.do";
 		}

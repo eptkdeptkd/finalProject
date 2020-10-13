@@ -5,99 +5,128 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
   <section id="menu" class="section">
-    <div class="section_container">
-<table>
-	<thead>
-		 <th>선택</th>
-		 <th>커피</th>
-		 <th>가격</th>
-		 <th>옵션</th>
-	</thead>
-<c:if test="${empty list }">
-	<tr>
-		<td colspan="4" style="text-align:center;">주문한 내역이 없습니다</td>
-	</tr>
-</c:if>
-<c:if test="${not empty list }">
-	<c:forEach items="${list }" var="dto" varStatus="vs" >
-		<tr>
-			<td>
-				<input type="checkbox" name="chk" value="${dto.coffee_seq}" seq="${dto.seq }">
-			</td>
-			<td>
-				${dto.name }
-			</td>
-			<td>
-				${dto.price }
-			</td>
-			<td>
-				shot : <button type="button" class="minusbtn">-</button>&nbsp;
-				<input type="text" value="2" class="shot">&nbsp;<button type="button" class="plusbtn">+</button> <br>
-				syrup : <select id="sel">
-							<option value="0" selected>no syrup</option>
-							<c:if test="${not empty slist }">
-								<c:forEach items="${slist }" var="sy" varStatus="vss">
-									<option value="${sy.price }" sname="${sy.name }">${sy.name }</option>
-								</c:forEach>
-							</c:if>
-						 </select>			
-			</td>
-			<td>
-				<input type="text" placeholder="요청 사항을 적어주세요">
-			</td>
-		</tr>
-	</c:forEach>
-</c:if>
-</table>
+        <div class="section_container">
+            <h2>My Cart</h2>
+            <div class="menu_admin">
+                <table class="cart_table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <h3>Check</h3>
+                            </th>
+                            <th>
+                                <h3>Coffee</h3>
+                            </th>
+                            <th>
+                                <h3>Price</h3>
+                            </th>
+                            <th>
+                                <h3>Option</h3>
+                            </th>
+                            <th>
+                                <h3>Comment</h3>
+                            </th>
+                            <%-- 
+                            <th>
+                            	<h3>Delete</h3>
+                            </th>
+                            --%>
+                        </tr>
+                    </thead>
+                    <tbody>
+                 <c:if test="${empty list }">
+					<tr>
+						<td colspan="5" style="text-align:center;">주문한 내역이 없습니다</td>
+					</tr>
+				</c:if>
+				<c:if test="${not empty list }">
+					<c:forEach items="${list }" var="dto" varStatus="vs" >
+						<tr>
+							<td>
+								<input type="checkbox" name="chk" value="${dto.coffee_seq}" seq="${dto.seq }">
+							</td>
+							<td>
+								<p id="n${dto.seq }">${dto.name }</p>
+							</td>
+							<td>
+								<p id="p${dto.seq }">${dto.price }</p>
+							</td>
+							<td>
+								<div class="info_option">
+	                                <p class="info_subtitle">shot:</p>
+	                                <input type="button" value="-" class="minusbtn" onclick="minBtn(${dto.seq})"> &nbsp;&nbsp;
+	                                <input type="text" value="1" class="shot" id="q${dto.seq }"> &nbsp;&nbsp;
+	                                <input type="button" value="+" class="plusbtn" onclick="plBtn(${dto.seq})">
+	                            </div>
+	                            <div class="info_option">
+	                                <p class="info_subtitle">syrup:</p>
+	                                <select id="sel${dto.seq }">
+	                                    <option value="0" selected>no syrup</option>
+	                                   <c:if test="${not empty slist }">
+	                                    <c:forEach items="${slist }" var="sy" varStatus="vss">
+	                                        <option value="${sy.price }" sname="${sy.name }">${sy.name }</option>
+	                                    </c:forEach>
+	                                   </c:if>
+                                </select>
+                            </div>			
+							</td>
+							<td>
+								 <input type="text" id="i${dto.seq }" class="info_input" size="20" placeholder="요청사항을 입력해주세요" required>
+							</td>
+						</tr>
+					</c:forEach>
+						</c:if>
 
-<input type="button" value="order" id="order">
-
-</div>
-</section>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cart_order">
+                <button class="order_btn" id="order">Order</button>
+            </div>
+        </div>
+    </section>
 
 <script type="text/javascript">
 let seq = "";
 let cfseq = "";
 let price = 0;
-let pname = "";
+let pname = ""; // 커피 명 (결제에 뜨게 하기 위해서)
 let cfcount = 0;
 let detail = "";
-$(".minusbtn").click(function(){
-	var tr = $(this).closest('tr');
-	var td = tr.find('td:eq(3)').children();
-	var qty = td.eq(1).val();
-	if(qty-1 > 0){
-		qty =parseInt(qty)-1;
-		td.eq(1).val(qty);
+function minBtn(seq){
+	var s = "#q"+seq;
+	var qty = $(s).val();
+	if(qty-1 >0){
+		qty = parseInt(qty)-1;
+		$(s).val(qty);
 	}
-});
-
-$(".plusbtn").click(function(){
-	var tr = $(this).closest('tr');
-	var td = tr.find('td:eq(3)').children();
-	var qty = td.eq(1).val();
-	qty = parseInt(qty) +1;
-	td.eq(1).val(qty);
-});
+}
+function plBtn(seq){
+	var s = "#q"+seq;
+	var qty = $(s).val();
+	qty = parseInt(qty)+1;
+	$(s).val(qty);
+}
 
 $("#order").click(function(){
 	price = 0;
 	$("input:checkbox[name=chk]").each(function(){
 		if(this.checked){
-	
+			var s = $(this).attr("seq");
 			cfseq += ","+$(this).val();
-			seq += ","+$(this).attr("seq");
-			var tr = $(this).parent().parent();
-			var td = tr.children();
-
-			var cfname = td.eq(1).html().trim();
-			var cfprice = td.eq(2).html().trim();
-			var td2 = td.eq(3).children(); // 1, 4
-			var sh = td2.eq(1).val();
-			var syprice=$("#sel").val();
-			var syname = $("#sel option:checked").text();
-			console.log(syname);
-			var ask = td.eq(4).children().eq(0).val().trim();
+			seq += ","+s;
+			
+			var sname = "#n"+s;
+			pname = $(sname).html();
+			var fname = "#p"+s;
+			var cfprice = $(fname).html();
+			var qname = "#q"+s;
+			var sh = $(qname).val();
+			var syname = "#sel"+s;
+			var syprice = $(syname).val();
+			var syname = $(syname+" option:checked").text();
+			var aname = "#i"+s;
+			var ask = $(aname).val();
 			var shprice = 0;
 			
 			if(sh>=3){
@@ -105,9 +134,8 @@ $("#order").click(function(){
 			}
 
 			price = parseInt(price) + parseInt(cfprice) + parseInt(shprice) + parseInt(syprice);
-			pname = td.eq(1).html().trim();
 
-			var str = cfname +","+sh+","+syname+","+ask;
+			var str = pname +","+sh+","+syname+","+ask;
 			detail += "_"+str ;
 			cfcount += 1;
 		}
@@ -124,10 +152,10 @@ $("#order").click(function(){
 		if(cfcount > 1){
 			oname += " 외 "+ cfcount +"개";
 		}
-
+		
 		$.ajax({
     		url:"getVC.do",
-    		data:{"id":"OJEA"},
+    		data:{"id":"${login.id}"},
     		type:"post",
     		success:function(data){
 				if(data==0){
@@ -179,18 +207,16 @@ $("#order").click(function(){
 				        alert("결제 실패 하였습니다 -> " + rsp.error_msg);
 				    }
 				  });
-				*/
+				  */
 				$.ajax({
 		    		url:"order.do",
-		    		//data:{"id":${loginDto.id}, "coffee_seq":seq, "price":price },
-		    		data:{"id":"aaa", "name":oname, "price":price, "coffee_seq":cfseq, "detail":detail,"seqArr":seq },
+		    		data:{"id":"${login.id}", "name":oname, "price":price, "coffee_seq":cfseq, "detail":detail,"seqArr":seq },
 		    		type:"post",
 		    		success:function(msg){
 			    		var sp = msg.indexOf("/");
 			    		var msg1 = msg.substring(0,sp);
 						var msg2 = msg.substring(sp+1);
 			    		
-						alert(msg2);
 						if(msg1=="1"){
 							location.href="ofinish.do";
 						}else{
@@ -207,7 +233,7 @@ $("#order").click(function(){
     			alert("error");
     		}
     	});
-	
+		
 
 	}
 });

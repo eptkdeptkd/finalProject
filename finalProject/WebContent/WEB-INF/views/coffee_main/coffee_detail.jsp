@@ -38,8 +38,7 @@ function order(seq){
 
 	$.ajax({
 		url:"cart.do",
-		//data:{"id":${login.id}, "coffee_seq":seq, "price":price },
-		data:{"id":"OJEA", "coffee_seq":seq, "price":price,"qty":qty },
+		data:{"id":"${login.id}", "coffee_seq":seq, "price":price,"qty":qty },
 		type:"post",
 		success:function(b){
 			if(b) {

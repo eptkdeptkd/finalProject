@@ -41,9 +41,10 @@ public class WebSocket extends TextWebSocketHandler{
 		 	접속이 한번 되면 다시 연결되지 않는다
 		 	
 		 */
-		System.out.println("연결 됨" + session.getId() ); // websocketsession만 가지고 있는 데이터
+		//System.out.println("연결 됨" + session.getId() ); // websocketsession만 가지고 있는 데이터
 		
 		String id = getId(session);
+		System.out.println("연결 됨" + id );
 		users.put(id,session);
 	}
 
@@ -63,11 +64,12 @@ public class WebSocket extends TextWebSocketHandler{
 		*/
 		
 		String msgStr = message.getPayload();
+		System.out.println("msgStr " + msgStr);
+		
 		String[] msg = msgStr.split(",");
 		if(msg!=null) {
-			String send_id = "ADMIN";
-			String recv_id = msg[0];
-			//String content = msg[1];
+			String send_id = msg[0];
+			String recv_id = msg[1];
 			String content = recv_id+"님, 커피를 찾아가주세요";
 			alarmDto dto = new alarmDto(recv_id,send_id,content);
 			service.addAlarm(dto);

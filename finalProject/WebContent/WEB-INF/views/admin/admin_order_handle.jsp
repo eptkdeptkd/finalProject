@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 
+    <section id="menu" class="section">
+        <div class="section_container">
+        
 <table class="tb">
 	<thead>
 		<tr class="tbTh">
@@ -37,12 +40,14 @@
 <br><br>
 <input type="button" id="finbtn" value="처리">
 
+</div>
+</section>
 
 <script type="text/javascript">
 
 $("#finbtn").click(function(){
-	var id = $(".fin").val();
-	var seq = $(".fin").attr("seq");
+	var id = $("input[name=rfin]:checked").val();
+	var seq = $("input[name=rfin]:checked").attr("seq");
 	
 	$.ajax({
 		url:"orderFin.do",
@@ -53,7 +58,10 @@ $("#finbtn").click(function(){
 				alert("정상적으로 주문 처리 되지 않았습니다");
 				return;
 			}else{
-				send(id,"완료");
+				alert("정상적으로 주문 처리 되었습니다");
+				if(wsocket){
+					wsocket.send("${login.id},"+id+",완료");
+				}
 			}
 		},
 		error:function(){
@@ -62,11 +70,6 @@ $("#finbtn").click(function(){
 	});		
 	
 });
-
-function send(){
-	
-}
-
 
 $(document).ready(function(){
 	loadPage(${totPage});
@@ -77,8 +80,9 @@ function loadPage(totalCount){
 	var nowPage = ${param1.pageNumber};
 
 	var totPage = totalCount / pageSize;
+	
 	if(totalCount%pageSize>0 ) totPage++;
-
+	
 	$("#pagination").twbsPagination('destroy');
 
 	$("#pagination").twbsPagination({
@@ -104,10 +108,11 @@ function getBbsListData(pNumber){
 		data:{ "pageNumber":pNumber, "recordCountPerPage":5},
 		type:"get",
 		success:function(list){
-			$(".tbTr").remove();
 			
+			$(".tbTr").remove();
+
 			var strTb = "";
-			if(list.length>1){
+			if(list.length>0){
 				for(var i=0; i<list.length; i++){
 					strTb += "<tr class='tbTr'>";
 					strTb += "<td><input type='radio' name='rfin' class='fin' value='"+list[i].id+"' seq='"+list[i].seq+"'>";
