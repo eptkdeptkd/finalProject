@@ -22,5 +22,5 @@ public interface coffeeDetailService {
 	
 	public List<coffeeDto> getCoffeeList();
 	public List<coffeeDto> getCoffeeKindList(int kind);
-	
+	public boolean cartDel(int seq);
 }

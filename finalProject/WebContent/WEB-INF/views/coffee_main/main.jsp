@@ -8,7 +8,7 @@
  <!--Menu-->
   <section id="menu" class="section">
     <div class="section_container">
-      <h2>MENU</h2>
+      <h2 style="font-family: 'Roboto Slab', serif;">MENU</h2>
       <div class="coffee_categories">
         <button class="category_btn selected" data-filter="*" onclick="showCoffee(0)">
           All

@@ -12,17 +12,19 @@
 	<colgroup>
 		<col style="width:150">
 		<col style="width:400">
+		<col style="width:200">
 	</colgroup>
 	<thead>
 		<tr>
 			<th>선택</th>
-			<th>커피이름</th>
+			<th>이름</th>
+			<th>가격</th>
 		</tr>
 	</thead>
 	<tbody>
 		<c:if test="${empty list}">
 			<tr class="tbTr">
-				<td colspan="2">추가 된 커피 메뉴가 없습니다.</td>
+				<td colspan="3">추가 된 커피 메뉴가 없습니다.</td>
 			</tr>
 		</c:if>
 		<c:if test="${not empty list }">
@@ -32,6 +34,7 @@
 					<input type="radio" value="${dto.seq }" name="dc" class="delCoffee">
 				</td>
 				<td>${dto.name }</td>
+				<td>${dto.price }</td>
 			</tr>
 		</c:forEach>
 		</c:if>

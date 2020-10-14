@@ -74,6 +74,10 @@
 	WHERE KIND = #{kind}
 </select>
 
+<delete id="cartDel" parameterType="java.lang.Integer">
+	DELETE FROM CC_CART WHERE SEQ = #{seq}
+</delete>
+
 </mapper>
 
 

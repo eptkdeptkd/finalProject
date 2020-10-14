@@ -6,6 +6,46 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:requestEncoding value="utf-8"/>    
 
+<style type="text/css">
+.navbar_menu > li {
+	float:left;
+	width : 150px;
+}
+
+.navbar_menu >li > a{
+	display :block;
+	padding :8px 16px;
+	text-align:center;
+	font-family: 'Do Hyeon', sans-serif;
+	color:#583101;
+	font-size:15pt;
+}
+
+.navbar_menu >li:hover .navbar_sub_menu{
+	opacity:1;
+	visibility:visible;
+}
+
+.navbar_sub_menu{
+	position :absolute;
+	background:begie;
+	opacity :0;
+	visibility: hidden;
+}
+
+.navbar_sub_menu > li {
+	padding: 5px;
+	border-bottom : 1px solid white;
+	background-color:#f5f0e6;
+	opacity:0.8;
+}
+
+.navbar_sub_menu > li > a{
+	color : #6f4518;
+	font-family: 'Do Hyeon', sans-serif;
+}
+</style>
+
 <div id="test" style="background-color:grey; color: black;">
 
   <!--Header-->
@@ -17,31 +57,24 @@
       <li class="navbar_menu_item">
       	<a href="coffeeMain.do">Menu</a>
       </li>
+      
+      <li class="navbar_menu_item">
+	      <a href="#">게시판</a>
+	      	<ul class="navbar_sub_menu">
+	      		<li><a href="infoimage.do">공지사항</a></li>
+	      		<li><a href="qna.do">Q&A 게시판</a></li>
+	      		<li><a href="pslist.do">후기 게시판</a></li>
+	      	</ul>
+	  </li>
+      
+      <li class="navbar_menu_item">
+	      <a href="#">이벤트</a>
+	      	<ul class="navbar_sub_menu">
+	      		<li><a href="polllist.do">설문조사</a></li>
+	      		<li><a href="calendar.do">이벤트 일정</a></li>
+	      	</ul>
+	  </li>
 
-      <li class="navbar_menu_item">
-      	<a href="cartMove.do">장바구니</a>
-      </li>
-
-      <li class="navbar_menu_item">
-      	<a href="calendar.do">달력</a>
-      </li>
-      
-      <li class="navbar_menu_item">
-      	<a href="qna.do">qna 게시판</a>
-      </li>
-      
-      <li class="navbar_menu_item">
-      	<a href="pslist.do">후기 게시판</a>
-      </li>
-      
-      <li class="navbar_menu_item">
-      	<a href="infoimage.do">공지사항</a>
-      </li>
-      
-      <li class="navbar_menu_item">
-      	<a href="polllist.do">설문조사</a>
-      </li>
-      
       <c:if test="${empty login }">
       	<li class="navbar_menu_item">
       		<a href="login.do"> Sign In</a>
@@ -50,7 +83,11 @@
       <c:if test="${not empty login }">
       	<c:if test="${login.auth ==3 }">
 	      <li class="navbar_menu_item">
-	      	<a href="mypage.do">마이페이지</a>
+	      <a href="#">MY PAGE</a>
+	      	<ul class="navbar_sub_menu">
+	      		<li><a href="mypage.do">마이페이지</a></li>
+	      		<li><a href="cartMove.do">장바구니</a></li>
+	      	</ul>
 	      </li>
 	     </c:if>
 	     <c:if test="${login.auth ==1 }">
@@ -98,19 +135,18 @@
 	}
 
 	function onOpen(evt){ // 연결 되었을 때 
-		console.log("연결");
+		//console.log("연결");
 	}
 
 	function onClose(){ // 끊겼을 때 
-		console.log("연결 끊김");
+		//console.log("연결 끊김");
 	}
 
 	function onMessage(evt){ // 실제 메세지가 수신(recv)
 		var data = evt.data;
 		var index = data.indexOf(":");
 		data = data.substr(index+1,data.length);
-		console.log(data+","+index);
-		alert(data);
+		swal('알림',data);
 	}
 
 	$(document).ready(function(){
