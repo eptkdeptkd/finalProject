@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Admin">
+
+<insert id="uploadFile" parameterType="cc.factory.com.dto.coffeeDto">
+	INSERT INTO CC_COFFEE(SEQ, NAME, PRICE, NEWNAME, ORIGINNAME,INFO,ORDER_COUNT,KIND)
+	VALUES(SEQ_COFFEE.NEXTVAL, #{name}, #{price}, #{newname}, #{originname},#{info},0,#{kind} )
+</insert>
+
+<select id="getTotOrder" parameterType="java.lang.String" resultType="java.lang.Integer">
+	SELECT COUNT(*) FROM CC_ORDER WHERE ODATE >= #{today}
+</select>
+
+<select id="getOrderSeqList" parameterType="cc.factory.com.dto.orderParam" resultType="cc.factory.com.dto.orderParam">
+	<![CDATA[SELECT ID, SEQ
+	FROM (
+	 SELECT ROW_NUMBER()OVER(ORDER BY SEQ) AS RNUM, ID, SEQ
+	  FROM CC_ORDER 
+	 WHERE ODATE >= #{today}
+	 ORDER BY SEQ
+	)
+	WHERE #{start} <= RNUM AND RNUM <= #{end} ]]>
+</select>
+
+<select id="getOrderList" parameterType="java.lang.Integer" resultType="cc.factory.com.dto.orderDetailDto">
+	SELECT COFFEE_NAME , SHOT, SYRUP, ASK
+	FROM CC_ORDER_DETAIL
+	WHERE ORDER_SEQ = #{seq}
+	ORDER BY SEQ
+</select>
+
+<insert id="addAlarm" parameterType="cc.factory.com.dto.alarmDto">
+	INSERT INTO CC_ALARM (SEQ, RECV_ID, SEND_ID, CONTENT)
+	VALUES(SEQ_ALARM.NEXTVAL,#{recv_id},#{send_id},#{content})
+</insert>
+
+<delete id="orderDetailFin" parameterType="java.lang.Integer">
+	DELETE FROM CC_ORDER_DETAIL WHERE ORDER_SEQ = #{seq} 
+</delete>
+
+<delete id="orderFin" parameterType="java.lang.Integer">
+	DELETE FROM CC_ORDER WHERE SEQ = #{seq} 
+</delete>
+
+<delete id="delCoffee" parameterType="java.lang.Integer">
+	DELETE FROM CC_COFFEE WHERE SEQ = #{seq}
+</delete>
+
+<select id="getCoffeeList" resultType="cc.factory.com.dto.coffeeDto">
+	SELECT SEQ, NAME
+	FROM CC_COFFEE
+	ORDER BY SEQ
+</select>
+
+<insert id="addSide" parameterType="cc.factory.com.dto.SideDto">
+	INSERT INTO CC_SIDE(SEQ, NAME, PRICE)
+	VALUES(SEQ_SIDE.NEXTVAL, #{name}, #{price})
+</insert>
+
+<select id="sideList" resultType="cc.factory.com.dto.SideDto">
+	SELECT SEQ, NAME, PRICE
+	 FROM CC_SIDE
+	 ORDER BY SEQ DESC
+</select>
+
+<delete id="sideDelete" parameterType="java.lang.Integer">
+	DELETE FROM CC_SIDE WHERE SEQ=#{seq}
+</delete>
+
+</mapper>
