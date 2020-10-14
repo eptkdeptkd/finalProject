@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="coffeeDetail">
+
+<select id="getDetailOne" parameterType="java.lang.Integer" resultType="cc.factory.com.dto.coffeeDto">
+	SELECT SEQ, NAME,PRICE, NEWNAME, ORIGINNAME, INFO
+	FROM CC_COFFEE
+	WHERE SEQ = #{seq}
+</select>
+
+<insert id="addCartOne" parameterType="cc.factory.com.dto.cartDto">
+	INSERT INTO CC_CART(SEQ, ID, COFFEE_SEQ, PRICE,QTY)
+	VALUES(SEQ_CART.NEXTVAL,#{id}, #{coffee_seq}, #{price},#{qty})
+</insert>
+
+<select id="getCartAll" parameterType="java.lang.String" resultType="cc.factory.com.dto.cartDto">
+	SELECT A.SEQ,A.ID,A.COFFEE_SEQ,B.NAME, A.PRICE, A.QTY
+	FROM CC_CART A 
+	JOIN CC_COFFEE B ON A.COFFEE_SEQ = B.SEQ
+	WHERE A.ID = #{id}
+</select>
+
+<insert id="addOrder" parameterType="cc.factory.com.dto.orderDto">
+	<selectKey keyProperty="seq" resultType="java.lang.Integer" order="BEFORE">
+		SELECT SEQ_ORDER.NEXTVAL AS SEQ FROM DUAL
+	</selectKey>
+	INSERT INTO CC_ORDER (SEQ, ID, NAME, PRICE, ODATE)
+	VALUES(#{seq}, #{id}, #{name}, #{price}, SYSDATE)
+</insert>
+
+<delete id="delCart" parameterType="java.lang.Integer">
+	DELETE FROM CC_CART WHERE SEQ = #{seq}
+</delete>
+
+<select id="getVisitCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+	SELECT VISITCOUNT
+	FROM CC_MEMBER
+	WHERE ID = #{id}
+</select>
+
+<update id="updateVisitCount" parameterType="java.lang.String">
+	UPDATE CC_MEMBER
+	SET VISITCOUNT = VISITCOUNT + 1
+	WHERE ID = #{id}
+</update>
+
+<update id="updateOrderCount" parameterType="java.lang.Integer">
+	UPDATE CC_COFFEE
+	SET ORDER_COUNT = ORDER_COUNT + 1
+	WHERE SEQ = #{seq}
+</update>
+
+<insert id="addOrderDetail" parameterType="cc.factory.com.dto.orderDetailDto">
+	INSERT INTO CC_ORDER_DETAIL(SEQ, ORDER_SEQ, COFFEE_NAME, SHOT, SYRUP, ASK)
+	VALUES(SEQ_ORDER_DETAIL.NEXTVAL,#{order_seq}, #{coffee_name}, #{shot},#{syrup},#{ask})
+</insert>
+
+<select id="getSyrupAll" resultType="cc.factory.com.dto.SideDto">
+	SELECT NAME, PRICE
+	FROM CC_SIDE
+</select>
+
+<select id="getCoffeeList" resultType="cc.factory.com.dto.coffeeDto">
+	SELECT SEQ, NAME, PRICE, NEWNAME
+	FROM CC_COFFEE
+</select>
+
+<select id="getCoffeeKindList" parameterType="java.lang.Integer" resultType="cc.factory.com.dto.coffeeDto">
+	SELECT SEQ, NAME, PRICE, NEWNAME
+	FROM CC_COFFEE
+	WHERE KIND = #{kind}
+</select>
+
+</mapper>
+
+
+
+
+
+
+
+

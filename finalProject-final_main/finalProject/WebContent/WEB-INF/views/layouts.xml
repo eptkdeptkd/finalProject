@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+<!-- 미나님 -->
+<definition name="main.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+	<put-attribute name="header_link" value="/WEB-INF/views/commons/header_link.jsp"/>
+	<put-attribute name="header" value="/WEB-INF/views/commons/header.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/main/main.jsp"/>
+	<put-attribute name="footer" value="/WEB-INF/views/commons/footer.jsp"/>
+</definition>
+
+<definition name="coffeeMain.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/coffee_main/main.jsp"/>
+</definition>
+
+<definition name="coffeeDetailMove.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/coffee_main/coffee_detail.jsp"/>
+</definition>
+
+<definition name="coffeeAddMove.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/admin/admin_coffee_add.jsp"/>
+</definition>
+
+<definition name="coffeeDelMove.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/admin/admin_coffee_delete.jsp"/>
+</definition>
+
+<definition name="cartMove.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/coffee_main/cart.jsp"/>
+</definition>
+
+<definition name="ofinish.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/coffee_main/order_finish.jsp"/>
+</definition>
+
+<definition name="orderhandleMove.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/admin/admin_order_handle.jsp"/>
+</definition>
+
+<!-- 진영님 -->
+<definition name="addSide.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/admin/admin_side_add.jsp"/>
+</definition>
+
+<definition name="sideList.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/admin/sidelist.jsp"/>
+</definition>
+
+<definition name="calList.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Calendar/Calendar.jsp"/>
+</definition>
+
+<definition name="addCalendar.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Calendar/addCalendar.jsp"/>
+</definition>
+
+<!-- 동완님 -->
+<definition name="qnaList.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/qna/qnalist.jsp"/>
+</definition>
+
+<definition name="qnaDetail.tiles" extends="qnaList.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/qna/qnadetail.jsp"/>
+</definition>
+
+<definition name="qnaWrite.tiles" extends="qnaList.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/qna/qnawrite.jsp"/>
+</definition>
+
+<definition name="qnaUpdate.tiles" extends="qnaList.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/qna/qnaupdate.jsp"/>
+</definition>
+
+<definition name="myPage.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/mypage/mypage.jsp"/>
+</definition>
+
+<!-- 오재님 -->
+<definition name="login.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/login/login.jsp"/>
+</definition>
+
+<definition name="regi.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/login/regi.jsp"/>
+</definition>
+
+<definition name="postscript.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/postscript/pslist.jsp"/>
+</definition>
+
+<definition name="psdetail.tiles" extends="postscript.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/postscript/psdetail.jsp"/>
+</definition>
+
+<definition name="pswrite.tiles" extends="postscript.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/postscript/pswrite.jsp"/>
+</definition>
+
+<definition name="psupdate.tiles" extends="postscript.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/postscript/psupdate.jsp"/>
+</definition>
+
+<definition name="answer.tiles" extends="postscript.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/postscript/psreply.jsp"/>
+</definition>
+
+<!-- 유경님 -->
+<definition name="infoimage.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/info/infoimage.jsp"/>
+</definition>
+
+<definition name="infolist.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/info/infolist.jsp"/>
+</definition>
+
+<definition name="infowrite.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/info/infowrite.jsp"/>
+</definition>
+
+<definition name="infodetail.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/info/infodetail.jsp"/>
+</definition>
+
+<definition name="infoupdate.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/info/infoupdate.jsp"/>
+</definition>
+
+<definition name="polllist.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/polllist.jsp"/>
+</definition>
+
+<definition name="pollmake.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/pollmake.jsp"/>
+</definition>
+
+<definition name="polldetail.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/polldetail.jsp"/>
+</definition>
+
+<definition name="pollresult.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/pollresult.jsp"/>
+</definition>
+
+<definition name="pollresult2.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/pollresult2.jsp"/>
+</definition>
+
+
+</tiles-definitions>
+
+
+
+
+

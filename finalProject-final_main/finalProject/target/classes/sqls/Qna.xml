@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Qna">
+
+	<!-- <select id="QnaList" resultType="cc.factory.com.dto.QnaDto"> SELECT 
+		SEQ, ID, TITLE, CONTENT, SECRET, READCOUNT, WDATE FROM CC_QNA ORDER BY SEQ 
+		DESC </select> -->
+
+	<select id="qnaList" parameterType="cc.factory.com.dto.QnaParam"
+		resultType="cc.factory.com.dto.QnaDto">
+		SELECT SEQ, ID, TITLE, CONTENT, SECRET, READCOUNT, WDATE
+		FROM
+		( SELECT
+		ROW_NUMBER()OVER(ORDER BY WDATE DESC)AS RNUM,
+		SEQ, ID, TITLE, CONTENT,
+		SECRET, READCOUNT, WDATE
+		FROM CC_QNA A
+		WHERE 1=1
+		<if
+			test="choice != null and choice != ''
+				and searchWord != null and searchWord != ''">
+			<if test="choice == 'title'">
+				AND TITLE LIKE '%'||#{searchWord}||'%'
+			</if>
+			<if test="choice == 'content'">
+				AND CONTENT LIKE '%'||#{searchWord}||'%'
+			</if>
+			<if test="choice == 'writer'">
+				AND ID=#{searchWord}
+			</if>
+		</if>
+		) A
+		WHERE RNUM BETWEEN ${start} AND ${end}
+	</select>
+
+	<select id="countQna"
+		parameterType="cc.factory.com.dto.QnaParam"
+		resultType="java.lang.Integer">
+		SELECT NVL(COUNT(*), 0) AS CNT
+		FROM CC_QNA
+		WHERE 1=1
+		<if
+			test="choice != null and choice != ''
+		and searchWord != null and searchWord != ''">
+			<if test="choice == 'title'">
+				AND TITLE LIKE '%'||#{searchWord}||'%'
+			</if>
+			<if test="choice == 'content'">
+				AND CONTENT LIKE '%'||#{searchWord}||'%'
+			</if>
+			<if test="choice == 'writer'">
+				AND ID=#{searchWord}
+			</if>
+		</if>
+	</select>
+
+	<!-- 리스트에 댓글갯수 표시 -->
+	<select id="countReply" parameterType="java.lang.Integer"
+		resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM CC_QNA_RE R
+		LEFT OUTER JOIN CC_QNA Q
+		ON
+		R.QNASEQ = Q.SEQ
+		WHERE Q.SEQ=${seq}
+	</select>
+
+	<select id="getQna" parameterType="java.lang.Integer"
+		resultType="cc.factory.com.dto.QnaDto">
+		SELECT SEQ, ID, TITLE, CONTENT, SECRET, READCOUNT, WDATE
+		FROM CC_QNA
+		WHERE SEQ=#{seq}
+	</select>
+	<update id="readQna" parameterType="java.lang.Integer">
+		UPDATE CC_QNA
+		SET
+		READCOUNT=READCOUNT+1
+		WHERE SEQ=#{seq}
+	</update>
+
+	<!-- 추가 -->
+	<!-- 아이디값 확인 -->
+	<insert id="writeQna" parameterType="cc.factory.com.dto.QnaDto">
+		INSERT INTO CC_QNA(SEQ, ID,
+		TITLE, CONTENT, SECRET, READCOUNT, WDATE)
+		VALUES(SEQ_QNA.NEXTVAL,
+		#{id}, #{title}, #{content}, #{secret}, 0,
+		SYSDATE)
+	</insert>
+
+	<!-- 수정 -->
+	<update id="updateQna" parameterType="cc.factory.com.dto.QnaDto">
+		UPDATE CC_QNA
+		SET
+		TITLE=#{title}, CONTENT=#{content}, SECRET=#{secret}
+		WHERE SEQ=#{seq}
+	</update>
+
+	<!-- 삭제 -->
+	<delete id="deleteQna" parameterType="java.lang.Integer">
+		DELETE FROM CC_QNA
+		WHERE
+		SEQ=#{seq}
+	</delete>
+	<!-- 질문 사항 삭제시 그에 따른 리플 삭제 -->
+	<delete id="deleteQnaReply" parameterType="java.lang.Integer">
+		DELETE FROM CC_QNA_RE
+		WHERE QNASEQ=#{seq}
+	</delete>
+
+	<!-- 리플 입력 -->
+	<insert id="writeQnaReply"
+		parameterType="cc.factory.com.dto.QnaReplyDto">
+		INSERT INTO CC_QNA_RE(SEQ, QNASEQ, ID, CONTENT, WDATE)
+		VALUES(SEQ_QNA_RE.NEXTVAL, #{qnaseq}, #{id}, #{content}, SYSDATE)
+	</insert>
+	
+	<!-- 본인이 리플 삭제하는 경우 -->
+	<delete id="removeQnaReply" parameterType="java.lang.Integer">
+		DELETE FROM CC_QNA_RE
+		WHERE SEQ=#{seq}
+	</delete>
+
+	<select id="getQnaReplyCount" parameterType="java.lang.Integer"
+		resultType="java.lang.Integer">
+		SELECT NVL(COUNT(*), 0) AS CNT
+		FROM CC_QNA_RE
+		WHERE
+		QNASEQ=#{qnaseq}
+	</select>
+
+	<select id="qnaReplyListData"
+		parameterType="cc.factory.com.dto.QnaReplyPage"
+		resultType="cc.factory.com.dto.QnaReplyDto">
+		SELECT SEQ, QNASEQ, ID, CONTENT, WDATE
+		FROM (SELECT
+		ROW_NUMBER()OVER(ORDER BY SEQ DESC) AS RNUM,
+		SEQ, QNASEQ, ID, CONTENT, WDATE
+		FROM CC_QNA_RE A
+		WHERE
+		QNASEQ=#{qnaseq}
+		) A
+		WHERE RNUM BETWEEN ${start} AND
+		${end}
+	</select>
+
+</mapper>
+
+
