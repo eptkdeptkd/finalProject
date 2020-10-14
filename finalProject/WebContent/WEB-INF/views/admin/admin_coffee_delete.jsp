@@ -6,14 +6,13 @@
  <!--Coffee add - 메뉴 추가 페이지-->
     <section id="menu" class="section">
         <div class="section_container">
-
-	<table border="1">
-	
+	<h3 class="del_h3">커피 삭제</h3>
+	<div class="coffee_menu">
+	<table class="coffee_table">
 	<colgroup>
-		<col style="width:200">
-		<col style="width:200">
+		<col style="width:150">
+		<col style="width:400">
 	</colgroup>
-	
 	<thead>
 		<tr>
 			<th>선택</th>
@@ -38,7 +37,9 @@
 		</c:if>
 	</tbody>
 	</table>
-	<input type="button" id="delBtn" value="delete">
+	
+</div>
+<input type="button" id="delBtn" value="DELETE" class="del_btn">
 
 </div>
 </section>

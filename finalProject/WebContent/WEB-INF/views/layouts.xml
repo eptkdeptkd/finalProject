@@ -17,6 +17,10 @@
 	<put-attribute name="main" value="/WEB-INF/views/coffee_main/main.jsp"/>
 </definition>
 
+<definition name="adminlink.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/admin/admin_link.jsp"/>
+</definition>
+
 <definition name="coffeeDetailMove.tiles" extends="main.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/coffee_main/coffee_detail.jsp"/>
 </definition>

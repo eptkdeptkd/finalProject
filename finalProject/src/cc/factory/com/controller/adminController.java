@@ -35,6 +35,12 @@ public class adminController {
 		return "coffeeAddMove.tiles";
 	}
 	
+	@RequestMapping(value = "adminlink.do", method = RequestMethod.GET)
+	public String adminlink() {
+		return "adminlink.tiles";
+	}
+	
+	
 	@RequestMapping(value = "coffeeDelMove.do", method = RequestMethod.GET)
 	public String coffeeDelMove(Model model) {
 		List<coffeeDto> list = service.getCoffeeList();
@@ -63,6 +69,7 @@ public class adminController {
 		model.addAttribute("param1",param);
 		model.addAttribute("totPage", getTotOrder);
 		
+		System.out.println("handler move success = "+ list.size()+", " +param.toString());
 		return "orderhandleMove.tiles";
 	}
 	

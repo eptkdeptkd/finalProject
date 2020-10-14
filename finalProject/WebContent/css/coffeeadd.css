@@ -59,6 +59,7 @@ button {
     cursor: pointer;
     border: none;
     outline: none;
+    font-family: 'Nanum Pen Script', cursive;
 }
 
 /* Typography */
@@ -67,13 +68,6 @@ h1 {
     font-weight: var(--weight-bold);
     color: var(--color-black);
     margin: 16px 0px;
-}
-
-h2 {
-    font-size: var(--font-medium);
-    font-weight: var(--weight-semi-bold);
-    color: var(--color-black);
-    margin: 8px 0;
 }
 
 h3 {
@@ -180,11 +174,13 @@ p {
     position: relative;
     background-color: transparent;
     cursor: pointer;
+    font-family: 'Roboto Slab', serif;
 }
 
 .coffeeadd_btn:hover {
     background-color: var(--color-orange);
     color: var(--color-white);
+    font-family: 'Roboto Slab', serif;
 }
 
 /*side*/
@@ -196,11 +192,13 @@ p {
     background-color: transparent;
     cursor: pointer;
     margin-left:50%;
+    font-family: 'Roboto Slab', serif;
 }
 
 .sideadd_btn:hover {
     background-color: var(--color-orange);
     color: var(--color-white);
+    font-family: 'Roboto Slab', serif;
 }
 
 /* Footer */

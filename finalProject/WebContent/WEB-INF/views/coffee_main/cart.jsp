@@ -6,8 +6,8 @@
 
   <section id="menu" class="section">
         <div class="section_container">
-            <h2>My Cart</h2>
-            <div class="menu_admin">
+            <h2 class="cart_h2">My Cart</h2>
+            <div class="menu_cart" align="center">
                 <table class="cart_table">
                     <thead>
                         <tr>
@@ -26,11 +26,6 @@
                             <th>
                                 <h3>Comment</h3>
                             </th>
-                            <%-- 
-                            <th>
-                            	<h3>Delete</h3>
-                            </th>
-                            --%>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,13 +48,13 @@
 							</td>
 							<td>
 								<div class="info_option">
-	                                <p class="info_subtitle">shot:</p>
+	                                <p class="info_subtitle">shot:</p>&nbsp;&nbsp;
 	                                <input type="button" value="-" class="minusbtn" onclick="minBtn(${dto.seq})"> &nbsp;&nbsp;
-	                                <input type="text" value="1" class="shot" id="q${dto.seq }"> &nbsp;&nbsp;
+	                                <input type="text" value="1" size="7" class="shot" id="q${dto.seq }"> &nbsp;&nbsp;
 	                                <input type="button" value="+" class="plusbtn" onclick="plBtn(${dto.seq})">
 	                            </div>
 	                            <div class="info_option">
-	                                <p class="info_subtitle">syrup:</p>
+	                                <p class="info_subtitle">syrup:</p>&nbsp;&nbsp;
 	                                <select id="sel${dto.seq }">
 	                                    <option value="0" selected>no syrup</option>
 	                                   <c:if test="${not empty slist }">
@@ -75,7 +70,7 @@
 							</td>
 						</tr>
 					</c:forEach>
-						</c:if>
+				</c:if>
 
                     </tbody>
                 </table>

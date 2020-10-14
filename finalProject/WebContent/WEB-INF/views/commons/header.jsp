@@ -17,26 +17,11 @@
       <li class="navbar_menu_item">
       	<a href="coffeeMain.do">Menu</a>
       </li>
-      <li class="navbar_menu_item">
-      <a href="coffeeAddMove.do">커피추가 About</a>
-      </li>
-       <li class="navbar_menu_item">
-      <a href="coffeeDelMove.do">커피삭제 About</a>
-      </li>
-      <li class="navbar_menu_item">
-      <a href="orderhandleMove.do">커피주문처리  What's New</a>
-      </li>
+
       <li class="navbar_menu_item">
       	<a href="cartMove.do">장바구니</a>
       </li>
-      
-      <li class="navbar_menu_item">
-      	<a href="addSide.do">사이드추가</a>
-      </li>
-      
-      <li class="navbar_menu_item">
-      	<a href="sideList.do">사이드삭제</a>
-      </li>
+
       <li class="navbar_menu_item">
       	<a href="calendar.do">달력</a>
       </li>
@@ -70,7 +55,7 @@
 	     </c:if>
 	     <c:if test="${login.auth ==1 }">
 	      <li class="navbar_menu_item">
-	      	<a href="admin.do">관리자페이지</a>
+	      	<a href="adminlink.do">관리자페이지</a>
 	      </li>
 	     </c:if>
 	      <li class="navbar_menu_item">

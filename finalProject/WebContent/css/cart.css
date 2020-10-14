@@ -61,33 +61,37 @@ button {
     outline: none;
 }
 
-/* Typography */
-h1 {
+.menu_cart h1 {
     font-size: var(--font-large);
     font-weight: var(--weight-bold);
     color: var(--color-black);
     margin: 16px 0px;
 }
 
-h2 {
+.cart_h2 {
     font-size: var(--font-medium);
     font-weight: var(--weight-semi-bold);
     color: var(--color-black);
-    margin: 8px 0;
+    margin:8px 0;
+	text-align:center;
+	font-family: 'Roboto Slab', serif;
 }
 
-h3 {
+.menu_cart h3 {
     font-size: var(--font-regular);
     font-weight: var(--weight-regular);
     color: var(--color-black);
     margin: 8px 0;
+    text-align:center;
+    font-family: 'Oswald', sans-serif;
 }
 
-p {
+.menu_cart p {
     font-size: var(--font-micro);
     font-weight: var(--weight-regular);
     color: var(--color-black);
     margin: 4px 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Header */
@@ -134,32 +138,24 @@ p {
     margin: auto;
 }
 
-/* Coffee menu detail */
-#menu {
-    padding-top: 110px;
-}
 
-.menu_admin {
+.menu_cart {
     display: flex;
+    max-width:100%;
     justify-content: center;
     padding: 20px 0 30px 0;
-}
-
-.info_titleinput {
-    display: flex;
-    align-items: center;
-    padding: 4px;
 }
 
 .cart_table th {
     position: relative;
     height: 40px;
     padding: 8px;
-    background-color: #F7F7FA;
+    background-color: #e27049;
     box-shadow: 0 1px 0 0 #E1E1E8;
     letter-spacing: -0.1px;
     line-height: 24px;
     vertical-align: middle;
+    font-size:100pt;
 }
 
 .cart_table tr td {
@@ -170,6 +166,8 @@ p {
     line-height: 24px;
     border-bottom: 1px solid #E1E1E8;
     vertical-align: middle;
+    text-align:center;
+    font-family: 'Oswald', sans-serif;
 }
 
 .info_option {
@@ -204,9 +202,12 @@ p {
     border: none;
 }
 
-.info_input {
+.menu_cart .info_input {
     width: 200px;
     height: 30px;
+    border-left: none;
+    border-right: none;
+    border-top:	none;
 }
 
 .info_textarea {
@@ -226,6 +227,7 @@ p {
     position: relative;
     background-color: transparent;
     cursor: pointer;
+    margin-top:10px;
 }
 
 .order_btn:hover {

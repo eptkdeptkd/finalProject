@@ -1,10 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<style>
+.add_h2 {
+    font-size: 36pt;
+    color:black;
+    margin: 8px 0;
+    text-align:center;
+    font-family: 'Sunflower', sans-serif;
+} 
+</style>
+
 <!--Coffee add - 메뉴 추가 페이지-->
     <section id="menu" class="section">
         <div class="section_container">
-            <h2>Coffee Add (Admin)</h2>
+            <h2 class="add_h2">커피 추가</h2>
             <form action="coffeeAdd.do" method="post" enctype="multipart/form-data">
                 <div class="menu_admin">
                     <div>
@@ -29,7 +38,7 @@
                         </div>
                         <div class="info_titleinput">
                             <input type="file" name="fileload" size="20" required>
-                            <input type="submit" class="coffeeadd_btn" value="추가" size="20">
+                            <input type="submit" class="coffeeadd_btn" value="ADD" size="20">
                         </div>
                     </div>
                 </div>
