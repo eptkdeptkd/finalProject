@@ -135,7 +135,7 @@
 							for(int i = 1;i <= 10; i++){
 								%>	
 								<div id='poll<%=i %>'>
-									<%=(i+"") %>:&nbsp<input type="text" name="poll<%=i %>" id="poll<%=i %>" size="10" style="width:95%; border: 1px solid #c6c6c6;padding-left: 10px;outline: none;">
+									<%=(i+"") %>:&nbsp<input type="text" name="poll<%=i %>" id="po<%=i %>" size="10" style="width:95%; border: 1px solid #c6c6c6;padding-left: 10px;outline: none;">
 								</div>
 								<%
 							}		
@@ -202,23 +202,26 @@ function pollchange( sel ){
 	var confirm = function(msg, title, resvNum) {
 
 		var question = $("#question").val();
-		var answer = [];
 		var count = $("#itemcount option:selected").val();
 		//swal("",count,"warning");
-		
-		
+		var answer = new Array(count);
+		var bo = true;
 		for(i = 1; i <= count; i++){
-			answer[i] = $("#poll" + i).val();
+			answer[i] = $("#po" + i).val();
+			if(answer[i] == null || answer[i] == ""){
+				bo = false; break;
+			}
 		}
-		
 		
 		if(question.trim()=="" || question==null){
 			swal("","투표 주제를 입력해주세요","warning");
 			$("#question").focus();
 
-		/* }else if(answer[].trim()=="" || answer[1]==null){
+		
+		}else if(!bo){
 			swal("","투표 항목을 입력해주세요","warning");
-			$("#answer").focus(); */
+			$("#answer").focus(); 
+		}
 /* 		}else{
 			for(i = 1; i <= count; i++){
 				
@@ -228,7 +231,7 @@ function pollchange( sel ){
 				}
 			}
 		} */
-		}else{
+		else{
 				swal({
 					title : title,
 					text : msg,
