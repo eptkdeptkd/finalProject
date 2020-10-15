@@ -2,46 +2,82 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<form id="_frmForm" action="polling.do" method="post">
 
-	<c:if test="${poll.filename ne null}">
-		<img src="http://localhost:8090/finalProject/upload/${poll.filename }" style="width: 300px; height: 250px;">	
-	</c:if>
+<section id="menu" class="section">
+<div class="section_container" >
 
-
-
-<br>
-	투표번호 : <input type="text" name="pollid" value="${poll.pollid}" size="50" readonly="readonly">
-<br>
-	아이디 : <input type="text" name="id" value="${login.id }" size="50" readonly="readonly">
-<br>
-	투표기한 : ${poll.sdate} ~ ${poll.edate}
-<br>
-	투표내용 : 
-<br>
-	<textarea rows="3" cols="40" name="question">${poll.question}</textarea>
-<br>
-	투표 보기수 : ${poll.itemcount }
-<br>
-	투표 보기들 : 
-<br>		
-		<c:forEach items="${pollsublist }" var="psub" varStatus="vs">
+	<div align="center" >
+		<img src="image/logo.png" alt="" style="width: 100px; height: 100px;">
+		<p style="font-family: 'Stylish', sans-serif; padding-bottom: 50px; font-size: 32px;">투표하기</p>
+	</div>
+	<hr><br>
+			
+		<form id="_frmForm" action="polling.do" method="post">
 		
-		${vs.count}번
+			<c:if test="${poll.filename ne null}">
+				<img src="http://localhost:192.168.0.195/finalProject/upload/${poll.filename }" style="width: 300px; height: 250px;">	
+			</c:if>
+			
+			
+			<div style="margin-top: 50px;">
+				<table border="1" style="width: 85%; border-color: #c6c6c6; border: 1px solid #c6c6c6;">
+				<colgroup>
+					<col width="150px"><col width="500px">
+				</colgroup>
+				
+				<tr>
+					<th style="background-color: #feb546; padding: 10px 30px;">투표 번호</th>
+					<td style="text-align: left;"><input type="text" name="pollid" value="${poll.pollid}" 
+						style="min-height: 100%;min-width:100%; border: none;outline: none;" readonly="readonly">
+					</td>
+				</tr>
+				<tr>
+					<th style="background-color: #feb546; padding: 10px 30px;">아이디</th>
+					<td style="text-align: left;">
+						<input type="text" name="id" value="${login.id }" readonly="readonly" 
+								style="min-height: 100%;min-width:100%; border: none;outline: none;">
+					</td>
+				</tr>
+				<tr>
+					<th style="background-color: #feb546; padding: 10px 30px;">투표 기한</th>
+					<td style="text-align: left;"> ${poll.sdate} ~ ${poll.edate}
+					</td>
+				</tr>
+				<tr>
+					<th style="background-color: #feb546; padding: 10px 30px;">투표 내용</th>
+					<td style="text-align: left;">
+						<textarea rows="1" cols="10" name="question" style="min-height: 150px;min-width:100%; border: none;outline: none;">${poll.question}</textarea>
+					</td>
+				</tr>
+				</table>
+			</div>
+			
+			<div style="margin-bottom: 50px; margin-top: 20px;">	
+				<c:forEach items="${pollsublist }" var="psub" varStatus="vs">
+				
+				<%-- ${vs.count}. --%>
+				
+				<input type="radio" name="pollsubid" ${vs.count==1?"checked='checked'":""} 
+								value="${psub.pollsubid }">
+				
+				<input type="text" name="answer" style=" border: 1px solid #fff;padding-left: 10px;outline: none;font-family: 'Stylish', sans-serif;font-size: 22px;"
+								value="${psub.answer }" readonly="readonly">
+				</c:forEach>
+				<br>
+			</div>		
 		
-		<input type="radio" name="pollsubid" ${vs.count==1?"checked='checked'":""} 
-						value="${psub.pollsubid }">
+			<input type="button" onclick="Confirm()" value="투표하기" class="order_btn" style="height: 40px; width: 120px;">
+			<a href="polllist.do" title="돌아가기" class="category_btn" style="border: 1px solid orange; color: #000; text-decoration: none;">돌아가기</a>	
 		
-		<input type="text" name="answer" size="60"
-						value="${psub.answer }" readonly="readonly">
-		<br>		
-		</c:forEach>
-		
+		</form>    
 
-		<input type="submit" onclick="Confirm()" value="투표하기">
-<a href="polllist.do" title="돌아가기">돌아가기</a>	
 
-</form>    
+</div>
+</section>
+
+
+
+
 
 <script type="text/javascript">
 	var alert = function(msg, type) {

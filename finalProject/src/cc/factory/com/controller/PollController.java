@@ -142,6 +142,20 @@ public class PollController {
 		return "pollresult.tiles";		
 	}
 	
+	@RequestMapping(value = "pollresult2.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public String pollresult2(PollDto poll, Model model) {
+		
+		// PollTotal
+		PollDto dto = service.getPoll(poll);		
+		// acount
+		List<PollSubDto> list = service.getPollSubList(poll);
+		
+		model.addAttribute("poll", dto);
+		model.addAttribute("pollsublist", list);
+		
+		return "pollresult2.tiles";		
+	}
+	
 }
 
 

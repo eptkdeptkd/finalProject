@@ -63,7 +63,7 @@
 <div style="float: left; width: 96%; text-align: center;">
 	<!-- << -->
 	<a href="#none" title="처음페이지" onclick="goPage(0)">
-	<i class="far fa-arrow-alt-circle-left"></i>
+	<i class="far fa-arrow-alt-circle-left" style="color: #000;"></i>&nbsp
 		<!-- <img src="image/arrow_left.png" alt="" style="width: 20px; height: 20px;" /> -->
 	</a>
 	
@@ -74,7 +74,7 @@
 		<a href="#none" title="이전페이지" onclick="goPage('<%=screenStartPageIndex-1 %>')">
 		
 			<!-- <img alt="" src="./image/arrow_back.gif" style="width: 10px;height: 10px"> -->
-			!!
+			<<
 		</a>		
 		<%
 	}	
@@ -108,7 +108,7 @@
 	if(screenEndPageIndex < totalPageCount){
 		%>	
 		<a href="#none" title="다음페이지" onclick="goPage(<%=screenEndPageIndex %>)">
-			>>>
+			>>
 			<!-- <img src="image/paging.png" alt="" style="width: 50px; height: 50px;" /> -->
 		</a>		
 		<%
@@ -122,7 +122,7 @@
 	
 	<!-- >> -->
 	<a href="#none" title="마지막페이지" onclick="goPage(<%=end_page %>)">
-	<i class="far fa-arrow-alt-circle-right"></i>
+	&nbsp<i class="far fa-arrow-alt-circle-right" style="color: #000;"></i>
 		<!-- <img src="image/arrow_right.png" alt="" style="width: 20px; height: 20px;" /> -->
 	</a>
 </div>

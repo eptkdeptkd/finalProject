@@ -183,6 +183,7 @@ public class InfoController {
 
 		InfoDto info = service.getInfo(seq);
 		List<InfoReDto> infoReList = service.getInfoReList(seq);
+		service.readCount(seq);
 		
 		int count = service.getInfoReCount(seq);
 		System.out.println("count== "+count);
@@ -190,6 +191,7 @@ public class InfoController {
 
 		model.addAttribute("info", info);
 		model.addAttribute("infoReList", infoReList);
+		model.addAttribute("count",count);
 
 		return "infodetail.tiles";
 	}

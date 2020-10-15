@@ -153,6 +153,9 @@
 	<put-attribute name="main" value="/WEB-INF/views/poll/pollresult.jsp"/>
 </definition>
 
+<definition name="pollresult2.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/pollresult2.jsp"/>
+</definition>
 
 </tiles-definitions>
 
