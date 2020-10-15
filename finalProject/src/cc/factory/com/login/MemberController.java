@@ -1,6 +1,7 @@
 package cc.factory.com.login;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import cc.factory.com.dto.coffeeDto;
 
 
 @Controller
@@ -82,6 +85,28 @@ public class MemberController {
 		return "redirect:/main.do";
 	}
 	
+	//추가
+	@RequestMapping(value = "updateId.do", method=RequestMethod.GET)
+	public String updateId(MemberDto dto) {
+		System.out.println("MemberController updateId " + new Date());
+		service.updateId(dto);
+		return "redirect:/mypage.do";
+	}
+	
+	@RequestMapping(value = "deleteId.do", method=RequestMethod.GET)
+	public String deleteId(HttpServletRequest req, MemberDto dto) {
+		System.out.println("MemberController deleteId " + new Date());
+		service.deleteId(dto);
+		req.getSession().removeAttribute("login");
+		return "redirect:/main.do";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "bestMember.do", method = { RequestMethod.GET, RequestMethod.POST})
+	public List<MemberDto> bestMember() {
+		List<MemberDto> mlist = service.bestMember();
+		return mlist;
+	}
 }
 
 

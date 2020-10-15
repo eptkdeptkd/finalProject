@@ -83,6 +83,10 @@
 	<put-attribute name="main" value="/WEB-INF/views/mypage/mypage.jsp"/>
 </definition>
 
+<definition name="ranking.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/mypage/mypage.jsp"/>
+</definition>
+
 <!-- 오재님 -->
 <definition name="login.tiles" extends="main.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/login/login.jsp"/>

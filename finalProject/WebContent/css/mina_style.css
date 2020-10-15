@@ -72,7 +72,6 @@ h2 {
     font-weight: var(--weight-semi-bold);
     color: var(--color-black);
     margin: 8px 0;
-    font-family: 'Roboto Slab', serif;
 }
 
 h3 {
@@ -121,6 +120,42 @@ p {
     display: none;
 }
 
+.navbar_menu > li {
+	float:left;
+	width : 170px;
+}
+
+.navbar_menu >li > a{
+	display :block;
+	padding :8px 16px;
+	text-align:center;
+	color:#583101;
+	font-size:15pt;
+}
+
+.navbar_menu >li:hover .navbar_sub_menu{
+	opacity:1;
+	visibility:visible;
+}
+
+.navbar_sub_menu{
+	position :absolute;
+	background:begie;
+	opacity :0;
+	visibility: hidden;
+}
+
+.navbar_sub_menu > li {
+	padding: 5px;
+	border-bottom : 1px solid white;
+	background-color:#f5f0e6;
+	opacity:0.8;
+}
+
+.navbar_sub_menu > li > a{
+	color : #6f4518;
+}
+
 /* Section common */
 .section {
     padding: 50px;
@@ -148,7 +183,6 @@ p {
     color: var(--color-black);
     margin:8px 0;
 	text-align:center;
-	font-family: 'Roboto Slab', serif;
 }
 
 .menu_cart h3 {
@@ -247,13 +281,11 @@ p {
     background-color: transparent;
     cursor: pointer;
     margin-top:10px;
-    font-family: 'Roboto Slab', serif;
 }
 
 .order_btn:hover {
     background-color: var(--color-orange);
     color: var(--color-white);
-    font-family: 'Roboto Slab', serif;
 }
 
 /* cart 여기까지 */
@@ -265,7 +297,6 @@ p {
     color:black;
     margin: 8px 0;
     text-align:center;
-    font-family: 'Sunflower', sans-serif;
 } 
 
 .menu_admin {
@@ -308,7 +339,6 @@ p {
     position: relative;
     background-color: transparent;
     cursor: pointer;
-    font-family: 'Roboto Slab', serif;
 }
 
 .coffeeadd_btn:hover {
@@ -495,7 +525,6 @@ p {
     text-align:center;
     color:white;
     font-weight:500;
-    font-family: 'Sunflower', sans-serif;
 }
 
 .order_table tr td {
@@ -507,11 +536,54 @@ p {
     border-bottom: 1px solid #E1E1E8;
     vertical-align: middle;
     text-align:center;
-    font-family: 'Nanum Pen Script', cursive;
     font-size:14pt;
 }
 
 /* 커피 주문 처리 여기까지 */
+
+/* 주문 완료 추가 */
+.ofinimg{
+	margin-top :5px;
+	width:70%;
+	height:50%;
+	margin-bottom:20px;
+}
+	   
+.ofinBtn{
+	border:1px solid #ffcdb2;
+	color: black;
+	font-size:15pt;
+	cursor:pointer;
+}
+
+.ofinBtn:hover {
+	background-color:#ffcdb2;
+	color: white;
+	font-size:15pt;
+	cursor:pointer;
+}
+
+/* 주문 완료 여기까지 */
+
+
+/*side 추가 */
+.sideadd_btn {
+    border: 1px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left:50%;
+    font-family: 'Roboto Slab', serif;
+}
+
+.sideadd_btn:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    font-family: 'Roboto Slab', serif;
+}
+/* 사이드 추가 여기까지 */
 
 /* Menu */
 #menu {
@@ -528,21 +600,18 @@ p {
     font-size: var(--font-regular);
     padding: 8px 24px;
     position: relative;
-    font-family: 'Roboto Slab', serif;
 }
 
 .category_btn.selected,
 .category_btn:hover {
     background-color: var(--color-orange);
     color: var(--color-white);
-    font-family: 'Roboto Slab', serif;
 }
 
 .category_btn.selected .category_count,
 .category_btn:hover .category_count {
     opacity: 1;
     top: 0;
-    font-family: 'Roboto Slab', serif;
 }
 
 .coffee_contents {
@@ -591,7 +660,6 @@ p {
 .coffee_name {
     display: flex;
     justify-content: center;
-	font-family: 'Nanum Pen Script', cursive;	
 	font-size:14pt;
 }
 
@@ -607,7 +675,6 @@ p {
 .coffee_price_detail {
 	margin-top:15px;
     text-align: end;
-    font-family: 'Roboto Slab', serif;
     font-size:15pt;
 }
 
@@ -618,7 +685,6 @@ p {
     padding: 50px 0;
     padding-right: 50px;
     padding-left : 50px;
-    font-family: 'Sunflower', sans-serif;
 	font-size:10pt;
 }
 
@@ -641,13 +707,11 @@ p {
     font-size: var(--font-regular);
     padding: 8px 24px;
     position: relative;
-    font-family: 'Roboto Slab', serif;
 }
 
 .addorder_btn:hover {
     background-color: var(--color-orange);
     color: var(--color-white);
-    font-family: 'Roboto Slab', serif;
 }
 
 /* Footer */

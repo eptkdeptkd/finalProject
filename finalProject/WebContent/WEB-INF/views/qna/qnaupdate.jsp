@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
- <div id="test" style="background-color:yellow;">   
+  <section id="menu" class="section">
+    <div class="section_container">
+    <div align="center">
     <h2> 글 수정 </h2>
 
 	<form id="frm" method="get">
@@ -41,8 +43,9 @@
 			</tr>
 		</table>
 	</form>
-	
+	</div>
 </div>    
+</section>
 
 <script>
 

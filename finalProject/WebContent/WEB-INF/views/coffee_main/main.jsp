@@ -3,12 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="icon" type="image/png" href="imgs/favicon.png" />
 <script src="https://kit.fontawesome.com/2bab654213.js" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   
  <!--Menu-->
   <section id="menu" class="section">
     <div class="section_container">
-      <h2 style="font-family: 'Roboto Slab', serif;">MENU</h2>
+      <h2>MENU</h2>
       <div class="coffee_categories">
         <button class="category_btn selected" data-filter="*" onclick="showCoffee(0)">
           All

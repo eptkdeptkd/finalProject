@@ -29,7 +29,7 @@
                         </div>
                         <div class="info_titleinput">
                             <input type="file" name="fileload" size="20" required>
-                            <input type="submit" class="coffeeadd_btn" value="ADD" size="20">
+                            <input type="submit" class="coffeeadd_btn" value="추가" size="20">
                         </div>
                     </div>
                 </div>

@@ -6,46 +6,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:requestEncoding value="utf-8"/>    
 
-<style type="text/css">
-.navbar_menu > li {
-	float:left;
-	width : 150px;
-}
-
-.navbar_menu >li > a{
-	display :block;
-	padding :8px 16px;
-	text-align:center;
-	font-family: 'Do Hyeon', sans-serif;
-	color:#583101;
-	font-size:15pt;
-}
-
-.navbar_menu >li:hover .navbar_sub_menu{
-	opacity:1;
-	visibility:visible;
-}
-
-.navbar_sub_menu{
-	position :absolute;
-	background:begie;
-	opacity :0;
-	visibility: hidden;
-}
-
-.navbar_sub_menu > li {
-	padding: 5px;
-	border-bottom : 1px solid white;
-	background-color:#f5f0e6;
-	opacity:0.8;
-}
-
-.navbar_sub_menu > li > a{
-	color : #6f4518;
-	font-family: 'Do Hyeon', sans-serif;
-}
-</style>
-
 <div id="test" style="background-color:grey; color: black;">
 
   <!--Header-->
@@ -72,6 +32,7 @@
 	      	<ul class="navbar_sub_menu">
 	      		<li><a href="polllist.do">설문조사</a></li>
 	      		<li><a href="calendar.do">이벤트 일정</a></li>
+	      		<li><a href="ranking.do">랭킹</a></li>
 	      	</ul>
 	  </li>
 

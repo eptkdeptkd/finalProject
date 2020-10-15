@@ -42,7 +42,7 @@
 	</table>
 	
 </div>
-<input type="button" id="delBtn" value="DELETE" class="del_btn">
+<input type="button" id="delBtn" value="삭제" class="del_btn">
 
 </div>
 </section>

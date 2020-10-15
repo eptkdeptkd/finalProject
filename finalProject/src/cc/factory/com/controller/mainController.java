@@ -165,10 +165,4 @@ public class mainController {
 		return list;
 	}
 	
-	// 마이페이지 임시
-	@RequestMapping(value = "mypage.do", method=RequestMethod.GET)
-	public String mypage(MemberDto dto) {
-		
-		return "myPage.tiles";
-	}
 }

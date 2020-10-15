@@ -21,10 +21,32 @@
 </insert>
 
 
+<!-- 수정 -->
 <select id="login" parameterType="cc.factory.com.login.MemberDto" resultType="cc.factory.com.login.MemberDto">
 	SELECT ID, NAME, EMAIL, VISITCOUNT, AUTH
 	FROM CC_MEMBER
-	WHERE ID=#{id} AND PWD=#{pwd}
+	WHERE ID=#{id} AND PWD=#{pwd} AND AUTH IN (1, 3)
+</select>
+
+<!-- 추가 -->
+<update id="updateId" parameterType="cc.factory.com.login.MemberDto">
+	UPDATE CC_MEMBER
+	SET
+	PWD=#{pwd}, NAME=#{name}, EMAIL=#{email}
+	WHERE ID=#{id}
+</update>
+
+<update id="deleteId" parameterType="cc.factory.com.login.MemberDto">
+	UPDATE CC_MEMBER
+	SET
+	AUTH=2
+	WHERE ID=#{id}
+</update>
+
+<select id="bestMember" resultType="cc.factory.com.login.MemberDto">
+	SELECT * 
+	FROM CC_MEMBER
+	ORDER BY VISITCOUNT DESC
 </select>
 
 </mapper>

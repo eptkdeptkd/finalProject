@@ -87,4 +87,8 @@ public class coffeeDetailDaoImpl implements coffeeDetailDao {
 		return sqlSession.delete(ns+"cartDel",seq);
 	}
 
+	@Override
+	public List<coffeeDto> bestCoffee() {
+		return sqlSession.selectList(ns+"bestCoffee");
+	}
 }

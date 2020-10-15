@@ -1,10 +1,13 @@
 <%@page import="java.util.Calendar"%>
 <%@page import="cc.factory.com.dto.CalendarParam"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <fmt:requestEncoding value="UTF-8"/>
+
+<link rel="stylesheet" href="css/addcalendar.css">
+
 <%
 CalendarParam jcal = (CalendarParam)request.getAttribute("cal");
 
@@ -20,34 +23,38 @@ int tday=cal.get(Calendar.DATE);//일
 int thour=cal.get(Calendar.HOUR_OF_DAY);//24시
 int tmin=cal.get(Calendar.MINUTE);//분
 
+// 일정 보기 
 String url = String.format("%s?year=%s&month=%s", "calendar.do", year, month);
 
 %>
 
+<section id="menu" class="section">
+<div class="section_container" align="center">
 
-<form action="addCalendarAf.do" method="post">
-<table align="center" border="1">
+<form action="addCalendarAf.do" method="post" >
+<table class="calendar">
 
 <colgroup>
 <col style="width=200px"/>
 <col style="width=auto"/>
 </colgroup>
 
-<div align="center"><a href='<%=url%>'>일정보기</a></div>
+<div><a href='<%=url%>' class="cal_a">이벤트 일정 보기 </a></div>
 
 <tr>
-	<th>아이디 </th>
+	<th>관리자</th>
 	<td>
-		<input type="text" size="48" name="id">
+		<input type="text"  name="id" value="${login.name }" readonly="readonly">
 	</td>
 </tr>
 
 <tr>
-	<th>제목</th>
-	<td style="text-align: left"><input type="text" size="60" name='title' /></td>
+	<th>이벤트 제목</th>
+	<td style="text-align: left"><input type="text" name='title' /></td>
 </tr>
+
 <tr>
-	<th>일정</th>
+	<th>이벤트 일정</th>
 	<td style="text-align: left">
 		<select name='year'>
 		<%
@@ -70,6 +77,7 @@ String url = String.format("%s?year=%s&month=%s", "calendar.do", year, month);
 		}
 		%>
 		</select>월
+		
 		<select name='day'>
 		<%
 		for(int i=1; i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH); i++){
@@ -80,6 +88,7 @@ String url = String.format("%s?year=%s&month=%s", "calendar.do", year, month);
 		}
 		%>
 		</select>일
+		
 		<select name='hour'>
 		<%
 		for(int i=0; i<24; i++){
@@ -105,14 +114,19 @@ String url = String.format("%s?year=%s&month=%s", "calendar.do", year, month);
 
 
 <tr>
-	<th>내용</th>
-	<td><textarea  name='content' rows="20" cols="60"></textarea></td>
+	<th>이벤트 내용</th>
+	<td>
+	<textarea  name='content' rows="20" cols="60"></textarea>
+	</td>
 </tr>
-<tr>
-	<td colspan="2"><input type="submit"  value='글쓰기' /></td>
+
+<tr align="center">
+	<td colspan="2">
+	<button type="submit" id="btn">이벤트 추가 </button>
+	</td>
 </tr>
+
 </table>
-
 </form>
-
-
+</div>
+</section>

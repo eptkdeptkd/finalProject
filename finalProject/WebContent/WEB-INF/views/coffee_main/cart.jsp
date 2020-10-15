@@ -62,7 +62,7 @@
 	                                    <option value="0" selected>no syrup</option>
 	                                   <c:if test="${not empty slist }">
 	                                    <c:forEach items="${slist }" var="sy" varStatus="vss">
-	                                        <option value="${sy.price }" sname="${sy.name }">${sy.name }</option>
+	                                        <option value="${sy.price }" sname="${sy.name }">${sy.name }(+${sy.price }원)</option>
 	                                    </c:forEach>
 	                                   </c:if>
                                 </select>
@@ -134,6 +134,9 @@ $("#order").click(function(){
 			var syname = $(syname+" option:checked").text();
 			var aname = "#i"+s;
 			var ask = $(aname).val();
+			if(ask == "" || ask == null){
+				ask = "X";
+			}
 			var shprice = 0;
 			
 			if(sh>=3){

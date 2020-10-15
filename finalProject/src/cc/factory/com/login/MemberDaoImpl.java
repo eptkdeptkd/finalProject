@@ -1,5 +1,7 @@
 package cc.factory.com.login;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,8 +38,24 @@ public class MemberDaoImpl implements MemberDao {
 		MemberDto mem = sqlSession.selectOne(namespace + "login", dto);
 		return mem;
 	}
+
 	
-	
+	@Override
+	public boolean updateId(MemberDto mem) {
+		int n = sqlSession.update(namespace + "updateId", mem);		
+		return n>0?true:false;
+	}
+
+	@Override
+	public boolean deleteId(MemberDto mem) {
+		int n = sqlSession.update(namespace + "deleteId", mem);		
+		return n>0?true:false;
+	}
+
+	@Override
+	public List<MemberDto> bestMember() {
+		return sqlSession.selectList(namespace + "bestMember");
+	}
 }
 
 

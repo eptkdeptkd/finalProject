@@ -3,8 +3,7 @@
 
  <section id="menu" class="section">
         <div class="section_container">
-        
-<div id="test" style="background-color: yellow;">
+        <div align="center">
 	<h2>글 추가</h2>
 
 	<form id="frm" method="get">
@@ -36,9 +35,7 @@
 			</tr>
 		</table>
 	</form>
-
-</div>
-
+	</div>
 </div>
 
 </section>
