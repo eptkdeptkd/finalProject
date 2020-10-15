@@ -30,7 +30,7 @@
 				<tr>
 					<th style="background-color: #feb546; padding: 10px 30px;">제목</th>
 						<td style="text-align: left">
-							<input type="text" name="title" 
+							<input type="text" name="title" id="title" 
 									style="min-height: 100%;min-width:100%; border: none;outline: none;"/>
 						</td>
 				</tr>
@@ -94,30 +94,42 @@
 	}
 
 	var confirm = function(msg, title, resvNum) {
-		swal({
-			title : title,
-			text : msg,
-			type : "warning",
-			showCancelButton : true,
-			confirmButtonClass : "btn-danger",
-			confirmButtonText : "확인",
-			cancelButtonText : "취소",
-			closeOnConfirm : false,
-			closeOnCancel : false
-		}, function(isConfirm) {
-			var content = $("#_content").val();
-			content = content.replace(/(?:\r\n|\r|\n)/g, '<br />');
-			$("#_content").val(content);
-			
-			if (isConfirm) {
-				swal('', '글이 작성되었습니다', "success");
-				
-				$("#_frmForm").attr({ "target":"_self", "action":"infowriteAf.do" }).submit();
-			}else{
-				 location.href="infoimage.do";
-			}
 
-		});
+		var title1 = $("#title").val();
+		var content = $("#_content").val();
+		
+		if(title1.trim()==""||title1.trim()==null){
+			swal("","공자시항의 제목을 입력해주세요","warning");
+			$("#title").focus();
+		}else if(content.trim()==""||content.trim()==null){
+			swal("","공지사항 내용을 입려해주세요","warning");
+			$("#_content").focus();
+		}else{
+			swal({
+				title : title,
+				text : msg,
+				type : "warning",
+				showCancelButton : true,
+				confirmButtonClass : "btn-danger",
+				confirmButtonText : "확인",
+				cancelButtonText : "취소",
+				closeOnConfirm : false,
+				closeOnCancel : false
+			}, function(isConfirm) {
+				var content = $("#_content").val();
+				content = content.replace(/(?:\r\n|\r|\n)/g, '<br />');
+				$("#_content").val(content);
+				
+				if (isConfirm) {
+					swal('', '글이 작성되었습니다', "success");
+					
+					$("#_frmForm").attr({ "target":"_self", "action":"infowriteAf.do" }).submit();
+				}else{
+					 location.href="infoimage.do";
+				}
+	
+			});
+		}
 	}
 
 	function Alert() {

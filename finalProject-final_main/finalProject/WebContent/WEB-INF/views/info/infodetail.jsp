@@ -31,7 +31,7 @@
 		<hr>
 		
 		<c:if test="${info.oldfilename ne null}">
-			<img src="http://localhost:8090/finalProject/upload/${info.filename }">	
+			<img src="http://192.168.0.195:8090/finalProject/upload/${info.filename }">	
 		</c:if>
 		<c:if test="${info.oldfilename eq null}">
 			<img src="image/infodetail.png" alt="" style="width: 300px; height: 150px;">	

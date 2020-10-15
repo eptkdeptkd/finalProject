@@ -39,11 +39,10 @@
 		</div>
 		
 		
-		<br>
 		
 		<!-- high chart -->
 		<figure class="highcharts-figure">
-		  	<div id="container"></div>		  
+		  	<div id="container" style="height: 700px;"></div>		  
 		</figure>
 		
 <hr>		
@@ -70,13 +69,24 @@ $(document).ready(function(){
 		    plotShadow: false
 		  },
 		  title: {
-		    text: '마우스를 올려주세요',
+		    text: '마우스를 올리시면<br> 자세히 보실 수 있습니다',
 		    align: 'center',
 		    verticalAlign: 'middle',
-		    y: 60
+		    y: 60,
+		    style: {
+		          fontWeight: 'bold',
+		          color: '#aeaeae',
+			      fontSize: '28px',
+			      fontFamily: '"Stylish", sans-serif'
+		        }
 		  },
 		  tooltip: {
-		    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
+		    style: {
+		          color: 'black',
+			      fontSize: '28px',
+			      fontFamily: '"Stylish", sans-serif',
+		        }
 		  },
 		  accessibility: {
 		    point: {
@@ -87,10 +97,12 @@ $(document).ready(function(){
 		    pie: {
 		      dataLabels: {
 		        enabled: true,
-		        distance: -50,
+		        distance: -90,
 		        style: {
 		          fontWeight: 'bold',
-		          color: 'white'
+		          color: 'white',
+			      fontSize: '32px',
+			      fontFamily: '"Stylish", sans-serif'
 		        }
 		      },
 		      startAngle: -90,
@@ -101,8 +113,9 @@ $(document).ready(function(){
 		  },
 		  series: [{
 		    type: 'pie',
-		    name: 'Browser share',
+		    name: '응답률 ',
 		    innerSize: '50%',
+		    size: '150%',
 		    data: <%=request.getAttribute("jsonData") %>
 		  }]
 		});
