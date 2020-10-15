@@ -1,0 +1,32 @@
+/* Section common */
+.section {
+    padding: 50px;
+    margin: auto;
+    text-align: center;
+}
+
+.section_container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.ofinimg{
+	margin-top :5px;
+	width:70%;
+	height:50%;
+	margin-bottom:20px;
+}
+	   
+.ofinBtn{
+	border:1px solid #ffcdb2;
+	color: black;
+	font-size:15pt;
+	cursor:pointer;
+}
+
+.ofinBtn:hover {
+	background-color:#ffcdb2;
+	color: white;
+	font-size:15pt;
+	cursor:pointer;
+}

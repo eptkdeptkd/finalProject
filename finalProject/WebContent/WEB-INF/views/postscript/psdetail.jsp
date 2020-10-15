@@ -3,6 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8"/>
 
+<section id="menu" class="section">
+        <div class="section_container">
 <form name="frmForm" id="_frmForm" method="post" action="bbsupdate.do">
 
 <input type="hidden" name="seq" value="${ps.seq}"/>
@@ -45,8 +47,9 @@
 	</tr>
 </tbody>
 </table>
-
 </form>
+</div>
+</section>
 
 
 <script type="text/javascript">

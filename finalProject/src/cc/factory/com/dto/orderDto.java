@@ -11,7 +11,7 @@ public class orderDto implements Serializable {
 	private String odate;
 	private String coffee_seq;	
 	private String detail;
-	
+	private int del;
 	private String seqArr;
 	
 	public orderDto() {
@@ -127,6 +127,15 @@ public class orderDto implements Serializable {
 		this.seqArr = seqArr;
 	}
 	
+	public int getDel() {
+		return del;
+	}
+
+
+	public void setDel(int del) {
+		this.del = del;
+	}
+
 	@Override
 	public String toString() {
 		return "orderDto [seq=" + seq + ", id=" + id + ", name=" + name + ", price=" + price + ", odate=" + odate

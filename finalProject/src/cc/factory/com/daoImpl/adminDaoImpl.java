@@ -84,5 +84,10 @@ public class adminDaoImpl implements adminDao {
 	public void sideDelete(int seq) {
 		sqlSession.delete(ns +"sideDelete", seq);
 	}
+
+	@Override
+	public int orderDelUp(int seq) {
+		return sqlSession.update(ns+"orderDelUp",seq);
+	}
 		
 }

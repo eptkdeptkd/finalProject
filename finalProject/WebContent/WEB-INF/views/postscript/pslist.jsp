@@ -4,6 +4,8 @@
 
 
 <!-- 검색 -->
+<section id="menu" class="section">
+        <div class="section_container">
 <div class="box_border" style="margin-top: 5px; margin-bottom: 10px">
 <form action="" name="frmForm1" id="_frmFormSearch" method="get">
 <table style="margin-left: auto; margin-right: auto; margin-top: 3px; margin-bottom: 3px">
@@ -55,9 +57,9 @@
 <div style="">
 	<button type="button" id="btnwrite">후기남기기</button>
 </div>
-
 <br><br>
-
+</div>
+</section>
 
 <script>
 

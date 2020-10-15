@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <link rel="stylesheet" href="<%=request.getContextPath() %>/css/coffee_delete.css">
  
  <!--Coffee add - 메뉴 추가 페이지-->
     <section id="menu" class="section">

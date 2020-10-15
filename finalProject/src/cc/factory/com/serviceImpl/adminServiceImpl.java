@@ -54,9 +54,13 @@ public class adminServiceImpl implements adminService {
 
 	@Override
 	public boolean orderHandle(int seq) {
+		/*
 		int b1 = dao.orderDetailFin(seq);
 		int b2 = dao.orderFin(seq);
 		return (b1>1 && b2>1)?true:false;
+		*/
+		int c = dao.orderDelUp(seq);
+		return c>0?true:false;
 	}
 
 	@Override
@@ -71,9 +75,13 @@ public class adminServiceImpl implements adminService {
 
 	@Override
 	public boolean orderFin(int seq) {
+		/*
 		int b1 =dao.orderDetailFin(seq);
 		int b2 =dao.orderFin(seq);
 		return (b1>0 && b2>0)?true:false;
+		*/
+		int c = dao.orderDelUp(seq);
+		return c>0?true:false;
 	}
 
 	@Override

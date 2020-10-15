@@ -19,7 +19,7 @@ public interface adminDao {
 	public int getTotOrder(String today);
 	public int delCoffee(int seq);
 	public List<coffeeDto> getCoffeeList();
-	
+	public int orderDelUp(int seq);
 	
 	boolean addSide(SideDto dto);// 사이드 추가
 	List<SideDto>getsideList();// 사이드 리스트

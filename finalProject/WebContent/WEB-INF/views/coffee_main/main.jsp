@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/default.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="icon" type="image/png" href="imgs/favicon.png" />
-<script src="https://kit.fontawesome.com/2bab654213.js" crossorigin="anonymous"></script>
   
  <!--Menu-->
-  <section id="menu" class="section">
+  <section class="section">
     <div class="section_container">
       <h2>MENU</h2>
       <div class="coffee_categories">
@@ -30,14 +31,14 @@
 	 	<c:forEach items="${list }" var="dto" varStatus="vs">
 	 		<div class="content_box">
 	 			<a href="coffeeDetailMove.do?seq=${dto.seq }" class="content">
-	 				<img src="http://192.168.0.195:8090/finalProject/upload/${dto.newname }">
+	 				<img src="http://192.168.0.195:8090/finalProject/upload/${dto.newname }" class="coffee_img">
 	 			</a>
 	 			<p class="coffee_name">${dto.name }</p>
 	 		</div>
 	 	</c:forEach>
-	 </div>
-	 
+	 </div> 
 	</div>
+	</section>
 	
 <script type="text/javascript">
 
@@ -65,5 +66,41 @@ function showCoffee(kind){
 	});		
 }
 
+//Menu
+const coffeeBtnContainer = document.querySelector(".coffee_categories");
+const coffeeContainer = document.querySelector(".coffee_contents");
+const contents = document.querySelectorAll(".content_box");
+coffeeBtnContainer.addEventListener("click", (e) => {
+    const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+    if (filter == null) {
+        return;
+    }
+
+    // Remove selection from the previous item and select the new one
+    const active = document.querySelector(".category_btn.selected");
+    active.classList.remove("selected");
+    const target =
+        e.target.nodeName === "BUTTON" ? e.target : e.target.parentNode;
+    target.classList.add("selected");
+
+    // console.log(filter);
+    coffeeContainer.classList.add("anim-out");
+    setTimeout(() => {
+        contents.forEach((content_box) => {
+            console.log(content_box.dataset.type);
+            if (filter === "*" || filter === content_box.dataset.type) {
+                content_box.classList.remove("invisible");
+            } else {
+                content_box.classList.add("invisible");
+            }
+        });
+        // for(let project of projects) {}
+        /* let project
+        for(let i = 0; i < projects.length ; i++ ) {
+            project = projects[i];
+        } */
+        coffeeContainer.classList.remove("anim-out");
+    }, 300);
+});
+
 </script>
-    

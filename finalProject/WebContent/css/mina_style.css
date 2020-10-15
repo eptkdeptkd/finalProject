@@ -452,10 +452,58 @@
 /* 사이드 추가 여기까지 */
 
 /* 나의 주문 내역 추가 */
-.olist_h3{
+.olist_h3 {
+	ont-size: var(--font-medium);
+    /*font-weight: var(--weight-semi-bold);*/
+    color: var(--color-black);
+    margin:8px 0;
+	text-align:center;
+	font-size:36pt;
+}
+
+.olist_menu {
+    display: flex;
+    max-width:100%;
+    justify-content: center;
+    padding: 20px 0 30px 0;
+}
+
+.olist_table{
+	border-left:0px;
+	border-right:0px;
+	border-top:1px;
+	border-bottom:1px;
+	border-color:gray;
+	border-collapse:collapse;
 	
 }
 
+.olist_table th {
+    position: relative;
+    height: 43px;
+    padding: 8px;
+    background-color: #e76f51;
+    box-shadow: 0 3px 0 0 #E1E1E8;
+    letter-spacing: -0.1px;
+    line-height: 24px;
+    vertical-align: middle;
+    font-size:17pt;
+    text-align:center;
+    color:white;
+    font-weight:500;
+}
+
+.olist_table tr td {
+    height: 50px;
+    padding: 8px;
+    background-color: #fff;
+    letter-spacing: -0.1px;
+    line-height: 24px;
+    border-bottom: 1px solid #E1E1E8;
+    vertical-align: middle;
+    text-align:center;
+    font-size:14pt;
+}
 /* 나의 주문 내역 여기까지 */
 
 /* Menu */
@@ -537,6 +585,26 @@
 }
 
 /* coffee_detail */
+.coffee_pictureinfo {
+    padding: 32px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.picture_box {
+    padding: 0 50px 0 0;
+    width: 400px;
+}
+
+.coffee_detail_img {
+    width: 300px;
+    height: 300px;
+}
+
+.info_top {
+    display: block;
+    border-bottom: 2px solid var(--color-orange);
+}
 .coffee_name_detail {
     display: flex;
     justify-content: center;
@@ -551,14 +619,34 @@
     font-size:15pt;
 }
 
-.detail_explain{
-    height: 200px;
+#minusbtn,
+#plusbtn {
+    width: 30px;
+    font-size: 20px;
+    color: var(--color-brown);
+    background-color: var(--color-light-brown);
+    border-color: var(--color-light-white);
+    border-radius: 5px;
+}
+
+#minusbtn,
+#plusbtn:hover {
+    cursor: pointer;
+}
+
+#qtyText {
+    width: 40px;
+    text-align: center;
+    font-size: var(--font-regular);
+    border: none;
+}
+
+.detail_explain {
+    height: 100px;
+    width: 450px;
     margin-top: 10px;
+    font-size: var(--font-micro);
     text-align: start;
-    padding: 50px 0;
-    padding-right: 50px;
-    padding-left : 50px;
-	font-size:10pt;
 }
 
 .content_coffee_detail {
@@ -585,55 +673,4 @@
 .addorder_btn:hover {
     background-color: var(--color-orange);
     color: var(--color-white);
-}
-
-/* Footer */
-#footer {
-    background-color: var(--color-light-brown);
-    padding: 35px 16px;
-}
-
-/* For below 768px screen width */
-@media screen and (max-width: 768px) {
-    :root {
-        /* Font size */
-        --font-large: 30px;
-        --font-medium: 18px;
-        --font-regular: 16px;
-        --font-small: 14px;
-        --font-micro: 12px;
-    }
-
-    .navbar_toggle-btn {
-        display: block;
-        right: 16px;
-        font-size: var(--font-medium);
-    }
-
-    #navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        background-color: var(--color-light-brown);
-    }
-
-    .navbar_menu {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-        display: none;
-    }
-
-    .navbar_menu.open {
-        display: block;
-    }
-
-    .section {
-        padding: 16px;
-        padding-top: 40px;
-    }
-
-    .category_btn {
-        margin: 4px 0;
-        width: 100%;
-    }
 }

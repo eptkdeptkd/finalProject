@@ -3,6 +3,7 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/cart.css">
 
   <section id="menu" class="section">
         <div class="section_container">
@@ -65,8 +66,8 @@
 	                                <input type="text" value="1" size="7" class="shot" id="q${dto.seq }"> &nbsp;&nbsp;
 	                                <input type="button" value="+" class="plusbtn" onclick="plBtn(${dto.seq})">
 	                            </div>
-	                            <div class="info_option">
-	                                <p class="info_subtitle">syrup:</p>&nbsp;&nbsp;
+	                            <div class="cart_info_option">
+	                                <p class="cart_info_subtitle">syrup:</p>&nbsp;&nbsp;
 	                                <select id="sel${dto.seq }">
 	                                    <option value="0" selected>no syrup</option>
 	                                   <c:if test="${not empty slist }">
@@ -74,8 +75,8 @@
 	                                        <option value="${sy.price }" sname="${sy.name }">${sy.name }(+${sy.price }원)</option>
 	                                    </c:forEach>
 	                                   </c:if>
-                                </select>
-                            </div>			
+                               		</select>
+                           		</div>			
 							</td>
 							<td>
 								 <input type="text" id="i${dto.seq }" class="info_input" size="20" placeholder="요청사항을 입력해주세요" required>

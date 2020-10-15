@@ -1,3 +1,15 @@
+/* Section common */
+.section {
+    padding: 110px 0 100px 0;
+    margin: auto;
+    text-align: center;
+}
+
+.section_container {
+    max-width: 1200px;
+    margin: auto;
+}
+
 /*구글 폰트 사용*/
 p {
 	font-family: 'Poor Story', cursive;
@@ -7,5 +19,6 @@ p {
 h1{
 	font-family: 'Poor Story', cursive;
 	font-size: 50px;
-	color: 	#ff6b6b;
+	color: 	#774936;
+	font-weight: bold ;
 }

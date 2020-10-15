@@ -20,20 +20,20 @@ public class MemberController {
 	@Autowired
 	MemberService service;
 
-	@RequestMapping(value = "login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "login.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public String login() {
 		System.out.println("MemberController login()");		
 		return "login.tiles";
 	}
 	
-	@RequestMapping(value = "regi.do", method = RequestMethod.GET)
+	@RequestMapping(value = "regi.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public String regi() {
 		System.out.println("MemberController regi()");
 		return "regi.tiles";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "getId.do", method = RequestMethod.POST)
+	@RequestMapping(value = "getId.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public String getId(MemberDto mem) {
 		System.out.println("MemberController getId()");
 		
@@ -47,7 +47,7 @@ public class MemberController {
 		return msg;
 	}
 	
-	@RequestMapping(value = "regiAf.do", method=RequestMethod.POST)
+	@RequestMapping(value = "regiAf.do", method={RequestMethod.GET,RequestMethod.POST})
 	public String regiAf(MemberDto dto) {
 		System.out.println("MemberController regiAf " + new Date());
 		
@@ -61,7 +61,7 @@ public class MemberController {
 		return "regi.tiles";
 	}
 	
-	@RequestMapping(value = "loginAf.do", method=RequestMethod.POST)
+	@RequestMapping(value = "loginAf.do", method={RequestMethod.GET,RequestMethod.POST})
 	public String loginAf(MemberDto dto, HttpServletRequest req) {
 		System.out.println("MemberController loginAf()");
 		
@@ -79,21 +79,21 @@ public class MemberController {
 		}		
 	}
 	
-	@RequestMapping(value = "sessionOut.do", method=RequestMethod.GET)
+	@RequestMapping(value = "sessionOut.do", method={RequestMethod.GET,RequestMethod.POST})
 	public String sessionOut(HttpServletRequest req) {
 		req.getSession().removeAttribute("login");
 		return "redirect:/main.do";
 	}
 	
 	//추가
-	@RequestMapping(value = "updateId.do", method=RequestMethod.GET)
+	@RequestMapping(value = "updateId.do", method={RequestMethod.GET,RequestMethod.POST})
 	public String updateId(MemberDto dto) {
 		System.out.println("MemberController updateId " + new Date());
 		service.updateId(dto);
 		return "redirect:/mypage.do";
 	}
 	
-	@RequestMapping(value = "deleteId.do", method=RequestMethod.GET)
+	@RequestMapping(value = "deleteId.do", method={RequestMethod.GET,RequestMethod.POST})
 	public String deleteId(HttpServletRequest req, MemberDto dto) {
 		System.out.println("MemberController deleteId " + new Date());
 		service.deleteId(dto);

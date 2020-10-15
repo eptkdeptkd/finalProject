@@ -1,3 +1,17 @@
+
+/* Section common */
+.section {
+    padding: 110px 0 100px 0;
+    margin: auto;
+    text-align: center;
+}
+
+.section_container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+
 .menu_cart h1 {
     font-size: var(--font-large);
     font-weight: var(--weight-bold);
@@ -6,16 +20,13 @@
 }
 
 .cart_h2 {
-    font-size: var(--font-medium);
-    font-weight: var(--weight-semi-bold);
     color: var(--color-black);
     margin:8px 0;
 	text-align:center;
-	font-family: 'Roboto Slab', serif;
 }
 
 .menu_cart h3 {
-    font-size: var(--font-regular);
+    /*font-size: var(--font-regular);*/
     font-weight: var(--weight-regular);
     color: var(--color-black);
     margin: 8px 0;
@@ -62,72 +73,57 @@
     font-family: 'Oswald', sans-serif;
 }
 
-
-
-
-.info_textarea {
-    width: 200px;
-    height: 250px;
+.cart_info_option {
+    display: flex;
+    justify-content: start;
+    padding: 5px 0;
 }
 
-.info_input::placeholder {
-    font-size: var(--font-micro);
-    font-family: "Open Sans", sans-serif;
+.cart_info_subtitle {
+    margin-right: 10px;
 }
 
-/* Footer */
-#footer {
+.minusbtn,
+.plusbtn {
+    width: 30px;
+    font-size: 20px;
+    color: var(--color-brown);
     background-color: var(--color-light-brown);
-    padding: 35px 16px;
+    border-color: var(--color-light-white);
+    border-radius: 5px;
 }
 
-/* For below 768px screen width */
-@media screen and (max-width: 768px) {
-    :root {
-        /* Font size */
-        --font-large: 30px;
-        --font-medium: 18px;
-        --font-regular: 16px;
-        --font-small: 14px;
-        --font-micro: 12px;
-    }
+.minusbtn,
+.plusbtn:hover {
+    cursor: pointer;
+}
 
-    .navbar_toggle-btn {
-        display: block;
-        right: 16px;
-        font-size: var(--font-medium);
-    }
+.qtyText {
+    width: 40px;
+    text-align: center;
+    font-size: var(--font-regular);
+    border: none;
+}
 
-    #navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        background-color: var(--color-light-brown);
-    }
+.menu_cart .info_input {
+    width: 200px;
+    height: 30px;
+    border-left: none;
+    border-right: none;
+    border-top:	none;
+}
 
-    .navbar_menu {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-        display: none;
-    }
+.order_btn {
+    border: 1px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top:10px;
+}
 
-    .navbar_menu.open {
-        display: block;
-    }
-
-    .section {
-        padding: 16px;
-        padding-top: 40px;
-    }
-
-    .menu_admin {
-        display: flex;
-        justify-content: center;
-    }
-
-    #minusbtn,
-    #plusbtn {
-        width: 25px;
-        font-size: 15px;
-    }
+.order_btn:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
 }

@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib  prefix="spring" uri="http://www.springframework.org/tags" %>   
+<%@taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/default.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/coffeedetail.css">
 
 <!--Coffee menu detail - 메뉴 상세 페이지-->
-    <section id="menu" class="section">
+    <section class="section">
         <div class="section_container">
             <div class="coffee_pictureinfo">
                 <div class="picture_box">
@@ -29,6 +31,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
     
@@ -49,12 +52,6 @@ $("#plusbtn").click(function(){
 function order(seq){
 	var price = ${dto.price} * qty;
 
-	var sid = "${login.id}";
-	if(sid == null || sid == ""){
-		swal('', '로그인 후 사용 가능합니다.', "warning");
-		return;
-	}
-	
 	$.ajax({
 		url:"cart.do",
 		data:{"id":"${login.id}", "coffee_seq":seq, "price":price,"qty":qty },

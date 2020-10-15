@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 	
 <link rel="stylesheet" href="css/main.css">
-<link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
-
 
 <body>
 	<section id="menu" class="section">
@@ -15,9 +13,9 @@
 				<audio autoplay controls autoplay loop id="mp4" style="opacity: 0">
 					<source src="image/coffee.mp4" type="audio/mp4">
 				</audio>
-				<!-- 배경음악 숨겨놓음  -->
+				<!-- 배경음악 플레이 버튼숨겨놓음  -->
 				
-				<img src="image/coffee.gif" width="900" height="800">
+				<img src="image/coffee16.gif" width="1100" >
 				
 
 				<hr>

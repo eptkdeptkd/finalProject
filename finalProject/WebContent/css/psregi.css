@@ -1,0 +1,128 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+.main_wrap {													/* box-sizing:박스의 크기를 어떤것을 기준으로 계산할지정하는 속성     border-box:테두리를 기준으로 크기를 정함 */
+	display: flex;							/* CSS의 flex는 엘리먼트들의 크기나 위치를 쉽게 잡아주는 도구입니다 */
+	justify-content: center; 				/* 기본축의 양쪽 끝단을 기준으로, 아이템을 어떻게 균등 배분 정렬할지 결정. */
+	align-items: center;  					/* 교차축 기준으로 아이템을 정렬. */
+	height: 100vh;
+}
+
+.login-form{position: relative; z-index: 2;}		/* 원래 있던 위치를 기준으로 좌표를 지정합니다. */
+.login-form h1{
+	font-size: 32px; color:#000000;
+	text-align: center;
+	margin-bottom: 60px;
+}
+.int-area {
+	width: 700px; position: relative;
+	margin-top: 20px;	
+}
+.int-area:first-child{margin-top: 0;}
+.int-area input {
+	width: 70%;
+	padding: 20px 10px 10px;
+	background-color: transparent;
+	border: none;  /* 테두리 */
+	border-bottom: 1px solid #999;
+	font-size: 18px;color: #000000;
+	outline: none;
+}
+.int-area label{
+	position: absolute; left: 10px; top:15px;
+	font-size: 18px; color: #81d4fa;
+	/*transition:all .5s ease;			 transition:정해진 시간 동안 요소의 속성값을 부드럽게 변화시킬 수 있습니다. */
+}											/* ease 기본값 으로 전환*/
+.int-area label.warning{
+	color:red !important;
+	/*animation:warning.3s ease;				 요소의 현재 스타일을 다른 스타일로 천천히 변화시킬 수 있습니다. */
+	animation-iteration-count: 3;  			/* 애니메이션 효과의 반복 횟수를 설정합니다. */
+}
+
+@keyframes warning { 						 /* transform: HTML 요소의 모양, 크기, 위치 등을 자유롭게 바꿀 수 있습니다. */
+	0% {transform: translatex(-8px);}		/* translatex :현재 위치에서 해당 요소를 주어진 x축의 거리만큼 이동시킴. */
+	25% {transform: translatex(8px);}
+	50% {transform: translatex(-8px);}
+	75% {transform: translatex(8px);}
+} 
+
+.int-area input:focus + label, 				 /* focus : 요소가 선택되거나 마우스 이벤트상태  */
+.int-area input:valid + label{				/* valid: 유효한 값을 가지는 input 요소를 모두 선택함. */
+	top: -2px;
+	font-size: 13px; color: #000000;
+}
+.btn-area {margin-top: 30px;}
+.btn-area button{
+	
+	width: 100%; height: 50px;
+	background: #d9cbb3;
+	font-size:20px;
+	color: #000000;
+	border: none;
+	border-radius: 25px; 			  /* border-radius: 테두리를 둥글게 만들어줌 */
+	cursor: pointer;   				 /* 손모양 커서?  */
+}
+
+.idcheck{
+	   border-radius:10px;
+       align-items: center;
+       margin-top:7px;
+       border: 5px solid #d9cbb3;
+       color: #81d4fa;
+       text-align: center;
+       width: 15%;
+       height: 35px;
+       float: right;  
+}
+
+.caption{
+	margin-top: 20px;
+	text-align: center;  
+}
+.caption a{
+	font-size: 15px; color: #000000;
+	text-decoration: none;  			/* text-decoration은 선으로 텍스트를 꾸밀 수 있게 해주는 속성입니다.  기본값 none*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

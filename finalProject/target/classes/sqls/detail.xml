@@ -27,8 +27,8 @@
 	<selectKey keyProperty="seq" resultType="java.lang.Integer" order="BEFORE">
 		SELECT SEQ_ORDER.NEXTVAL AS SEQ FROM DUAL
 	</selectKey>
-	INSERT INTO CC_ORDER (SEQ, ID, NAME, PRICE, ODATE)
-	VALUES(#{seq}, #{id}, #{name}, #{price}, SYSDATE)
+	INSERT INTO CC_ORDER (SEQ, ID, NAME, PRICE, ODATE, DEL)
+	VALUES(#{seq}, #{id}, #{name}, #{price}, SYSDATE, 0)
 </insert>
 
 <delete id="delCart" parameterType="java.lang.Integer">

@@ -3,6 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8"/>
 
+<section id="menu" class="section">
+        <div class="section_container">
+
 <form name="frmForm" id="_frmForm" method="post" action="bbswriteAf.do">
 
 <table class="list_table" style="width:85%;">
@@ -44,6 +47,9 @@
 </table>
 
 </form>
+</div>
+</section>
+
 
 <script type="text/javascript">
 $("#_btnLogin").click(function() {	

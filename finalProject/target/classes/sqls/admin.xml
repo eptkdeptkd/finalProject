@@ -11,7 +11,7 @@
 </insert>
 
 <select id="getTotOrder" parameterType="java.lang.String" resultType="java.lang.Integer">
-	SELECT COUNT(*) FROM CC_ORDER WHERE ODATE >= #{today}
+	<![CDATA[SELECT COUNT(*) FROM CC_ORDER WHERE ODATE >= #{today} AND DEL < 1]]>
 </select>
 
 <select id="getOrderSeqList" parameterType="cc.factory.com.dto.orderParam" resultType="cc.factory.com.dto.orderParam">
@@ -19,7 +19,7 @@
 	FROM (
 	 SELECT ROW_NUMBER()OVER(ORDER BY SEQ) AS RNUM, ID, SEQ
 	  FROM CC_ORDER 
-	 WHERE ODATE >= #{today}
+	 WHERE ODATE >= #{today} AND DEL < 1
 	 ORDER BY SEQ
 	)
 	WHERE #{start} <= RNUM AND RNUM <= #{end} ]]>
@@ -44,6 +44,12 @@
 <delete id="orderFin" parameterType="java.lang.Integer">
 	DELETE FROM CC_ORDER WHERE SEQ = #{seq} 
 </delete>
+
+<update id="orderDelUp" parameterType="java.lang.Integer">
+	UPDATE CC_ORDER
+	SET DEL = 1
+	WHERE SEQ = #{seq}
+</update>
 
 <delete id="delCoffee" parameterType="java.lang.Integer">
 	DELETE FROM CC_COFFEE WHERE SEQ = #{seq}

@@ -29,14 +29,14 @@
 }
 
 /*
-   <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
-   font-family: 'Stylish', sans-serif;
-   
-   <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
-   font-family: 'Poor Story', cursive;
-   
-   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-   font-family: 'Do Hyeon', sans-serif;
+	<link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
+	font-family: 'Stylish', sans-serif;
+	
+	<link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+	font-family: 'Poor Story', cursive;
+	
+	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+	font-family: 'Do Hyeon', sans-serif;
 
 */
 /* Universal tags */
@@ -100,41 +100,9 @@ p {
     margin: 4px 0;
 }
 
-/* Header */
-#navbar {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-light-brown);
-    padding: 8px 16px;
-    z-index: 1;
-}
-
-.navbar_menu {
-    display: flex;
-}
-
-.navbar_menu_item {
-    padding: 5px;
-    margin: 0 4px;
-    color: var(--color-black);
-    cursor: pointer;
-}
-
-.navbar_toggle-btn {
-    position: absolute;
-    top: 24px;
-    right: 32px;
-    font-size: 24px;
-    color: var(--color-black);
-    display: none;
-}
-
 /* Section common */
 .section {
-    padding: 50px;
+    padding: 110px 0 100px 0;
     margin: auto;
     text-align: center;
 }
@@ -142,12 +110,6 @@ p {
 .section_container {
     max-width: 1200px;
     margin: auto;
-}
-
-/* Footer */
-#footer {
-    background-color: var(--color-light-brown);
-    padding: 35px 16px;
 }
 
 /* For below 768px screen width */
@@ -172,7 +134,7 @@ p {
         align-items: flex-start;
         background-color: var(--color-light-brown);
     }
-   
+	
     .navbar_menu {
         flex-direction: column;
         text-align: center;
