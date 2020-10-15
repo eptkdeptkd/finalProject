@@ -9,6 +9,15 @@
             <h2 class="cart_h2">My Cart</h2>
             <div class="menu_cart" align="center">
                 <table class="cart_table">
+                <colgroup>
+					<col style="width:120">
+					<col style="width:400">
+					<col style="width:200">
+					<col style="width:400">
+					<col style="width:400">
+					<col style="width:200">
+				</colgroup>
+                
                     <thead>
                         <tr>
                             <th>

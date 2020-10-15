@@ -48,6 +48,7 @@
 	      	<ul class="navbar_sub_menu">
 	      		<li><a href="mypage.do">마이페이지</a></li>
 	      		<li><a href="cartMove.do">장바구니</a></li>
+	      		<li><a href="myOrder.do">주문내역</a></li>
 	      	</ul>
 	      </li>
 	     </c:if>

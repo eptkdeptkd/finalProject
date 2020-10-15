@@ -6,6 +6,7 @@
 
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/info.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/default.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/mina_style.css">
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/jquery/main.js">

@@ -9,6 +9,7 @@ public class orderDetailDto implements Serializable {
 	private int shot;
 	private String syrup;
 	private String ask;
+	private int orderStatus;
 	
 	public orderDetailDto() {
 		super();
@@ -78,6 +79,14 @@ public class orderDetailDto implements Serializable {
 
 	public void setAsk(String ask) {
 		this.ask = ask;
+	}
+
+	public int getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(int orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
 	@Override

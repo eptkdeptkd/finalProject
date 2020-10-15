@@ -33,8 +33,8 @@
 </select>
 
 <insert id="addAlarm" parameterType="cc.factory.com.dto.alarmDto">
-	INSERT INTO CC_ALARM (SEQ, RECV_ID, SEND_ID, CONTENT)
-	VALUES(SEQ_ALARM.NEXTVAL,#{recv_id},#{send_id},#{content})
+	INSERT INTO CC_ALARM (SEQ, RECV_ID, SEND_ID, ORDER_SEQ,ADATE)
+	VALUES(SEQ_ALARM.NEXTVAL,#{recv_id},#{send_id},#{order_seq},SYSDATE)
 </insert>
 
 <delete id="orderDetailFin" parameterType="java.lang.Integer">

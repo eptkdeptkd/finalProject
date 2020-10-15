@@ -21,6 +21,10 @@ public class orderParam implements Serializable {
 		this.content = content;
 	}
 
+	public orderParam(String id, String today) {
+		this.id = id;
+		this.today = today;
+	}
 
 	public orderParam(String id, int seq, String today, int readPerPage, int pageNumber, int start, int end,
 			String content) {

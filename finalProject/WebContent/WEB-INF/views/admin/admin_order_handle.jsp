@@ -67,7 +67,7 @@ $("#finbtn").click(function(){
 			}else{
 				swal('', '정상적으로 주문 처리 되었습니다', "success");
 				if(wsocket){
-					wsocket.send("${login.id},"+id+",완료");
+					wsocket.send("${login.id},"+id+","+seq);
 				}
 
 				location.href="orderhandleMove.do";

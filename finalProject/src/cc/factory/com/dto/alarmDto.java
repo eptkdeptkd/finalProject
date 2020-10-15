@@ -7,6 +7,8 @@ public class alarmDto implements Serializable {
 	private String recv_id;
 	private String send_id;
 	private String content;
+	private String adate;
+	private int order_seq;
 	
 	public alarmDto() {
 	}
@@ -17,6 +19,13 @@ public class alarmDto implements Serializable {
 		this.content = content;
 	}
 
+
+	public alarmDto(String recv_id, String send_id, String content , int order_seq) {
+		this.recv_id = recv_id;
+		this.send_id = send_id;
+		this.content = content;
+		this.order_seq = order_seq;
+	}
 
 	public alarmDto(int seq, String recv_id, String send_id, String content) {
 		this.seq = seq;

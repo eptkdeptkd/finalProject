@@ -1,7 +1,10 @@
 package cc.factory.com.controller;
 
 import java.io.IOException;
+import java.net.http.HttpRequest;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +33,7 @@ import cc.factory.com.dto.cartDto;
 import cc.factory.com.dto.coffeeDto;
 import cc.factory.com.dto.orderDetailDto;
 import cc.factory.com.dto.orderDto;
+import cc.factory.com.dto.orderParam;
 import cc.factory.com.login.MemberDto;
 import cc.factory.com.service.CalendarService;
 import cc.factory.com.service.InfoService;
@@ -74,8 +78,6 @@ public class mypageController {
 		List<CalendarDto> clist = cservice.getCalList();
 		model.addAttribute("clist",clist);
 		
-		
-		
 		return "myPage.tiles";
 	}
 	
@@ -91,4 +93,23 @@ public class mypageController {
 		
 		return "ranking.tiles";
 	}
+	
+	// 추가 2020.10.15
+	@RequestMapping(value = "myOrder.do", method = { RequestMethod.GET, RequestMethod.POST})
+	public String myOrder(HttpServletRequest req,Model model) {
+		System.out.println("mypageController myOrder ");
+		MemberDto dto = (MemberDto) req.getSession().getAttribute("login");
+		String id = dto.getId();
+		
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyyMMdd");
+		Date time = new Date();
+		String t = format1.format(time);
+		
+		orderParam param = new orderParam(id,t);
+		List<orderDetailDto> list = service.myOrderList(param);
+		model.addAttribute("list",list);
+		
+		return "myOrder.tiles";
+	}
+	
 }

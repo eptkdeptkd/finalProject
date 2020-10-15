@@ -70,8 +70,9 @@ public class WebSocket extends TextWebSocketHandler{
 		if(msg!=null) {
 			String send_id = msg[0];
 			String recv_id = msg[1];
+			int order_seq = Integer.parseInt(msg[2]);
 			String content = recv_id+"님, 커피를 찾아가주세요";
-			alarmDto dto = new alarmDto(recv_id,send_id,content);
+			alarmDto dto = new alarmDto(recv_id,send_id,content,order_seq);
 			service.addAlarm(dto);
 			
 			WebSocketSession ms = users.get(recv_id);

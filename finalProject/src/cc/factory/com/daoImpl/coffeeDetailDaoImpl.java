@@ -12,6 +12,7 @@ import cc.factory.com.dto.cartDto;
 import cc.factory.com.dto.coffeeDto;
 import cc.factory.com.dto.orderDetailDto;
 import cc.factory.com.dto.orderDto;
+import cc.factory.com.dto.orderParam;
 
 @Repository
 public class coffeeDetailDaoImpl implements coffeeDetailDao {
@@ -90,5 +91,20 @@ public class coffeeDetailDaoImpl implements coffeeDetailDao {
 	@Override
 	public List<coffeeDto> bestCoffee() {
 		return sqlSession.selectList(ns+"bestCoffee");
+	}
+
+	@Override
+	public List<Integer> myOrderList(orderParam param) {
+		return sqlSession.selectList(ns+"myOrderList",param);
+	}
+
+	@Override
+	public orderDetailDto myOrderDtoList(int seq) {
+		return sqlSession.selectOne(ns+"myOrderDtoList",seq);
+	}
+
+	@Override
+	public int myOrderStat(int seq) {
+		return sqlSession.selectOne(ns+"myOrderStat",seq);
 	}
 }

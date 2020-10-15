@@ -8,6 +8,7 @@ import cc.factory.com.dto.cartDto;
 import cc.factory.com.dto.coffeeDto;
 import cc.factory.com.dto.orderDetailDto;
 import cc.factory.com.dto.orderDto;
+import cc.factory.com.dto.orderParam;
 
 public interface coffeeDetailService {
 
@@ -26,5 +27,8 @@ public interface coffeeDetailService {
 	
 	//추가
 	public List<coffeeDto> bestCoffee();
+	
+	// 추가 2020.10.15
+	public List<orderDetailDto> myOrderList(orderParam param);
 		
 }

@@ -13,6 +13,7 @@ import cc.factory.com.dto.cartDto;
 import cc.factory.com.dto.coffeeDto;
 import cc.factory.com.dto.orderDetailDto;
 import cc.factory.com.dto.orderDto;
+import cc.factory.com.dto.orderParam;
 import cc.factory.com.service.coffeeDetailService;
 
 @Service
@@ -125,4 +126,21 @@ public class coffeeDetailServiceImpl implements coffeeDetailService {
 	public List<coffeeDto> bestCoffee() {
 		return dao.bestCoffee();
 	}
+
+	@Override
+	public List<orderDetailDto> myOrderList(orderParam param) {
+		
+		List<Integer> seqList = dao.myOrderList(param);
+		List<orderDetailDto> list = new ArrayList<>();
+		
+		for(int i=0; i<seqList.size(); i++) {
+			int seq = seqList.get(i);
+			orderDetailDto dto = dao.myOrderDtoList(seq);
+			int status = dao.myOrderStat(seq);
+			dto.setOrderStatus(status);
+			list.add(dto);
+		}
+		return list;
+	}
+	
 }

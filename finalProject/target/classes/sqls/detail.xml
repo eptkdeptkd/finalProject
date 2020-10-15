@@ -84,6 +84,20 @@
 	ORDER BY ORDER_COUNT DESC
 </select>
 
+<select id="myOrderList" parameterType="cc.factory.com.dto.orderParam" resultType="java.lang.Integer">
+	SELECT SEQ FROM CC_ORDER WHERE ID = #{id} AND ODATE >= #{today}
+</select>
+
+<select id="myOrderDtoList" parameterType="java.lang.Integer" resultType="cc.factory.com.dto.orderDetailDto">
+	SELECT SEQ, ORDER_SEQ, COFFEE_NAME, SHOT, SYRUP, ASK
+	FROM CC_ORDER_DETAIL
+	WHERE ORDER_SEQ = #{seq}
+</select>
+
+<select id="myOrderStat" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+	SELECT NVL(COUNT(*),0) FROM CC_ALARM WHERE ORDER_SEQ = #{seq}
+</select>
+
 </mapper>
 
 

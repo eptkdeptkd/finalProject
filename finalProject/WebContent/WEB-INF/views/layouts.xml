@@ -45,6 +45,10 @@
 	<put-attribute name="main" value="/WEB-INF/views/admin/admin_order_handle.jsp"/>
 </definition>
 
+<definition name="myOrder.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/mypage/myOrder.jsp"/>
+</definition>
+
 <!-- 진영님 -->
 <definition name="addSide.tiles" extends="main.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/admin/admin_side_add.jsp"/>
