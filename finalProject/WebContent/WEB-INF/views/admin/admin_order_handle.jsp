@@ -69,6 +69,8 @@ $("#finbtn").click(function(){
 				if(wsocket){
 					wsocket.send("${login.id},"+id+",완료");
 				}
+
+				location.href="orderhandleMove.do";
 			}
 		},
 		error:function(){
