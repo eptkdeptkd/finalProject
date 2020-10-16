@@ -37,6 +37,9 @@ public class PollController {
 		//String id = "aaa";
 		
 		List<PollDto> list = service.getPollAllList(id);
+		
+		System.out.println("list size = " +list.size());
+		
 		model.addAttribute("plists", list);		
 		
 		return "polllist.tiles";
