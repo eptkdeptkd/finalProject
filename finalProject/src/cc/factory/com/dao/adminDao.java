@@ -20,7 +20,6 @@ public interface adminDao {
 	public int delCoffee(int seq);
 	public List<coffeeDto> getCoffeeList();
 	public int orderDelUp(int seq);
-	
 	boolean addSide(SideDto dto);// 사이드 추가
 	List<SideDto>getsideList();// 사이드 리스트
 	void sideDelete(int seq);// 사이드 삭제 

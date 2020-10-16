@@ -44,9 +44,11 @@
 </update>
 
 <select id="bestMember" resultType="cc.factory.com.login.MemberDto">
-	SELECT * 
-	FROM CC_MEMBER
-	ORDER BY VISITCOUNT DESC
+	<![CDATA[	SELECT *
+	FROM 
+	(SELECT ROW_NUMBER()OVER(ORDER BY VISITCOUNT DESC) AS RNUM , A.*
+	FROM CC_MEMBER A )
+	WHERE RNUM <=3]]>
 </select>
 
 </mapper>

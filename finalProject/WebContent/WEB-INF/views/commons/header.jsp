@@ -74,7 +74,11 @@
 
 <script type="text/javascript">
 	var wsocket;
-
+	let today = new Date();
+	const Year = today.getFullYear();
+	const Month = parseInt(today.getMonth())+1;
+	today = Year + "-"+ Month;
+	console.log("today = " +today);
 	function connect(){
 
 		if(wsocket != undefined && wsocket.readyState != WebSocket.CLOSED ){
@@ -123,6 +127,16 @@
 		disconnect();
 		location.href="sessionOut.do";
 	}
+
+
+	//Navbar toggle button for small screen
+	const navbarMenu = document.querySelector(".navbar_menu");
+
+	const navbarToggleBtn = document.querySelector(".navbar_toggle-btn");
+	navbarToggleBtn.addEventListener("click", () => {
+	  navbarMenu.classList.toggle("open");
+	});
+
     </script>
 
 

@@ -68,9 +68,12 @@
 <section id="menu" class="section">
 	<div class="section_container">
 
+		<div style="margin-bottom:5px;">
+			오늘의 날씨 : 
+			<img src="<%=request.getContextPath() %>/image/${weather}.PNG" title="오늘의 날씨" width="30" height="20"/>
+		</div>
+		
 		<h2>회원 정보</h2>
-
-
 
 		<br> ${login.visitcount%10 }장 - 나머지값 확인용 <br>
 

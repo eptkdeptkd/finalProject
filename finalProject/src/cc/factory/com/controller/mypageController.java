@@ -92,7 +92,23 @@ public class mypageController {
 					doc = Jsoup.connect(WeatherURL).get();
 					Elements elem = doc.select(".weather_area .summary  .weather");
 					String[] str = elem.text().split(" ");
-					model.addAttribute("weather", elem);
+					String estr = elem.toString();
+					int fdex = estr.indexOf('>');
+					int ldex = estr.lastIndexOf('<');
+					estr = estr.substring(fdex+1, ldex);
+					String weather = "";
+					
+					if(estr.contains("비")) {
+						weather = "rain";
+					}else if(estr.contains("흐림") || estr.contains("구름")) {
+						weather = "cloud";
+					}else if(estr.contains("눈")) {
+						weather = "snow";
+					}else {
+						weather = "sun";
+					}
+					
+					model.addAttribute("weather", weather);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

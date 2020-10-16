@@ -3,6 +3,12 @@
 
   <section id="footer">
     <p class="contact_rights">
-      ⓒ 2020 Charles Factory - All rights reserved
+      ⓒ <span id="d"></span> Charles Factory - All rights reserved
     </p>
   </section>
+  
+  <script type="text/javascript">
+	$(document).ready(function(){
+		$("#d").html(today);
+	});
+  </script>

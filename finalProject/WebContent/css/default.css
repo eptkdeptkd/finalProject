@@ -122,27 +122,4 @@ p {
         --font-small: 14px;
         --font-micro: 12px;
     }
-
-    .navbar_toggle-btn {
-        display: block;
-        right: 16px;
-        font-size: var(--font-medium);
-    }
-
-    #navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        background-color: var(--color-light-brown);
-    }
-	
-    .navbar_menu {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-        display: none;
-    }
-
-    .navbar_menu.open {
-        display: block;
-    }
 }

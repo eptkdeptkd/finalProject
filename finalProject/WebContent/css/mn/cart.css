@@ -1,17 +1,4 @@
 
-/* Section common */
-.section {
-    padding: 110px 0 100px 0;
-    margin: auto;
-    text-align: center;
-}
-
-.section_container {
-    max-width: 1200px;
-    margin: auto;
-}
-
-
 .menu_cart h1 {
     font-size: var(--font-large);
     font-weight: var(--weight-bold);

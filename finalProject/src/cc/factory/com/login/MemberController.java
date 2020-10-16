@@ -105,6 +105,19 @@ public class MemberController {
 	@RequestMapping(value = "bestMember.do", method = { RequestMethod.GET, RequestMethod.POST})
 	public List<MemberDto> bestMember() {
 		List<MemberDto> mlist = service.bestMember();
+		
+		for(int i=0; i<mlist.size(); i++) {
+			String sid = mlist.get(i).getName();
+			int mid = sid.length()/2;
+			String s = "";
+			for(int j=0; j<sid.length(); j++) {
+				if(j == mid) s += "*";
+				else s += sid.charAt(j);
+			}
+			sid = s;
+			mlist.get(i).setName(sid);
+		}
+		
 		return mlist;
 	}
 }

@@ -9,14 +9,10 @@ public interface PostScriptService {
 	
 	List<PostScriptDto> getPsList(PostScriptParam ps);
 	int getPsCount(PostScriptParam ps);
-	
 	boolean writePs(PostScriptDto dto);
-	
 	PostScriptDto getpostScript(int seq);
 	void readCountPs(int seq);
-	
 	void reply(PostScriptDto ps);
-	
 	void deletePs(int seq);
 	void updatePs(PostScriptDto ps);
 
