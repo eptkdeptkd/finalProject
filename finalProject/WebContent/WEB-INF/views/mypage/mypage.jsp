@@ -223,17 +223,158 @@
 
 		<div>
 			<ul id="tes">
-				<li id="yup1">li 1</li>
-				<li value="yup2">li 2</li>
-				<li value="yup3">li 3</li>
-				<li value="yup4">li 4</li>
+				<li id="yup1">공지사항</li>
+				<li value="yup2">QnA</li>
+				<li value="yup3">후기</li>
+				<li value="yup4">투표</li>
 			</ul>
 		</div>
 		<br>
-		<div id="lis1">${list }</div>
-		<%-- <div id="lis2">${qlist }</div>
-		<div id="lis3">${ilist }</div>
-		<div id="lis4">${clist }</div> --%>
+		<!--  -->
+		<div id="lis1"> <!-- 공지사항 -->
+		<table border="1">
+			<tr>
+				<th>
+				번호
+				</th>
+				<th>
+				타이틀
+				</th>
+				<th>
+				작성일
+				</th>
+			</tr>
+			<c:forEach var="inf" items="${ilist }">
+				<tr>
+				<td>
+				1
+				</td>
+				<td>
+				${inf.title }
+				</td>
+				<td>
+				${inf.wdate }
+				</td>
+				</tr>
+			</c:forEach>
+		</table>
+		</div>	
+		<!-- seq=21, id=aaa, ref=9, step=0, depth=0, title=gggg, content=asdf, wdate=2020-10-15 12:06:14.0, del=0, readcount=1, filename=1602731174792.png, oldfilename=file.png -->
+		
+		<div id="lis2"> <!-- qna -->
+		<table border="1">
+			<tr>
+				<th>
+				번호
+				</th>
+				<th>
+				타이틀
+				</th>
+				<th>
+				조회수
+				</th>
+				<th>
+				작성일
+				</th>
+			</tr>
+			<c:forEach var="qna" items="${qlist }">
+				<tr>
+				<td>
+				1
+				</td>
+				<td>
+				${qna.title }
+				</td>
+				<td>
+				${qna.readcount }
+				</td>
+				<td>
+				${qna.wdate }
+				</td>
+				</tr>
+			</c:forEach>
+		</table>
+		</div>	
+		<!-- seq=102, id=d4ntsky, title=수업, content=ㅁㄴㅇㅁ, secret=0, readcount=59, wdate=2020-10-12 16:20:11.0 -->
+		
+		
+		
+		
+		
+		
+		
+		<div id="lis3"><!-- 후기 -->
+			<table border="1">
+			<tr>
+				<th>
+				번호
+				</th>
+				<th>
+				타이틀
+				</th>
+				<th>
+				조회수
+				</th>
+				<th>
+				작성일
+				</th>
+			</tr>
+			<c:forEach var="psc" items="${rlist }">
+				<tr>
+				<td>
+				1
+				</td>
+				<td>
+				${psc.title}
+				</td>
+				<td>
+				${psc.readcount }
+				</td>
+				<td>
+				${psc.wdate }
+				</td>
+				</tr>
+			</c:forEach>
+		</table>
+		</div>
+		<!-- seq=13, id=오재, ref=11, step=0, depth=0, title=아, content=아, wdate=2020-10-12 16:56:39.0, del=0, readcount=0 -->
+		
+		
+		<div id="lis4">	<!-- 투표 -->
+					<table border="1">
+			<tr>
+				<th>
+				번호
+				</th>
+				<th>
+				타이틀
+				</th>
+				<th>
+				투표수
+				</th>
+				<th>
+				투표여부
+				</th>
+			</tr>
+			<c:forEach var="pol" items="${plist }">
+				<tr>
+				<td>
+				1
+				</td>
+				<td>
+				${pol.question}
+				</td>
+				<td>
+				${pol.polltotal }
+				</td>
+				<td>
+				${pol.vote }
+				</td>
+				</tr>
+			</c:forEach>
+		</table>
+		</div>
+		<!-- pollid=13, id=aaa, question=ggg, sdate=Thu Oct 15 00:00:00 KST 2020, edate=Fri Oct 16 00:00:00 KST 2020, regdate=Thu Oct 15 12:06:41 KST 2020, itemcount=2, polltotal=2, vote=false, filename=1602731201187.PNG, oldfilename=ofin1.PNG -->
 
 
 	</div>
@@ -283,22 +424,22 @@
 	$("#tes li").click(function() {
 		console.log($(this).text());
 		var check = $(this).text();
-		if (check == "li 1") {
+		if (check == "공지사항") {
 			$("#lis1").show();
 			$("#lis2").hide();
 			$("#lis3").hide();
 			$("#lis4").hide();
-		} else if (check == "li 2") {
+		} else if (check == "QnA") {
 			$("#lis1").hide();
 			$("#lis2").show();
 			$("#lis3").hide();
 			$("#lis4").hide();
-		} else if (check == "li 3") {
+		} else if (check == "후기") {
 			$("#lis1").hide();
 			$("#lis2").hide();
 			$("#lis3").show();
 			$("#lis4").hide();
-		} else if (check == "li 4") {
+		} else if (check == "투표") {
 			$("#lis1").hide();
 			$("#lis2").hide();
 			$("#lis3").hide();

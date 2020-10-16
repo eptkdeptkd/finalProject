@@ -10,15 +10,53 @@
     margin: auto;
 }
 
-/*구글 폰트 사용*/
-p {
-	font-family: 'Poor Story', cursive;
-	font-size: 20px;
-	
+.categories_list {
+    margin: 40px;
 }
-h1{
-	font-family: 'Poor Story', cursive;
-	font-size: 50px;
-	color: 	#774936;
-	font-weight: bold ;
+
+/*  */
+.category_btn {
+    border: 1px solid var(--color-white);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    padding: 8px 24px;
+    position: relative;
 }
+
+.category_btn.selected,
+.category_btn:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+}
+
+.category_btn.selected,
+.category_btn:hover {
+    opacity: 1;
+    top: 0;
+}
+
+/* For below 768px screen width */
+@media screen and (max-width: 768px) {
+    .category_btn {
+        margin: 4px 0;
+        width: 100%;
+    }
+}
+
+/*  */
+.content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 300px;
+    margin: 8px;
+    background-color: var(--color-light-white);
+    overflow: hidden;
+}
+
+.content_box.invisible {
+    display: none;
+}
+

@@ -6,11 +6,14 @@
 	System.out.println("세션값 확인용 " + session.getAttribute("login"));
 %>
 
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
-
-  <section id="menu" class="section">
-    <div class="section_container">
-	<h2>QnA 게시판</h2>
+  <section class="section">
+  <div class="section_container">
+  
+	<h2 class="cart_h2">QnA 게시판</h2>
+	
 
 <form action="" name="frmForm1" id="_frmFormSearch" method="get">
 <table style="margin-left: auto; margin-right: auto; margin-top: 3px; margin-bottom: 3px">
@@ -35,8 +38,9 @@
 </tr>
 </table>
 </form>
-<div align="center">
-<table class="list_table" style="width: 85%" id="_list_table" border="1">
+
+
+<table class="list_table" style="width: 85%;" id="_list_table" border="1">
 	<colgroup>
 		<col width="50px">
 		<col width="150px">
@@ -53,7 +57,7 @@
 		<th style="text-align: center;">잠금</th>
 	</tr>
 </table>
-</div>
+
 <br><br>
 
 <!-- paging -->
@@ -73,13 +77,15 @@
 </c:if>
 
 </div>
-
 </section>
 
 <!-- java 등분과 나눈 값의 위치 0.1과 1 사이에서 값이 들어오고 위치값내보내고 -->
 
 
 <script>
+
+var sessId = "${login.id}";
+var sessAuth = "${login.auth}";
 //초기화
 getQnaData(0);
 getQnaCount();
@@ -101,17 +107,32 @@ function getQnaData( pNumber ){
 		//	alert("success");
 			//console.log(list);		
 			$(".list_col").remove();
-			
+
 			$.each(list, function(i, val){
 				
-				if(val.secret==0){	//보여주는 경우
-					
-					str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a>";
-				}else{
-					str="<a id='replyCount" + val.seq + "'>" + val.title + "</a>";
+				//console.log(val);//id/title/content/secret/seq/wdate
+				if(sessAuth==1) {			//관리자의 경우
+					//다보여지게
+					if(val.secret == 0) {							//잠겨있지 않은 경우
+						var str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a>";
+					}else{											//잠긴 경우
+						var str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a><i class='fas fa-lock'></i>";
+					}	
+				}else if(sessAuth != 1) {	//관리자가 아닌 경우
+					if(sessId==val.id){					//본인이 로그인한 경우
+						if(val.secret == 0) {							//잠겨있지 않은 경우
+							var str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a>";
+						}else{											//잠긴 경우
+							var str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a><i class='fas fa-lock'></i>";
+						}	
+					}else if(sessId != val.id) {			//본인이 아닌 사람인 경우
+						if(val.secret == 0) {							//잠겨있지 않은 경우
+							var str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a>";
+						}else{											//잠긴 경우
+							var str="<a id='replyCount" + val.seq + "'>" + val.title + "</a><i class='fas fa-lock'></i>";
+						}
+					}
 				}
-
-				
 				
 				let app = "<tr class='list_col'>"
 							+ "<td>" + (i + 1) + "<input type='hidden' class='cReply' value='"+ val.seq + "'></td>"
@@ -160,18 +181,6 @@ function getQnaData( pNumber ){
 				});
 				
 			});
-
-			//잠금 열어주는
-			var id = "${login.id}";
-			$(".secEnt").each(function(idx, item){
-				console.log(item.value);
-				if(id==item.value) {
-					if($($(".secNum")[idx]).val()==1) {
-						$($(".secEnt")[idx]).attr("type","button");
-					}
-				}
-			});
-		
 			
 		},
 		error:function(){

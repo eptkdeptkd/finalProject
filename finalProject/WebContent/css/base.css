@@ -1,0 +1,113 @@
+/* Global */
+:root {
+    /* Color */
+    --color-white: #ffffff;
+    --color-light-white: #eeeeee;
+    --color-dark-white: #bdbdbd;
+    --color-orange: #feb546;
+    --color-black: #000000;
+    --color-brown: #a52a2a;
+    --color-light-brown: #f5f0e6;
+
+    /* Font size */
+    --font-large: 48px;
+    --font-medium: 28px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+
+    /* Font weight */
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+
+    /* Size */
+    --size-border-radius: 4px;
+
+    /* Animation */
+    --animation-duration: 300ms;
+}
+
+/*
+	<link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
+	font-family: 'Stylish', sans-serif;
+	
+	<link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+	font-family: 'Poor Story', cursive;
+	
+	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+	font-family: 'Do Hyeon', sans-serif;
+
+*/
+/* Universal tags */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    cursor: default;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-white);
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* Typography */
+h1 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-bold);
+    color: var(--color-black);
+    margin: 16px 0px;
+    
+    font-family: 'Poor Story', cursive;
+    /*
+    font-size: 50px;
+	color: 	#774936;
+	font-weight: bold ;
+    */
+}
+
+h2 {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-black);
+    margin: 8px 0;
+    
+    font-family: 'Poor Story', cursive;
+}
+
+h3 {
+    font-size: var(--font-regular);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 8px 0;
+    
+    font-family: 'Poor Story', cursive;
+}
+
+p {
+    font-size: var(--font-micro);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 4px 0;
+    
+    font-family: 'Poor Story', cursive;
+}

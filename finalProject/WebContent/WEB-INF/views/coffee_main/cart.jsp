@@ -3,7 +3,7 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/cart.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/mn/cart.css">
 
   <section id="menu" class="section">
         <div class="section_container">

@@ -88,7 +88,7 @@
 </definition>
 
 <definition name="ranking.tiles" extends="main.tiles">
-	<put-attribute name="main" value="/WEB-INF/views/mypage/mypage.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/mypage/ranking.jsp"/>
 </definition>
 
 <!-- 오재님 -->

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/coffeeadd.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/mn/coffeeAdd.css">
 
 <!--Coffee add - 메뉴 추가 페이지-->
     <section id="menu" class="section">

@@ -26,6 +26,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cc.factory.com.dto.CalendarDto;
 import cc.factory.com.dto.InfoDto;
 import cc.factory.com.dto.InfoParam;
+import cc.factory.com.dto.PollDto;
+import cc.factory.com.dto.PostScriptDto;
+import cc.factory.com.dto.PostScriptParam;
 import cc.factory.com.dto.QnaDto;
 import cc.factory.com.dto.QnaParam;
 import cc.factory.com.dto.SideDto;
@@ -37,6 +40,8 @@ import cc.factory.com.dto.orderParam;
 import cc.factory.com.login.MemberDto;
 import cc.factory.com.service.CalendarService;
 import cc.factory.com.service.InfoService;
+import cc.factory.com.service.PollService;
+import cc.factory.com.service.PostScriptService;
 import cc.factory.com.service.QnaService;
 import cc.factory.com.service.coffeeDetailService;
 
@@ -44,47 +49,66 @@ import cc.factory.com.service.coffeeDetailService;
 public class mypageController {
 	
 	@Autowired
-	QnaService qservice;
+	InfoService iSvc;
 	@Autowired
-	InfoService iservice;
+	QnaService qSvc;
 	@Autowired
-	CalendarService cservice;
+	PostScriptService rSvc;
 	@Autowired
-	coffeeDetailService service;
-	
+	PollService pSvc;
+	@Autowired
+	coffeeDetailService fSvc;
+
 	// 마이페이지 임시
-	@RequestMapping(value = "mypage.do", method=RequestMethod.GET)
-	public String mypage(Model model, HttpServletRequest req, QnaParam qp, InfoParam ip) {
-		
-		String id = (String) req.getSession().getId();
-		id = "OJEA";
-		
-		List<cartDto> list = service.getCartAll(id);
-		model.addAttribute("list",list);
-		System.out.println(list);		
-		
+	@RequestMapping(value = "mypage.do", method = RequestMethod.GET)
+	public String mypage(Model model, HttpServletRequest req, QnaParam qp, InfoParam ip, PostScriptParam rp) {
+
+		MemberDto mem = (MemberDto) req.getSession().getAttribute("login");
+		String id = (String) mem.getId();
+
+		// 공지사항
+		List<InfoDto> ilist = iSvc.getInfoList(ip);
+
+		System.out.println("id 확인   " + id);
+
+		// QnA
 		qp.setChoice("writer");
-		qp.setSearchWord("d4ntsky");
-		List<QnaDto> qlist = qservice.getQnaList(qp);
-		model.addAttribute("qlist",qlist);
-		System.out.println(qlist);
-		
-		ip.setChoice("writer");
-		ip.setSearchWord("aaa");
-		List<InfoDto> ilist = iservice.getInfoList(ip);
-		model.addAttribute("ilist",ilist);
-		System.out.println(ilist);
-		
-		List<CalendarDto> clist = cservice.getCalList();
-		model.addAttribute("clist",clist);
-		
+		qp.setSearchWord(id);
+		List<QnaDto> qlist = qSvc.getQnaList(qp);
+
+		// 후기
+		rp.setChoice("writer");
+		rp.setSearchWord(id);
+		List<PostScriptDto> rlist = rSvc.getPsList(rp);
+
+		// 투표
+		List<PollDto> plist = pSvc.getPollAllList(id);
+
+		// 추가 2020.10.16
+				String WeatherURL = "https://weather.naver.com/today";
+				Document doc;
+				
+				try {
+					doc = Jsoup.connect(WeatherURL).get();
+					Elements elem = doc.select(".weather_area .summary  .weather");
+					String[] str = elem.text().split(" ");
+					model.addAttribute("weather", elem);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+		model.addAttribute("ilist", ilist);
+		model.addAttribute("qlist", qlist);
+		model.addAttribute("rlist", rlist);
+		model.addAttribute("plist", plist);
+
 		return "myPage.tiles";
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "bestCoffee.do", method = { RequestMethod.GET, RequestMethod.POST})
 	public List<coffeeDto> bestCoffee() {
-		List<coffeeDto> clist = service.bestCoffee();
+		List<coffeeDto> clist =  fSvc.bestCoffee();
 		return clist;
 	}
 	
@@ -106,7 +130,7 @@ public class mypageController {
 		String t = format1.format(time);
 		
 		orderParam param = new orderParam(id,t);
-		List<orderDetailDto> list = service.myOrderList(param);
+		List<orderDetailDto> list =  fSvc.myOrderList(param);
 		model.addAttribute("list",list);
 		
 		return "myOrder.tiles";

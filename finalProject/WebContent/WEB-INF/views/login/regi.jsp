@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8"/>      
 
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/psregi.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/oj/regi.css">
 
 <!-- cookie -->
 <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>

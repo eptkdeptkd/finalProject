@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<link rel="stylesheet" href="css/calendar.css">
+<link href="<%=request.getContextPath()%>/css/jy/calendar.css" rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/callib/main.css" rel="stylesheet" />
 <script src="<%=request.getContextPath()%>/callib/main.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

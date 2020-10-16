@@ -30,7 +30,9 @@
 			</tr>
 			<tr>
 				<td>
+				
 					<button type="button" id="write">글 쓰기</button>
+				
 				</td>
 			</tr>
 		</table>

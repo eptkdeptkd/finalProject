@@ -3,10 +3,16 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<%-- 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/header.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/footer.css">
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/jquery/main.js">
+--%>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/base.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/header.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/footer.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">

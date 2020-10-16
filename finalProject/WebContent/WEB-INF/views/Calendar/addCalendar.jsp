@@ -6,7 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <fmt:requestEncoding value="UTF-8"/>
 
-<link rel="stylesheet" href="css/addcalendar.css">
+<link rel="stylesheet" href="css/jy/addcalendar.css">
 
 <%
 CalendarParam jcal = (CalendarParam)request.getAttribute("cal");

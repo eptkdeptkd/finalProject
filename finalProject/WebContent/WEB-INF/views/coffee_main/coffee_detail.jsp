@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/default.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/coffeedetail.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/jquery/main.js"> 
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/mn/coffeeDetail.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/mn/coffeeAdd.css">
 
 <!--Coffee menu detail - 메뉴 상세 페이지-->
     <section class="section">

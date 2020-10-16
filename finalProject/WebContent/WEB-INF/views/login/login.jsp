@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/pslogin.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/oj/login.css">
 
 <meta charset="UTF-8">
 <title>Insert title here</title>

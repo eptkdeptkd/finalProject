@@ -46,19 +46,7 @@ public class mainController {
 	@RequestMapping(value = "main.do", method = { RequestMethod.GET, RequestMethod.POST})
 	public String map(Model model) {
 		System.out.println("mainController map()");
-		
-		String WeatherURL = "https://weather.naver.com/today";
-		Document doc;
-		
-		try {
-			doc = Jsoup.connect(WeatherURL).get();
-			Elements elem = doc.select(".weather_area .summary  .weather");
-			String[] str = elem.text().split(" ");
-			model.addAttribute("weather", elem);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+
 		return "main.tiles";
 	}
 	
