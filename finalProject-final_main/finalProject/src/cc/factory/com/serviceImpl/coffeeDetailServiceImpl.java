@@ -115,4 +115,14 @@ public class coffeeDetailServiceImpl implements coffeeDetailService {
 		return dao.getCoffeeKindList(kind);
 	}
 
+	@Override
+	public boolean cartDel(int seq) {
+		return dao.cartDel(seq)>0?true:false;
+	}
+
+	//추가
+	@Override
+	public List<coffeeDto> bestCoffee() {
+		return dao.bestCoffee();
+	}
 }

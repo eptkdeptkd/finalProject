@@ -46,7 +46,7 @@ public class InfoController {
 		List<InfoDto> list = service.getInfoList(param);
 		model.addAttribute("infolist", list);
 
-		System.out.println("list = "+ list.toString());
+		//System.out.println("list = "+ list.toString());
 
 		//System.out.println("디비가서 리스트 받고 모델로 보냄 ");
 		// 글의 총수
@@ -85,7 +85,7 @@ public class InfoController {
 		List<InfoDto> list = service.getInfoList(param);
 		model.addAttribute("infolist", list);
 
-		System.out.println("list = "+ list.toString());
+		//System.out.println("list = "+ list.toString());
 
 		//System.out.println("디비가서 리스트 받고 모델로 보냄 ");
 		// 글의 총수
@@ -115,7 +115,7 @@ public class InfoController {
 	@RequestMapping(value = "infowriteAf.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String infowriteAf(InfoDto info, @RequestParam(value = "fileload", required = false)MultipartFile fileload, 
 			HttpServletRequest req) throws Exception {
-		System.out.println("infoWriteAf Dto = " + info.toString());
+		//System.out.println("infoWriteAf Dto = " + info.toString());
 		
 		if (info.getContent().equals("") || info.getTitle().equals("")) {
 			return "infowrite.tiles";
@@ -186,7 +186,7 @@ public class InfoController {
 		service.readCount(seq);
 		
 		int count = service.getInfoReCount(seq);
-		System.out.println("count== "+count);
+		//System.out.println("count== "+count);
 		//System.out.println("Info Detail Dto = " + info.toString());
 
 		model.addAttribute("info", info);
@@ -201,7 +201,7 @@ public class InfoController {
 	 @RequestMapping(value = "writeRe.do", method = {RequestMethod.GET, RequestMethod.POST}) 
 	 public String writeRe(InfoReDto infoRe, Model model) {
 	
-		 System.out.println("InfoReDto~~~==== "+ infoRe.toString());
+		// System.out.println("InfoReDto~~~==== "+ infoRe.toString());
 		 boolean Y = service.writeRe(infoRe); 
 		 System.out.println(Y);
 		 if (Y) {

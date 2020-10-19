@@ -5,12 +5,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
  
-<section id="menu" class="section">
+<section id="menu" class="section" style="padding-top: 300px; padding-bottom: 120px;">
     <div class="section_container">
 
 
 		
-<hr>		
+		
 		
 		<div align="center" >
 			 <img src="image/logo.png" alt="내용확인" style="width: 100px; height: 100px;"> 
@@ -21,19 +21,21 @@
 		
 		
 		<div align="center">
-			<a style=" background-color:#2E9AFE; color: #fff; border-radius: var(--size-border-radius); margin-right: 500px;">&nbsp No. ${poll.pollid} &nbsp  </a>
+			<a style=" background-color:#2E9AFE; color: #fff; border-radius: var(--size-border-radius); margin-right: 500px;">&nbsp; No. ${poll.pollid} &nbsp;  </a>
 			<%-- <p style="padding-right: 400px;">No.${poll.pollid}</p> --%>
 			
 			<h2 style="font-family: 'Stylish', sans-serif; padding-bottom: 10px; font-size: 48px;">${poll.question }</h2>
-			
+			<hr>
 			<%-- <i class="far fa-calendar-alt"></i> ${poll.sdate } ~ ${poll.edate } --%>
-			<i class="far fa-calendar-alt" style="color: #aeaeae; padding-bottom: 50px;">&nbsp ${poll.sdate }~${poll.edate }</i>
+			<i class="far fa-calendar-alt" style="color: #aeaeae; padding-bottom: 50px;">&nbsp; ${poll.sdate }~${poll.edate }</i>
 			
 		
 <br>
 			<c:if test="${poll.filename eq null}">
 <br>
+<hr>
 				<textarea rows="10" cols="50">${poll.question }</textarea>
+<hr>
 <br>
 			</c:if>
 			
@@ -60,10 +62,10 @@
 		
 		
 		
-		
-		<!-- <a href="polllist.do" title="돌아가기">돌아가기</a>	 -->
-	<a href="polllist.do" class="category_btn" style="border: 1px solid #aeaeae; color: #000; text-decoration: none;">돌아가기</a>
-
+	<div style="padding-top: 70px;">
+			<!-- <a href="polllist.do" title="돌아가기">돌아가기</a>	 -->
+		<a href="polllist.do" class="category_btn" style="border: 1px solid #aeaeae; color: #000; text-decoration: none;">돌아가기</a>
+	</div>
 
 
 

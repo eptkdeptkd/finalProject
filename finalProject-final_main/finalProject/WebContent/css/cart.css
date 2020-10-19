@@ -1,165 +1,53 @@
-/* Global */
-
-:root {
-    /* Color */
-    --color-white: #ffffff;
-    --color-light-white: #eeeeee;
-    --color-dark-white: #bdbdbd;
-    --color-orange: #feb546;
-    --color-black: #000000;
-    --color-brown: #a52a2a;
-    --color-light-brown: #f5f0e6;
-
-    /* Font size */
-    --font-large: 48px;
-    --font-medium: 28px;
-    --font-regular: 18px;
-    --font-small: 16px;
-    --font-micro: 14px;
-
-    /* Font weight */
-    --weight-bold: 700;
-    --weight-semi-bold: 600;
-    --weight-regular: 400;
-
-    /* Size */
-    --size-border-radius: 4px;
-
-    /* Animation */
-    --animation-duration: 300ms;
-}
-
-/* Universal tags */
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Open Sans", sans-serif;
-    margin: 0;
-    cursor: default;
-}
-
-a {
-    text-decoration: none;
-    color: var(--color-white);
-}
-
-ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-li {
-    list-style: none;
-}
-
-button {
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    outline: none;
-}
-
-/* Typography */
-h1 {
+.menu_cart h1 {
     font-size: var(--font-large);
     font-weight: var(--weight-bold);
     color: var(--color-black);
     margin: 16px 0px;
 }
 
-h2 {
+.cart_h2 {
     font-size: var(--font-medium);
     font-weight: var(--weight-semi-bold);
     color: var(--color-black);
-    margin: 8px 0;
+    margin:8px 0;
+	text-align:center;
+	font-family: 'Roboto Slab', serif;
 }
 
-h3 {
+.menu_cart h3 {
     font-size: var(--font-regular);
     font-weight: var(--weight-regular);
     color: var(--color-black);
     margin: 8px 0;
+    text-align:center;
+    font-family: 'Oswald', sans-serif;
 }
 
-p {
+.menu_cart p {
     font-size: var(--font-micro);
     font-weight: var(--weight-regular);
     color: var(--color-black);
     margin: 4px 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
-/* Header */
-#navbar {
-    position: fixed;
-    width: 100%;
+.menu_cart {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-light-brown);
-    padding: 8px 16px;
-    z-index: 1;
-}
-
-.navbar_menu {
-    display: flex;
-}
-
-.navbar_menu_item {
-    padding: 8px 12px;
-    margin: 0 4px;
-    color: var(--color-black);
-    cursor: pointer;
-}
-
-.navbar_toggle-btn {
-    position: absolute;
-    top: 24px;
-    right: 32px;
-    font-size: 24px;
-    color: var(--color-black);
-    display: none;
-}
-
-/* Section common */
-.section {
-    padding: 50px;
-    margin: auto;
-    text-align: center;
-}
-
-.section_container {
-    max-width: 1200px;
-    margin: auto;
-}
-
-/* Coffee menu detail */
-#menu {
-    padding-top: 110px;
-}
-
-.menu_admin {
-    display: flex;
+    max-width:100%;
     justify-content: center;
     padding: 20px 0 30px 0;
-}
-
-.info_titleinput {
-    display: flex;
-    align-items: center;
-    padding: 4px;
 }
 
 .cart_table th {
     position: relative;
     height: 40px;
     padding: 8px;
-    background-color: #F7F7FA;
+    background-color: #e27049;
     box-shadow: 0 1px 0 0 #E1E1E8;
     letter-spacing: -0.1px;
     line-height: 24px;
     vertical-align: middle;
+    font-size:100pt;
 }
 
 .cart_table tr td {
@@ -170,44 +58,12 @@ p {
     line-height: 24px;
     border-bottom: 1px solid #E1E1E8;
     vertical-align: middle;
+    text-align:center;
+    font-family: 'Oswald', sans-serif;
 }
 
-.info_option {
-    display: flex;
-    justify-content: start;
-    padding: 5px 0;
-}
 
-.info_subtitle {
-    margin-right: 10px;
-}
 
-.minusbtn,
-.plusbtn {
-    width: 30px;
-    font-size: 20px;
-    color: var(--color-brown);
-    background-color: var(--color-light-brown);
-    border-color: var(--color-light-white);
-    border-radius: 5px;
-}
-
-.minusbtn,
-.plusbtn:hover {
-    cursor: pointer;
-}
-
-.qtyText {
-    width: 40px;
-    text-align: center;
-    font-size: var(--font-regular);
-    border: none;
-}
-
-.info_input {
-    width: 200px;
-    height: 30px;
-}
 
 .info_textarea {
     width: 200px;
@@ -217,20 +73,6 @@ p {
 .info_input::placeholder {
     font-size: var(--font-micro);
     font-family: "Open Sans", sans-serif;
-}
-
-.order_btn {
-    border: 1px solid var(--color-orange);
-    border-radius: var(--size-border-radius);
-    font-size: var(--font-regular);
-    position: relative;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.order_btn:hover {
-    background-color: var(--color-orange);
-    color: var(--color-white);
 }
 
 /* Footer */

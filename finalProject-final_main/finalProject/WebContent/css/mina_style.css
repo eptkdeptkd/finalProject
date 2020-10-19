@@ -1,0 +1,766 @@
+/* Global */
+
+:root {
+    /* Color */
+    --color-white: #ffffff;
+    --color-light-white: #eeeeee;
+    --color-orange: #feb546;
+    --color-black: #000000;
+    --color-light-brown: #f5f0e6;
+
+    /* Font size */
+    --font-large: 48px;
+    --font-medium: 28px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+
+    /* Font weight */
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+
+    /* Size */
+    --size-border-radius: 4px;
+
+    /* Animation */
+    --animation-duration: 300ms;
+}
+
+/* Universal tags */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    cursor: default;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-white);
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* Typography */
+h1 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-bold);
+    color: var(--color-black);
+    margin: 16px 0px;
+}
+
+h2 {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-black);
+    margin: 8px 0;
+}
+
+h3 {
+    font-size: var(--font-regular);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 8px 0;
+}
+
+p {
+    font-size: var(--font-micro);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 4px 0;
+}
+
+/* Header */
+#navbar {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-light-brown);
+    padding: 8px 16px;
+    z-index: 1;
+}
+
+.navbar_menu {
+    display: flex;
+}
+
+.navbar_menu_item {
+    padding: 5px;
+    margin: 0 4px;
+    color: var(--color-black);
+    cursor: pointer;
+}
+
+.navbar_toggle-btn {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 24px;
+    color: var(--color-black);
+    display: none;
+}
+
+.navbar_menu > li {
+	float:left;
+	width : 170px;
+}
+
+.navbar_menu >li > a{
+	display :block;
+	padding :8px 16px;
+	text-align:center;
+	color:#583101;
+	font-size:15pt;
+}
+
+.navbar_menu >li:hover .navbar_sub_menu{
+	opacity:1;
+	visibility:visible;
+}
+
+.navbar_sub_menu{
+	position :absolute;
+	background:begie;
+	opacity :0;
+	visibility: hidden;
+}
+
+.navbar_sub_menu > li {
+	padding: 5px;
+	border-bottom : 1px solid white;
+	background-color:#f5f0e6;
+	opacity:0.8;
+}
+
+.navbar_sub_menu > li > a{
+	color : #6f4518;
+}
+
+/* Section common */
+.section {
+    padding: 50px;
+    margin: auto;
+    text-align: center;
+}
+
+.section_container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/*cart 추가 */
+
+.menu_cart h1 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-bold);
+    color: var(--color-black);
+    margin: 16px 0px;
+}
+
+.cart_h2 {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-black);
+    margin:8px 0;
+	text-align:center;
+}
+
+.menu_cart h3 {
+    font-size: var(--font-regular);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 8px 0;
+    text-align:center;
+    font-family: 'Oswald', sans-serif;
+}
+
+.menu_cart p {
+    font-size: var(--font-micro);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 4px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.menu_cart {
+    display: flex;
+    max-width:100%;
+    justify-content: center;
+    padding: 20px 0 30px 0;
+}
+
+.cart_table th {
+    position: relative;
+    height: 40px;
+    padding: 8px;
+    background-color: #e27049;
+    box-shadow: 0 1px 0 0 #E1E1E8;
+    letter-spacing: -0.1px;
+    line-height: 24px;
+    vertical-align: middle;
+    font-size:100pt;
+}
+
+.cart_table tr td {
+    height: 50px;
+    padding: 8px;
+    background-color: #fff;
+    letter-spacing: -0.1px;
+    line-height: 24px;
+    border-bottom: 1px solid #E1E1E8;
+    vertical-align: middle;
+    text-align:center;
+    font-family: 'Oswald', sans-serif;
+}
+
+.cart_info_option {
+    display: flex;
+    justify-content: start;
+    padding: 5px 0;
+}
+
+.cart_info_subtitle {
+    margin-right: 10px;
+}
+
+.minusbtn,
+.plusbtn {
+    width: 30px;
+    font-size: 20px;
+    color: var(--color-brown);
+    background-color: var(--color-light-brown);
+    border-color: var(--color-light-white);
+    border-radius: 5px;
+}
+
+.minusbtn,
+.plusbtn:hover {
+    cursor: pointer;
+}
+
+.qtyText {
+    width: 40px;
+    text-align: center;
+    font-size: var(--font-regular);
+    border: none;
+}
+
+.menu_cart .info_input {
+    width: 200px;
+    height: 30px;
+    border-left: none;
+    border-right: none;
+    border-top:	none;
+}
+
+.order_btn {
+    border: 1px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top:10px;
+}
+
+.order_btn:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+}
+
+/* cart 여기까지 */
+
+
+/* 커피추가 화면 */
+.coffee_add_h2 {
+    font-size: 36pt;
+    color:black;
+    margin: 8px 0;
+    text-align:center;
+} 
+
+.menu_admin {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 50px 0;
+
+}
+
+.info_titleinput {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+
+.info_title {
+    width: 100px;
+}
+
+.info_input {
+    width: 200px;
+    height: 30px;
+}
+
+.info_textarea {
+    width: 200px;
+    height: 250px;
+}
+
+.info_input::placeholder,
+.info_textarea::placeholder {
+    font-size: var(--font-micro);
+    font-family: "Open Sans", sans-serif;
+}
+
+.coffeeadd_btn {
+    border: 1px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.coffeeadd_btn:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    font-family: 'Roboto Slab', serif;
+}
+
+
+/* 커피추가 여기까지 */
+
+/* 커피 삭제 추가 */
+.coffee_menu h1 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-bold);
+    color: var(--color-black);
+    margin: 16px 0px;
+}
+
+.coffee_menu h2 {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-black);
+    margin:8px 0;
+	text-align:center;
+	font-family: 'Roboto Slab', serif;
+}
+
+.del_h3 {
+    font-size: var(--font-medium);
+    /*font-weight: var(--weight-semi-bold);*/
+    color: var(--color-black);
+    margin:8px 0;
+	text-align:center;
+	font-size:36pt;
+}
+
+.coffee_menu h3 {
+    font-size: var(--font-regular);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 8px 0;
+    text-align:center;
+    font-family: 'Oswald', sans-serif;
+}
+
+.coffee_menu p {
+    font-size: var(--font-micro);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 4px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.coffee_menu {
+    display: flex;
+    max-width:100%;
+    justify-content: center;
+    padding: 20px 0 30px 0;
+}
+
+.coffee_table{
+	border-left:0px;
+	border-right:0px;
+	border-top:1px;
+	border-bottom:1px;
+	border-color:gray;
+	border-collapse:collapse;
+}
+
+.coffee_table th {
+    position: relative;
+    height: 43px;
+    padding: 8px;
+    background-color: #e76f51;
+    box-shadow: 0 3px 0 0 #E1E1E8;
+    letter-spacing: -0.1px;
+    line-height: 24px;
+    vertical-align: middle;
+    font-size:17pt;
+    text-align:center;
+    color:white;
+    font-weight:500;
+}
+
+.coffee_table tr td {
+    height: 50px;
+    padding: 8px;
+    background-color: #fff;
+    letter-spacing: -0.1px;
+    line-height: 24px;
+    border-bottom: 1px solid #E1E1E8;
+    vertical-align: middle;
+    text-align:center;
+    font-size:14pt;
+}
+
+.del_btn {
+    border: 1px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top:10px;
+}
+
+.del_btn:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+}
+
+/* 커피 삭제 여기까지 */
+
+/* 관리자 링크 화면 */
+.admin_link_container{
+	box-shadow: 2px 2px 5px lightgrey;
+	width: 500px;
+	margin-left: 25%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.admin_link_container li{
+	border-style:ridge;
+	border-width:thin;
+	border-color:lightgrey;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.admin_link_container .ap{
+	color:black;
+	text-decoration: none;
+	font-size:22pt;
+}
+
+.admin_link_container .ap:hover{
+	color:white;
+	background-color: #e76f51;
+	text-decoration: none;
+	font-size:22pt;
+}
+
+/* 관리자 링크 화면 여기까지 */
+
+/* 커피 주문 처리*/
+.oh_h3 {
+	ont-size: var(--font-medium);
+    /*font-weight: var(--weight-semi-bold);*/
+    color: var(--color-black);
+    margin:8px 0;
+	text-align:center;
+	font-size:36pt;
+}
+
+.order_menu {
+    display: flex;
+    max-width:100%;
+    justify-content: center;
+    padding: 20px 0 30px 0;
+}
+
+.order_table{
+	border-left:0px;
+	border-right:0px;
+	border-top:1px;
+	border-bottom:1px;
+	border-color:gray;
+	border-collapse:collapse;
+	
+}
+
+.order_table th {
+    position: relative;
+    height: 43px;
+    padding: 8px;
+    background-color: #e76f51;
+    box-shadow: 0 3px 0 0 #E1E1E8;
+    letter-spacing: -0.1px;
+    line-height: 24px;
+    vertical-align: middle;
+    font-size:17pt;
+    text-align:center;
+    color:white;
+    font-weight:500;
+}
+
+.order_table tr td {
+    height: 50px;
+    padding: 8px;
+    background-color: #fff;
+    letter-spacing: -0.1px;
+    line-height: 24px;
+    border-bottom: 1px solid #E1E1E8;
+    vertical-align: middle;
+    text-align:center;
+    font-size:14pt;
+}
+
+/* 커피 주문 처리 여기까지 */
+
+/* 주문 완료 추가 */
+.ofinimg{
+	margin-top :5px;
+	width:70%;
+	height:50%;
+	margin-bottom:20px;
+}
+	   
+.ofinBtn{
+	border:1px solid #ffcdb2;
+	color: black;
+	font-size:15pt;
+	cursor:pointer;
+}
+
+.ofinBtn:hover {
+	background-color:#ffcdb2;
+	color: white;
+	font-size:15pt;
+	cursor:pointer;
+}
+
+/* 주문 완료 여기까지 */
+
+
+/*side 추가 */
+.sideadd_btn {
+    border: 1px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left:50%;
+    font-family: 'Roboto Slab', serif;
+}
+
+.sideadd_btn:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    font-family: 'Roboto Slab', serif;
+}
+/* 사이드 추가 여기까지 */
+
+/* Menu */
+#menu {
+    padding-top: 110px;
+}
+
+.coffee_categories {
+    margin: 40px;
+}
+
+.category_btn {
+    border: 1px solid var(--color-white);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    padding: 8px 24px;
+    position: relative;
+}
+
+.category_btn.selected,
+.category_btn:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+}
+
+.category_btn.selected .category_count,
+.category_btn:hover .category_count {
+    opacity: 1;
+    top: 0;
+}
+
+.coffee_contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 1;
+    transition: all var(--animation-duration) ease-out;
+}
+
+.coffee_contents.anim-out {
+    opacity: 0;
+    transform: scale(0.96) translateY(40px);
+}
+
+.content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 300px;
+    margin: 8px;
+    background-color: var(--color-light-white);
+    overflow: hidden;
+}
+
+.content_box.invisible {
+    display: none;
+}
+
+.coffee_img {
+    width: 100%;
+    height: 100%;
+}
+
+.coffee_img:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transition: transform .5s;
+}
+
+.coffee_name {
+    display: flex;
+    justify-content: center;
+	font-size:14pt;
+}
+
+/* coffee_detail */
+.coffee_name_detail {
+    display: flex;
+    justify-content: center;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size:30pt;
+	margin-bottom:10px;
+}
+
+.coffee_price_detail {
+	margin-top:15px;
+    text-align: end;
+    font-size:15pt;
+}
+
+.detail_explain{
+    height: 200px;
+    margin-top: 10px;
+    text-align: start;
+    padding: 50px 0;
+    padding-right: 50px;
+    padding-left : 50px;
+	font-size:10pt;
+}
+
+.content_coffee_detail {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 400px;
+    margin: 8px;
+    background-color: var(--color-light-white);
+    overflow: hidden;
+}
+
+.addorder_btn {
+    margin-top: 10px;
+    border: 1px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    padding: 8px 24px;
+    position: relative;
+}
+
+.addorder_btn:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+}
+
+/* Footer */
+#footer {
+    background-color: var(--color-light-brown);
+    padding: 35px 16px;
+}
+
+/* For below 768px screen width */
+@media screen and (max-width: 768px) {
+    :root {
+        /* Font size */
+        --font-large: 30px;
+        --font-medium: 18px;
+        --font-regular: 16px;
+        --font-small: 14px;
+        --font-micro: 12px;
+    }
+
+    .navbar_toggle-btn {
+        display: block;
+        right: 16px;
+        font-size: var(--font-medium);
+    }
+
+    #navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: var(--color-light-brown);
+    }
+
+    .navbar_menu {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        display: none;
+    }
+
+    .navbar_menu.open {
+        display: block;
+    }
+
+    .section {
+        padding: 16px;
+        padding-top: 40px;
+    }
+
+    .category_btn {
+        margin: 4px 0;
+        width: 100%;
+    }
+}

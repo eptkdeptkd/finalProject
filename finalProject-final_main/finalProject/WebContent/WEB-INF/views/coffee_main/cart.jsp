@@ -6,8 +6,8 @@
 
   <section id="menu" class="section">
         <div class="section_container">
-            <h2>My Cart</h2>
-            <div class="menu_admin">
+            <h2 class="cart_h2">My Cart</h2>
+            <div class="menu_cart" align="center">
                 <table class="cart_table">
                     <thead>
                         <tr>
@@ -26,17 +26,15 @@
                             <th>
                                 <h3>Comment</h3>
                             </th>
-                            <%-- 
                             <th>
                             	<h3>Delete</h3>
                             </th>
-                            --%>
                         </tr>
                     </thead>
                     <tbody>
                  <c:if test="${empty list }">
 					<tr>
-						<td colspan="5" style="text-align:center;">주문한 내역이 없습니다</td>
+						<td colspan="6" style="text-align:center;">주문한 내역이 없습니다</td>
 					</tr>
 				</c:if>
 				<c:if test="${not empty list }">
@@ -52,19 +50,19 @@
 								<p id="p${dto.seq }">${dto.price }</p>
 							</td>
 							<td>
-								<div class="info_option">
-	                                <p class="info_subtitle">shot:</p>
+								<div class="cart_info_option">
+	                                <p class="cart_info_subtitle">shot:</p>&nbsp;&nbsp;
 	                                <input type="button" value="-" class="minusbtn" onclick="minBtn(${dto.seq})"> &nbsp;&nbsp;
-	                                <input type="text" value="1" class="shot" id="q${dto.seq }"> &nbsp;&nbsp;
+	                                <input type="text" value="1" size="7" class="shot" id="q${dto.seq }"> &nbsp;&nbsp;
 	                                <input type="button" value="+" class="plusbtn" onclick="plBtn(${dto.seq})">
 	                            </div>
 	                            <div class="info_option">
-	                                <p class="info_subtitle">syrup:</p>
+	                                <p class="info_subtitle">syrup:</p>&nbsp;&nbsp;
 	                                <select id="sel${dto.seq }">
 	                                    <option value="0" selected>no syrup</option>
 	                                   <c:if test="${not empty slist }">
 	                                    <c:forEach items="${slist }" var="sy" varStatus="vss">
-	                                        <option value="${sy.price }" sname="${sy.name }">${sy.name }</option>
+	                                        <option value="${sy.price }" sname="${sy.name }">${sy.name }(+${sy.price }원)</option>
 	                                    </c:forEach>
 	                                   </c:if>
                                 </select>
@@ -73,9 +71,12 @@
 							<td>
 								 <input type="text" id="i${dto.seq }" class="info_input" size="20" placeholder="요청사항을 입력해주세요" required>
 							</td>
+							<td>
+								<button class="order_btn" onClick="delBtn(${dto.seq})">Delete</button>
+							</td>
 						</tr>
 					</c:forEach>
-						</c:if>
+				</c:if>
 
                     </tbody>
                 </table>
@@ -110,6 +111,12 @@ function plBtn(seq){
 
 $("#order").click(function(){
 	price = 0;
+	var sid = "${login.id}";
+	if(sid == null || sid == ""){
+		swal('', '로그인 후 사용 가능합니다.', "warning");
+		return;
+	}
+	
 	$("input:checkbox[name=chk]").each(function(){
 		if(this.checked){
 			var s = $(this).attr("seq");
@@ -127,6 +134,9 @@ $("#order").click(function(){
 			var syname = $(syname+" option:checked").text();
 			var aname = "#i"+s;
 			var ask = $(aname).val();
+			if(ask == "" || ask == null){
+				ask = "X";
+			}
 			var shprice = 0;
 			
 			if(sh>=3){
@@ -142,7 +152,7 @@ $("#order").click(function(){
 	});
 
 	if(cfcount<1){
-		alert("선택 후 주문해주시기 바랍니다");
+		swal('', '선택 후 주문해주시기 바랍니다', "success");
 	}else{
 		var oname = pname;
 		if(pname.length>6){
@@ -160,10 +170,10 @@ $("#order").click(function(){
     		success:function(data){
 				if(data==0){
 					price = price- 1000;
-					alert("첫번째 방문이시므로 1000원 할인되었습니다");
+					swal('', '첫번째 방문이시므로 1000원 할인되었습니다', "success");
     			}else if(data%10 ==0){
 					price = price- 1000;
-					alert(data+"번째 방문이시므로 1000원 할인되었습니다");
+					swal('', data+"번째 방문이시므로 1000원 할인되었습니다", "success");
             	}
 
 				/*
@@ -237,5 +247,9 @@ $("#order").click(function(){
 
 	}
 });
+
+function delBtn(seq){
+	location.href="cartDel.do?seq="+seq;
+}
 
 </script>

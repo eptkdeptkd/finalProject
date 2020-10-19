@@ -99,6 +99,17 @@ public class mainController {
 		return "cartMove.tiles";
 	}
 	
+	@RequestMapping(value = "cartDel.do", method = RequestMethod.GET)
+	public String cartDel(HttpServletRequest req, int seq ) {
+		System.out.println("mainController cartDel() " +seq);	
+		
+		MemberDto dto = (MemberDto) req.getSession().getAttribute("login");
+		
+		service.cartDel(seq);
+		
+		return "redirect:/cartMove.do";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "getVC.do", method = RequestMethod.POST)
 	public int getVisitCount(String id) {
@@ -154,10 +165,4 @@ public class mainController {
 		return list;
 	}
 	
-	// 마이페이지 임시
-	@RequestMapping(value = "mypage.do", method=RequestMethod.GET)
-	public String mypage(MemberDto dto) {
-		
-		return "myPage.tiles";
-	}
 }

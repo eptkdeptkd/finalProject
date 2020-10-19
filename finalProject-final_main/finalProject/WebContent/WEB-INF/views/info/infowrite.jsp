@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8"/>
 
-<section id="menu" class="section">
+<section id="menu" class="section" style="padding-top: 300px; padding-bottom: 120px;">
 <div class="section_container" >
 
 	<div align="center" >
@@ -16,7 +16,7 @@
 		
 			<table border="1" style="width: 85%; border-color: #c6c6c6; border: 1px solid #c6c6c6;">
 				<colgroup>
-				<col style="width:200px;" /><col style="width:auto;" />
+					<col style="width:200px;" /><col style="width:auto;" />
 				</colgroup>
 				
 				<tr>
@@ -37,7 +37,7 @@
 				<tr>
 					<th style="background-color: #feb546; padding: 10px 30px;">내용</th>
 					<td style="text-align: left">
-						<textarea rows="10" cols="50" name='content' id="_content"
+						<textarea rows="10" cols="50" name="content" id="_content"
 							style="min-height: 150px;min-width:100%; border: none;outline: none;"></textarea>
 					</td>
 				</tr>
@@ -140,6 +140,4 @@
 	}
 </script>
 
-<script>
 
-</script>

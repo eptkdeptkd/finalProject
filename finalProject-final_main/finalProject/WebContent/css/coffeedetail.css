@@ -29,67 +29,6 @@
     --animation-duration: 300ms;
 }
 
-/* Universal tags */
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Open Sans", sans-serif;
-    margin: 0;
-    cursor: default;
-}
-
-a {
-    text-decoration: none;
-    color: var(--color-white);
-}
-
-ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-li {
-    list-style: none;
-}
-
-button {
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    outline: none;
-}
-
-/* Typography */
-h1 {
-    font-size: var(--font-large);
-    font-weight: var(--weight-bold);
-    color: var(--color-black);
-    margin: 16px 0px;
-}
-
-h2 {
-    font-size: var(--font-medium);
-    font-weight: var(--weight-semi-bold);
-    color: var(--color-black);
-    margin: 8px 0;
-}
-
-h3 {
-    font-size: var(--font-regular);
-    font-weight: var(--weight-regular);
-    color: var(--color-black);
-    margin: 8px 0;
-}
-
-p {
-    font-size: var(--font-micro);
-    font-weight: var(--weight-regular);
-    color: var(--color-black);
-    margin: 4px 0;
-}
-
 /* Header */
 #navbar {
     position: fixed;
@@ -117,23 +56,7 @@ p {
     position: absolute;
     top: 24px;
     right: 32px;
-    font-size: 24px;
-    color: var(--color-black);
-    display: none;
 }
-
-/* Section common */
-.section {
-    padding: 50px;
-    margin: auto;
-    text-align: center;
-}
-
-.section_container {
-    max-width: 1200px;
-    margin: auto;
-}
-
 /* Coffee menu detail */
 #menu {
     padding-top: 110px;
@@ -150,19 +73,11 @@ p {
     width: 400px;
 }
 
-.coffee_img {
-    width: 100%;
-    height: 100%;
-}
-
 .info_top {
     display: block;
     border-bottom: 2px solid var(--color-orange);
 }
 
-.coffee_price {
-    text-align: end;
-}
 
 .info_number {
     margin-top: 10px;
@@ -191,27 +106,6 @@ p {
     font-size: 20px;
     border: none;
 
-}
-
-.info_explain {
-    height: 200px;
-    margin-top: 10px;
-    text-align: start;
-    padding: 50px 0;
-}
-
-.addorder_btn {
-    margin-top: 10px;
-    border: 1px solid var(--color-orange);
-    border-radius: var(--size-border-radius);
-    font-size: var(--font-regular);
-    padding: 8px 24px;
-    position: relative;
-}
-
-.addorder_btn:hover {
-    background-color: var(--color-orange);
-    color: var(--color-white);
 }
 
 /* Footer */

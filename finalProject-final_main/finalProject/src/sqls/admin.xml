@@ -50,7 +50,7 @@
 </delete>
 
 <select id="getCoffeeList" resultType="cc.factory.com.dto.coffeeDto">
-	SELECT SEQ, NAME
+	SELECT SEQ, NAME, PRICE
 	FROM CC_COFFEE
 	ORDER BY SEQ
 </select>

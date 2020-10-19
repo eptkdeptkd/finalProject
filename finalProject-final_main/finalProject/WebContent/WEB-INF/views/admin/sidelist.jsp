@@ -2,12 +2,14 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" href="css/sidelist.css">
+
 
 <section id="menu" class="section">
-        <div class="section_container">
+        <div class="section_container" align="center">
             
-<h1>Side Delete (Admin)</h1>
-<table border="1">
+<h1 class="del_h3">사이드 삭제</h1>
+<table class="sidelist">
 
 <colgroup>
 	<col style="width:200">
@@ -32,12 +34,11 @@
 		<tr id="_side">
 		
 		<td>
-		<input type="radio" value="${side.seq }" name="dc" class="delSide">${side.name }
+		<input type="radio" value="${side.seq }" name="dc" class="delSide">
+		${side.name }
 		</td>
 		
-		<td>
-		${side.price }
-		</td>
+		<td>${side.price }</td>
 
 		</tr>
 	</c:forEach>
@@ -46,7 +47,7 @@
 </tbody>
 </table>
 
-<input type="button" id="delBtn" value="delete">
+<button type="button" id="delBtn" value="delete" class="del_btn">삭제</button>
   
 </div>
 </section>

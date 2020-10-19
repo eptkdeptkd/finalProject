@@ -25,5 +25,8 @@ public interface coffeeDetailDao {
 	
 	public List<coffeeDto> getCoffeeList();
 	public List<coffeeDto> getCoffeeKindList(int kind);
+	public int cartDel(int seq);
+	
+	public List<coffeeDto> bestCoffee();
 	
 }

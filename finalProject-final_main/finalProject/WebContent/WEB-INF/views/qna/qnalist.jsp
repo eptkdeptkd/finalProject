@@ -8,7 +8,8 @@
 
 
 
-<div id="test" style="background-color: yellow;">
+  <section id="menu" class="section">
+    <div class="section_container">
 	<h2>QnA 게시판</h2>
 
 <form action="" name="frmForm1" id="_frmFormSearch" method="get">
@@ -34,7 +35,7 @@
 </tr>
 </table>
 </form>
-
+<div align="center">
 <table class="list_table" style="width: 85%" id="_list_table" border="1">
 	<colgroup>
 		<col width="50px">
@@ -52,7 +53,7 @@
 		<th style="text-align: center;">잠금</th>
 	</tr>
 </table>
-
+</div>
 <br><br>
 
 <!-- paging -->
@@ -73,7 +74,9 @@
 
 </div>
 
+</section>
 
+<!-- java 등분과 나눈 값의 위치 0.1과 1 사이에서 값이 들어오고 위치값내보내고 -->
 
 
 <script>
@@ -102,27 +105,37 @@ function getQnaData( pNumber ){
 			$.each(list, function(i, val){
 				
 				if(val.secret==0){	//보여주는 경우
-					bb="보여줘";
+					
+					str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a>";
 				}else{
-					bb="보여주지마";
+					str="<a id='replyCount" + val.seq + "'>" + val.title + "</a>";
 				}
+
+				
 				
 				let app = "<tr class='list_col'>"
 							+ "<td>" + (i + 1) + "<input type='hidden' class='cReply' value='"+ val.seq + "'></td>"
 							+ "<td>" + val.id + "</td>"
 							+ "<td style='text-align:left'>"
-							+ "<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title 
-							+ "</a>"
+							+ str
+							+ "<input type='hidden' value='" + val.id + "' class='secEnt' onclick='location.href=\"qnadetail.do?seq=" + val.seq + "\"'>"
+							+ "<input type='hidden' class='secNum' value='" + val.secret + "'>"
 							+ "</td>"
 							+ "<td>" + val.readcount + "</td>"
-							+ "<td>" + bb + "</td>"
+							+ "<td>" + val.secret + "</td>"
 						  +"</tr>";
 
 				
 				$("#_list_table").append(app);  				
 			});			
 
-
+			/*
+			잠금 풀기용 버튼 숨겨서 value값있을때 세션 값으로 아디확인하고 id가 갔을 때 보이게
+			<input type='button' value='' id='val.id' onclick'location.href=/"/qnadetail.do?seq=" + val.seq /"/'>
+			
+			
+			*/
+			
 			//페이징 후 댓글 갯수 불러와서 넣어주는
 			//console.log($(".cReply").val());
 			$(".cReply").each(function(idx, item){
@@ -137,8 +150,9 @@ function getQnaData( pNumber ){
 						seq : seq
 					},
 					success : function(data) {
-						console.log(data);
+						//console.log(data);
 						$('table tr').find('#replyCount'+seq).append("   [" + data + "]");
+						
 					},
 					error : function() {	
 						//alert("error");
@@ -146,6 +160,18 @@ function getQnaData( pNumber ){
 				});
 				
 			});
+
+			//잠금 열어주는
+			var id = "${login.id}";
+			$(".secEnt").each(function(idx, item){
+				console.log(item.value);
+				if(id==item.value) {
+					if($($(".secNum")[idx]).val()==1) {
+						$($(".secEnt")[idx]).attr("type","button");
+					}
+				}
+			});
+		
 			
 		},
 		error:function(){

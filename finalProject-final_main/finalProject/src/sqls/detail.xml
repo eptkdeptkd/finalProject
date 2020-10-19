@@ -74,6 +74,16 @@
 	WHERE KIND = #{kind}
 </select>
 
+<delete id="cartDel" parameterType="java.lang.Integer">
+	DELETE FROM CC_CART WHERE SEQ = #{seq}
+</delete>
+
+<select id="bestCoffee" resultType="cc.factory.com.dto.coffeeDto">
+	SELECT *
+	FROM CC_COFFEE
+	ORDER BY ORDER_COUNT DESC
+</select>
+
 </mapper>
 
 

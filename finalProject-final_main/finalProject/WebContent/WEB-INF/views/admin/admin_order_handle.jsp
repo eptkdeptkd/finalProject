@@ -2,43 +2,50 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 
-    <section id="menu" class="section">
-        <div class="section_container">
-        
-<table class="tb">
-	<thead>
-		<tr class="tbTh">
-		 <th>선택</th>
-		 <th>주문내용</th>
-		</tr>
-	</thead>
-<c:if test="${empty list }">
-	<tr class="tbTr">
-		<td colspan="4" style="text-align:center;">주문 내역이 없습니다</td>
-	</tr>
-</c:if>
-<c:if test="${not empty list }">
-	<c:forEach items="${list }" var="dto" varStatus="vs" >
-		<tr class="tbTr">
-			<td>
-				<input type="radio" name="rfin" class="fin" value="${dto.id}" seq="${dto.seq }">
-			</td>
-			<td>
-				${dto.content }
-			</td>
-		</tr>
-	</c:forEach>
-</c:if>
-</table>
-
-<div class="container">
-	<nav aria-label="Page navigation">
-		<ul class="pagination" id="pagination" style="justify-content: center;"></ul>
-	</nav>
-</div>
-
-<br><br>
-<input type="button" id="finbtn" value="처리">
+<section id="menu" class="section">
+    <div class="section_container">
+    <h3 class="oh_h3">커피 주문 내역</h3>
+    <div class="order_menu">
+		<table class="order_table">
+		<colgroup>
+			<col style="width:100">
+			<col style="width:700">
+		</colgroup>
+		
+		<thead>
+			<tr class="tbTh">
+			 <th>선택</th>
+			 <th>주문내용</th>
+			</tr>
+		</thead>
+		<c:if test="${empty list }">
+			<tr class="tbTr">
+				<td colspan="2" style="text-align:center;">주문 내역이 없습니다</td>
+			</tr>
+		</c:if>
+		<c:if test="${not empty list }">
+			<c:forEach items="${list }" var="dto" varStatus="vs" >
+				<tr class="tbTr">
+					<td>
+						<input type="radio" name="rfin" class="fin" value="${dto.id}" seq="${dto.seq }">
+					</td>
+					<td>
+						${dto.content }
+					</td>
+				</tr>
+			</c:forEach>
+		</c:if>
+		</table>
+		</div>
+		
+		<div class="container">
+			<nav aria-label="Page navigation">
+				<ul class="pagination" id="pagination" style="justify-content: center;"></ul>
+			</nav>
+		</div>
+	
+	<br><br>
+	<input type="button" id="finbtn" value="처리">
 
 </div>
 </section>
@@ -55,10 +62,10 @@ $("#finbtn").click(function(){
 		type:"post",
 		success:function(b){
 			if(!b){
-				alert("정상적으로 주문 처리 되지 않았습니다");
+				swal('', '정상적으로 주문 처리 되지 않았습니다', "success");
 				return;
 			}else{
-				alert("정상적으로 주문 처리 되었습니다");
+				swal('', '정상적으로 주문 처리 되었습니다', "success");
 				if(wsocket){
 					wsocket.send("${login.id},"+id+",완료");
 				}

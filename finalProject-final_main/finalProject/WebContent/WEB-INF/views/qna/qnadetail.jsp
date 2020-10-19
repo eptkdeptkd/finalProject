@@ -6,10 +6,12 @@
 	System.out.println("세션값 확인용 " + session.getAttribute("login"));
 %>
 
-<div id="test" style="background-color: yellow;">
+  <section id="menu" class="section">
+    <div class="section_container">
+    
 	<h2>QnA 상세 보기</h2>
 	글 수정/삭제는 본인만 가능하게 리드 카운트
-
+	<div align="center">
 	<form id="frm" method="get">
 		<input type="hidden" name="seq" value="${oneQna.seq }"> <input
 			type="hidden" name="id" value="${oneQna.id }">
@@ -40,8 +42,9 @@
 			</tr>
 		</table>
 	</form>
-
+</div>
 	<!-- 리플 불러오기 -->
+	<div align="center">
 	<table class="list_table" border="">
 		<colgroup>
 			<col style="width: 70px">
@@ -79,7 +82,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
+</div>
 	<!-- 리플 페이징 -->
 	<form action="" name="frmForm1" id="_frmFormSearch" method="get">
 		<input type="hidden" name="pageNumber" id="_pageNumber"
@@ -99,6 +102,7 @@
 	<br>
 	<br>
 
+<div align="center">
 	<!-- 리플 작성 부분 -->
 	<c:if test="${login.id eq null}">
 		<!--  -->
@@ -126,6 +130,9 @@
 	</c:if>
 	<!--  -->
 </div>
+
+</div>
+</section>
 
 <script>
 	//버튼들은 기능 묻기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

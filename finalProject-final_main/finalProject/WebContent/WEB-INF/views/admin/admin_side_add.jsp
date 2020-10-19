@@ -4,7 +4,7 @@
 <section id="menu" class="section">
         <div class="section_container">
 
-		<h2>Side Add (Admin)</h2>
+		<h2 class="coffee_add_h2"> 사이드 추가 </h2>
             <form action="addSideAf.do" method="post">
                 <div class="menu_admin">
                     <div>

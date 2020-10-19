@@ -1,5 +1,7 @@
 package cc.factory.com.login;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +33,21 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDto login(MemberDto dto) {		
 		return memberDao.login(dto);		
 	}
+
+	@Override
+	public boolean updateId(MemberDto mem) {
+		return memberDao.updateId(mem);
+	}
+
+	@Override
+	public boolean deleteId(MemberDto mem) {
+		return memberDao.deleteId(mem);
+	}
 	
-	
+	@Override
+	public List<MemberDto> bestMember() {
+		return memberDao.bestMember();
+	}
 }
 
 

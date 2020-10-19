@@ -8,7 +8,7 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
  
-<section id="menu" class="section">
+<section id="menu" class="section" style="padding-top: 300px; padding-bottom: 120px;">
     <div class="section_container">
     
         
@@ -35,7 +35,7 @@
 		<!-- <h1 align="center">투표 결과</h1> -->
 		<div align="center" >
 			<img src="image/logo.png" alt="결과보기" style="width: 100px; height: 100px;"> 
-			<p style="font-family: 'Stylish', sans-serif; padding-bottom: 10px; font-size: 48px; color: 8A4B08;">" ${poll.question } "의 투표 결과 확인</p>
+			<p style="font-family: 'Stylish', sans-serif; padding-bottom: 10px; font-size: 48px; color: 8A4B08;">" ${poll.question } "의 <br>투표 결과 확인</p>
 		</div>
 		
 		

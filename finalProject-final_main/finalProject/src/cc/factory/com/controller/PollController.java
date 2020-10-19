@@ -2,10 +2,13 @@ package cc.factory.com.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.connector.Response;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,16 +33,24 @@ public class PollController {
 	PollService service;
 	
 	@RequestMapping(value = "polllist.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public String polllist(Model model, HttpServletRequest req) {
+	public String polllist(Model model, HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
-		String id = ((MemberDto)req.getSession().getAttribute("login")).getId();
-		
-		//String id = "aaa";
-		
-		List<PollDto> list = service.getPollAllList(id);
-		model.addAttribute("plists", list);		
-		
-		return "polllist.tiles";
+		String id = "";
+		if(req.getSession().getAttribute("login") == null) {
+				
+			return "warning.tiles";
+		}
+		System.out.println("=========" + id);
+		//if(id == null || id == "") {
+			
+			id = ((MemberDto)req.getSession().getAttribute("login")).getId();
+			
+			
+	//	}
+			List<PollDto> list = service.getPollAllList(id);
+			model.addAttribute("plists", list);		
+			
+			return "polllist.tiles";
 	}
 	
 	@RequestMapping(value = "pollmake.do", method= {RequestMethod.GET, RequestMethod.POST})
@@ -112,9 +123,9 @@ public class PollController {
 		// 주제, 보기들
 		PollDto dto = service.getPoll(poll);
 		List<PollSubDto> list = service.getPollSubList(poll);
-		System.out.println("detail === " + poll.toString());
-		System.out.println(dto.toString());
-		System.out.println(list.toString());
+		//System.out.println("detail === " + poll.toString());
+		//System.out.println(dto.toString());
+		//System.out.println(list.toString());
 		
 		model.addAttribute("poll", dto);
 		model.addAttribute("pollsublist", list);

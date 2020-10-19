@@ -17,6 +17,10 @@
 	<put-attribute name="main" value="/WEB-INF/views/coffee_main/main.jsp"/>
 </definition>
 
+<definition name="adminlink.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/admin/admin_link.jsp"/>
+</definition>
+
 <definition name="coffeeDetailMove.tiles" extends="main.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/coffee_main/coffee_detail.jsp"/>
 </definition>
@@ -79,6 +83,10 @@
 	<put-attribute name="main" value="/WEB-INF/views/mypage/mypage.jsp"/>
 </definition>
 
+<definition name="ranking.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/mypage/mypage.jsp"/>
+</definition>
+
 <!-- 오재님 -->
 <definition name="login.tiles" extends="main.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/login/login.jsp"/>
@@ -133,6 +141,10 @@
 	<put-attribute name="main" value="/WEB-INF/views/poll/polllist.jsp"/>
 </definition>
 
+<definition name="warning.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/warning.jsp"/>
+</definition>
+
 <definition name="pollmake.tiles" extends="main.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/poll/pollmake.jsp"/>
 </definition>
@@ -148,7 +160,6 @@
 <definition name="pollresult2.tiles" extends="main.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/poll/pollresult2.jsp"/>
 </definition>
-
 
 </tiles-definitions>
 
