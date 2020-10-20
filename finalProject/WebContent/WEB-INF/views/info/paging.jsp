@@ -63,7 +63,7 @@
 <div style="float: left; width: 96%; text-align: center;">
 	<!-- << -->
 	<a href="#none" title="처음페이지" onclick="goPage(0)">
-	<i class="far fa-arrow-alt-circle-left" style="color: #000;"></i>&nbsp
+	<i class="far fa-arrow-alt-circle-left" style="color: #000;"></i>&nbsp;
 		<!-- <img src="image/arrow_left.png" alt="" style="width: 20px; height: 20px;" /> -->
 	</a>
 	
@@ -122,7 +122,7 @@
 	
 	<!-- >> -->
 	<a href="#none" title="마지막페이지" onclick="goPage(<%=end_page %>)">
-	&nbsp<i class="far fa-arrow-alt-circle-right" style="color: #000;"></i>
+	&nbsp;<i class="far fa-arrow-alt-circle-right" style="color: #000;"></i>
 		<!-- <img src="image/arrow_right.png" alt="" style="width: 20px; height: 20px;" /> -->
 	</a>
 </div>

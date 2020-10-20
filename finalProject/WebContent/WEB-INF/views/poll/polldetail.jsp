@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<section id="menu" class="section">
+<section id="menu" class="section" style="padding-top: 300px; padding-bottom: 120px;">
 <div class="section_container" >
 
 	<div align="center" >

@@ -161,6 +161,10 @@
 	<put-attribute name="main" value="/WEB-INF/views/poll/pollresult2.jsp"/>
 </definition>
 
+<definition name="warning.tiles" extends="main.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/warning.jsp"/>
+</definition>
+
 </tiles-definitions>
 
 

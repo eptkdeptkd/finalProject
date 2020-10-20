@@ -82,7 +82,6 @@ public class adminController {
 		dto.setOriginname(filename);
 		
 		String fupload = req.getServletContext().getRealPath("/upload");
-		
 		String newfilename = PdsUtil.getNewFileName(filename);
 		
 		dto.setNewname(newfilename);

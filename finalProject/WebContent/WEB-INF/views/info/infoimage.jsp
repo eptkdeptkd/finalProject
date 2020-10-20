@@ -3,19 +3,11 @@
 <%@page import="cc.factory.com.dto.PollDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-
-<section id="menu" class="section">
-    <div class="section_container">
 		
-		
-<%
-	List<PollDto> plists = (List<PollDto>)request.getAttribute("plists");
-	
-	MemberDto mem = (MemberDto)session.getAttribute("login");
-%>
+
 
 
 <%
@@ -34,27 +26,25 @@
 	}
 %>
 
-<script>
-	let choice = "<%=choice %>";
-	let searchWord = "<%=searchWord %>";
-	$(document).ready(function(){
-		$("#_choice").val(choice);
-	
-		// $("#_searchWord").val(searchWord);
-		document.frmForm1.searchWord.value = searchWord;
-	});
-</script>
+
+<section id="menu" class="section" style="padding-top: 300px; padding-bottom: 120px;"> 
+	<div class="section_container">
+
 		
 		
 		<div align="center" >
 			<img src="image/infomain.jpg" alt="공지사항" style="width: 70%; height: 300px;">
 			<h1 style="font-family: 'Stylish', sans-serif; padding-bottom: 30px;">놓치면 아까운 이벤트 소식부터, 유용한 정보들이 한가득! <br> 찰스 커피의 각종 소식과 정보를 <br> 공지사항을 통해 확인하세요. </h1>
-		</div>
+<!-- 		</div> -->
 		
 		<!-- 검색 -->
-		<div align="center">
+		<!-- <div align="center"> -->
 		
 			<form action="" name="frmForm1" id="_frmFormSearch" method="get">
+				<input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber }">
+				<input type="hidden" name="recordCountPerPage" id="_recordCountPerPage" value="${(empty recordCountPerPage)?0:recordCountPerPage }">
+			
+			
 			
 				<table>
 					<tr>
@@ -76,82 +66,97 @@
 								</a>
 							</span>
 							
-					<%
-					if(mem.getAuth() == 1){
-					%>
+							
+						<c:if test="${info.auth eq 1 }">
 							<span>
 								<a href="#none" id="btnWrite" title="글 작성하기" style="color: #000;text-decoration: none;">		
 									<img src="image/write.png" alt="글 작성하기" style="width: 30px; height: 30px;" />글쓰기
 								</a>
 							</span>
-					<%
-					}
-					%>
+						</c:if>
+					
 					
 						</td>
 					</tr>
 				</table>
+				
+			</form>
+				
 			
 				<!-- <a href="infolist.do" title="공지사항 게시판">리스트로 보기</a>		 -->
 				<!-- <a href="infoimage.do" title="공지사항 게시판">이미지로 보기</a>	 -->
 				
 				<!-- 추가 기입 -->
-				<input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber }">
-				
-				<input type="hidden" name="recordCountPerPage" id="_recordCountPerPage" value="${(empty recordCountPerPage)?0:recordCountPerPage }">
-			
-			</form>
+
 		
-		</div>
+			
+		
+		<!-- </div> -->
 		
 		
 		
 		<!-- View -->
-		<div align="center">
+		<!-- <div align="center"> -->
 			<c:if test="${empty infolist }">
 				<div style="background-color: #ffffff; text-align: center;">
-					작성된 글이 없습니다	
+					작성된 글이 없습니다	&nbsp;
 				</div>
 			</c:if>
 			
 			<c:forEach items="${infolist }" var="info" varStatus="vs">
 				<div style="background-color: #ffffff; text-align: center;">
-					
 					<c:if test="${info.del eq 1}">
-						<div  style="float: left; padding: 50px;" >
-							<img src="image/infodelete.png" alt="" style="width: 300px; height: 250px;">	
+						<div  style="float: left; padding: 20px;" >
+							<img src="image/infodelete.png" alt="" style="width: 360px; height: 320px;">	
 						</div>
 					</c:if>
 				
 			 		<c:if test="${info.del eq 0}">
 			 		
 						<c:if test="${info.oldfilename eq null}">
-							<div  style="float: left; padding: 50px;" >
+							<div  style="float: left; padding: 20px;" >
 								<a href="infodetail.do?seq=${info.seq }" style="color: #000;text-decoration: none;">
-									<img src="image/emptyimage.jpg" alt="" style="width: 300px; height: 250px;">	
+									<img src="image/emptyimage.jpg" alt="" style="width: 360px; height: 320px;">	
 									<h2 style="font-family: 'Stylish', sans-serif;color: orange;">${info.title}</h2>
 									<%-- <br>${info.id} --%>
-									<i class="fas fa-eye" style="color: #8A4B08;">조회수 &nbsp ${info.readcount}</i> 
+									<i class="fas fa-eye" style="color: #8A4B08;">조회수 &nbsp; ${info.readcount}</i> 
 								</a>
 							</div>
 						</c:if>
 						
 				 		<c:if test="${info.oldfilename ne null}">
-							<div  style="float: left; padding: 50px;" >
+							<div  style="float: left; padding: 20px;" >
 								<a href="infodetail.do?seq=${info.seq }" style="color: #000; text-decoration: none;">
-									<img src="http://192.168.0.195:8090/finalProject/upload/${info.filename }" style="width: 300px; height: 250px;">	
+									<img src="http://192.168.0.195:8090/finalProject/upload/${info.filename }" style="width: 360px; height: 320px;">	
 									<h2 style="font-family: 'Stylish', sans-serif; color: orange;">${info.title}</h2>
-									<i class="fas fa-eye" style="color: #8A4B08;">조회수 &nbsp ${info.readcount}</i> 
+									<i class="fas fa-eye" style="color: #8A4B08;">조회수 &nbsp; ${info.readcount}</i> 
 								</a>	
 							</div>
 						</c:if>
 						
 					</c:if>			
 				</div>		
+				
 			</c:forEach>
+			&nbsp;
+			
+			
+				
+			
 		</div>
 		
+		
+		
+		
+		
 		<!-- paging -->
+		<style>
+			#paging_wrap:after {
+				content: '';
+				display: table;
+				clear: both;
+			}
+		</style>
 		<div id="paging_wrap" align="center">
 			<jsp:include page="/WEB-INF/views/info/paging.jsp" flush="false">
 				<jsp:param name="totalRecordCount" value="${totalRecordCount }"/>
@@ -161,11 +166,24 @@
 			</jsp:include>
 		</div>
 
-
-
-
-</div>
+ </div> 
 </section>
+
+
+
+<script>
+	let choice = "<%=choice %>";
+	let searchWord = "<%=searchWord %>";
+	$(document).ready(function(){
+		$("#_choice").val(choice);
+	
+		// $("#_searchWord").val(searchWord);
+		document.frmForm1.searchWord.value = searchWord;
+	});
+</script>
+
+
+
 
 <script>
 
