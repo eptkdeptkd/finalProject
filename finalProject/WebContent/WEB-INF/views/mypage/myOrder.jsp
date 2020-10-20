@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/my_order_list.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/mn/my_order_list.css">
 
 <section id="menu" class="section">
  <div class="section_container">
@@ -27,7 +27,7 @@
 			<tbody>
 				<c:if test="${empty list}">
 					<tr class="tbTr">
-						<td colspan="5">주문한 메뉴가 없습니다.</td>
+						<td colspan="5" style="text-align:center;">주문한 메뉴가 없습니다.</td>
 					</tr>
 				</c:if>
 				<c:if test="${not empty list }">

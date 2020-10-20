@@ -6,19 +6,70 @@
 	System.out.println("세션값 확인용 " + session.getAttribute("login"));
 %>
 
+<style>
+select{
+    font-family: 'Poor Story', cursive;
+    font-size: 18px;
+    margin: 10px 10px 10px 10px;
+}
+.pagination .page-link{
+	 color: black; 
+	 font-family: 'Poor Story', cursive;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #feb546;
+    border-color: white;
+}
+
+.searBtn {
+    border: 1px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: 'Poor Story', cursive;
+    margin: 10px 10px 10px 10px;
+    
+}
+
+.searBtn:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    font-size: var(--font-regular);
+    font-family: 'Poor Story', cursive;
+    margin: 10px 10px 10px 10px;
+}
+
+.list_table{
+  font-family: 'Poor Story', cursive;
+}
+.list_table th{
+	background-color: #e76f51;
+}
+.list_table tr{
+	border-bottom: 1px solid black;
+}
+</style>
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
   <section class="section">
   <div class="section_container">
   
+  	<br>
 	<h2 class="cart_h2">QnA 게시판</h2>
+	<br>
+	<hr>
+	<br>
 	
 
 <form action="" name="frmForm1" id="_frmFormSearch" method="get">
 <table style="margin-left: auto; margin-right: auto; margin-top: 3px; margin-bottom: 3px">
 <tr>
-	<td>검색</td>
 	<td style="padding-left: 5px">
 		<select id="_choice" name="choice">
 			<option value="" selected="selected">선택</option>
@@ -31,33 +82,31 @@
 		<input type="text" id="_searchWord" name="searchWord">		
 	</td>
 	<td style="padding-left: 5px">
-		<span class="button blue">
+		<div class="searBtn">
 			<button type="button" id="btnSearch">검색</button>
-		</span>
+		</div>
 	</td>
 </tr>
 </table>
 </form>
 
-
-<table class="list_table" style="width: 85%;" id="_list_table" border="1">
+<div align="center">
+<table class="list_table" id="_list_table" >
 	<colgroup>
 		<col width="50px">
-		<col width="150px">
 		<col width="500px">
-		<col width="100px">
+		<col width="150px">
 		<col width="100px">
 	</colgroup>
 
 	<tr>
 		<th style="text-align: center;">번호</th>
-		<th style="text-align: center;">이름</th>
 		<th style="text-align: center;">제목</th>
+		<th style="text-align: center;">이름</th>
 		<th style="text-align: center;">조회수</th>
-		<th style="text-align: center;">잠금</th>
 	</tr>
 </table>
-
+</div>
 <br><br>
 
 <!-- paging -->
@@ -107,43 +156,42 @@ function getQnaData( pNumber ){
 		//	alert("success");
 			//console.log(list);		
 			$(".list_col").remove();
-
+			var num = pNumber;
 			$.each(list, function(i, val){
-				
+
 				//console.log(val);//id/title/content/secret/seq/wdate
 				if(sessAuth==1) {			//관리자의 경우
 					//다보여지게
 					if(val.secret == 0) {							//잠겨있지 않은 경우
 						var str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a>";
 					}else{											//잠긴 경우
-						var str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a><i class='fas fa-lock'></i>";
+						var str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a>&nbsp;&nbsp;<i class='fas fa-lock'></i>";
 					}	
 				}else if(sessAuth != 1) {	//관리자가 아닌 경우
 					if(sessId==val.id){					//본인이 로그인한 경우
 						if(val.secret == 0) {							//잠겨있지 않은 경우
 							var str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a>";
 						}else{											//잠긴 경우
-							var str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a><i class='fas fa-lock'></i>";
+							var str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a>&nbsp;&nbsp;<i class='fas fa-lock'></i>";
 						}	
 					}else if(sessId != val.id) {			//본인이 아닌 사람인 경우
 						if(val.secret == 0) {							//잠겨있지 않은 경우
 							var str="<a href='qnadetail.do?seq=" + val.seq + "' id='replyCount" + val.seq + "'>" + val.title + "</a>";
 						}else{											//잠긴 경우
-							var str="<a id='replyCount" + val.seq + "'>" + val.title + "</a><i class='fas fa-lock'></i>";
+							var str="<a id='replyCount" + val.seq + "'>" + val.title + "</a>&nbsp;&nbsp;<i class='fas fa-lock'></i>";
 						}
 					}
 				}
 				
 				let app = "<tr class='list_col'>"
-							+ "<td>" + (i + 1) + "<input type='hidden' class='cReply' value='"+ val.seq + "'></td>"
-							+ "<td>" + val.id + "</td>"
+							+ "<td align='center'>" + (i + 1 + num*10) + "<input type='hidden' class='cReply' value='"+ val.seq + "'></td>"
 							+ "<td style='text-align:left'>"
 							+ str
 							+ "<input type='hidden' value='" + val.id + "' class='secEnt' onclick='location.href=\"qnadetail.do?seq=" + val.seq + "\"'>"
 							+ "<input type='hidden' class='secNum' value='" + val.secret + "'>"
 							+ "</td>"
-							+ "<td>" + val.readcount + "</td>"
-							+ "<td>" + val.secret + "</td>"
+							+ "<td align='center'>" + val.id + "</td>"
+							+ "<td align='center'>" + val.readcount + "</td>"
 						  +"</tr>";
 
 				

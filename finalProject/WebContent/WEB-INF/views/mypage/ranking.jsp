@@ -11,6 +11,39 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+<style>
+#navbar {
+	z-index: 5;
+}
+.rankMark span{
+	border-radius: 30px;
+	background-color: #feb546; 
+	padding: 15px 15px 15px 15px;
+	color: #eeeeee;
+	font-family: 'Poor Story', cursive;
+}
+.bClim {
+	overflow:hidden;
+}
+.bCof {
+    width: 100%;
+    height: 100%;
+}
+.bCof:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transition: transform .5s;
+}
+#bCoffee {
+	font-family: 'Poor Story', cursive;
+}
+.highcharts-figure {
+	font-family: 'Poor Story', cursive;
+}
+</style>
 
 <body>
 	<section id="menu" class="section">
@@ -19,8 +52,11 @@
 
 
 	<div>
-	<h1><img src="image/ranking44.PNG"width="90"height="70">Charless Factory Top 3<img src="image/ranking3.PNG"width="90"height="70"></h1>
-		<div id="bCoffee"></div>
+	<h1><img src="image/ranking44.png" width="90"height="70">Charless Factory Top 3<img src="image/ranking3.png" width="90"height="70"></h1>
+		<br>
+		<div id="bCoffee" align="center"></div>
+		
+		<br>
 		<%-- <div id="bMember"></div>--%>
 		<figure class="highcharts-figure">
 		  <div id="container"></div>
@@ -88,7 +124,7 @@ $(document).ready(function() {
 				    }
 				  },
 				  tooltip: {
-				    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+				    headerFormat: '<span style="font-size:11px;font-family: "Poor Story", cursive;" >{series.name}</span><br>',
 				    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
 				  },
 
@@ -122,16 +158,35 @@ $(document).ready(function() {
 			alert("error");
 		}		
 	});	
+	
 	$.ajax({
 		url:"./bestCoffee.do",
 		type:"get",
 		success:function( clist ){
 			//console.log(clist);
+			
+			var app = "";
+			app += "<table><tr>";
+			
 			for(var i = 0; i < 3; i++) {
 				console.log(clist[i]);
-				$("#bCoffee").append();
-				$("#bCoffee").append("<img src='http://192.168.0.195:8090/finalProject/upload/"+clist[i].newname+"'></a>");
+				app += "<td>";
+				app += "<div class='bClim'>";
+				app	+= "<div style='position: relative; z-index: 1;'><img class='bCof' src='http://192.168.0.195:8090/finalProject/upload/"+clist[i].newname+"'></div>";
+				app += "</div>";
+				app	+= "<div class='rankMark' style='position: relative	; z-index: 2; top: -290px; left: 7px;'><span>"+ (i+1) +"위</span></div></td>";
+				
 			}
+			app += "</tr><tr>";
+			for(var i = 0; i < 3; i++) {
+				app += "<td align='center'>" + clist[i].name + "</td>";
+			
+			}
+			
+			app += "</tr></table>";
+			console.log(app);
+			
+			$("#bCoffee").append(app);
 		},
 		error:function(){
 			alert("error");

@@ -6,38 +6,76 @@
 	System.out.println("세션값 확인용 " + session.getAttribute("login"));
 %>
 
+<style>
+#frm{
+	font-family: 'Poor Story', cursive;
+}
+#frm th{
+	width: 110px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    color: #e76f51;
+}
+#frm td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+#frm input{
+	border: none;
+	border-right: 2px;
+	border-top: 0px;
+	border-left: 0px;
+	border-bottom: 1px solid black;
+	border-radius:2px;
+	width: 200px;
+}
+
+.list_table{
+	align-items: center;
+	font-family: 'Poor Story', cursive;
+}
+</style>
+
   <section id="menu" class="section">
     <div class="section_container">
     
 	<h2>QnA 상세 보기</h2>
-	글 수정/삭제는 본인만 가능하게 리드 카운트
+	
 	<div align="center">
 	<form id="frm" method="get">
 		<input type="hidden" name="seq" value="${oneQna.seq }"> <input
 			type="hidden" name="id" value="${oneQna.id }">
-		<table border="1">
+		<table>
 			<tr>
-				<td>id: <input type="text" name="id" value='${oneQna.id }'
+				<th>작성자</th>
+				<td> <input type="text" name="id" value='${oneQna.id }'
 					size="60" disabled="disabled" />
 				</td>
 			</tr>
 			<tr>
-				<td>제목: <input type="text" name="title" disabled="disabled"
+				<th>제목</th>
+				<td> <input type="text" name="title" disabled="disabled"
 					value="${oneQna.title }">
 				</td>
 			</tr>
 			<tr>
-				<td>내용: <textarea rows="10" cols="50" name="content"
+				<th>내용</th>
+				<td> <textarea rows="9" cols="80" name="content"
 						disabled="disabled">${oneQna.content }</textarea>
 				</td>
 			</tr>
 			<tr>
-				<td>
-					<button type="button" id="goList">목록으로</button> <c:if
+				<td colspan="2" align="right">
+					 <c:if
 						test="${login.id eq oneQna.id}">
 						<button type="button" id="update">글 수정</button>
 						<button type="button" id="delete">글 삭제</button>
 					</c:if>
+					<button type="button" id="goList">목록으로</button>
 				</td>
 			</tr>
 		</table>
@@ -45,22 +83,12 @@
 </div>
 	<!-- 리플 불러오기 -->
 	<div align="center">
-	<table class="list_table" border="">
+	<table class="list_table">
 		<colgroup>
-			<col style="width: 70px">
-			<col style="width: auto">
 			<col style="width: 100px">
+			<col style="width: 400px">
+			<col style="width: 200px">
 		</colgroup>
-
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>작성자</th>
-				<th>내용</th>
-				<th>작성일</th>
-			</tr>
-		</thead>
-
 		<tbody>
 			<c:if test="${empty relist }">
 				<tr>
@@ -70,7 +98,6 @@
 
 			<c:forEach items="${relist }" var="reply" varStatus="vs">
 				<tr>
-					<td>${vs.count }</td>
 					<td>${reply.id}</td>
 					<td style="text-align: left;">${reply.content}</td>
 					<td>${reply.wdate}<c:if test="${login.id eq reply.id}">
@@ -100,15 +127,14 @@
 	</form>
 
 	<br>
-	<br>
 
 <div align="center">
 	<!-- 리플 작성 부분 -->
 	<c:if test="${login.id eq null}">
 		<!--  -->
-		<table border="1">
+		<table>
 			<tr>
-				<td>세션에 아이디값 있어야 댓글이 입력가능하다</td>
+				<td>로그인을 해야 입력이 가능합니다 로그인버튼?</td>
 			</tr>
 		</table>
 	</c:if>

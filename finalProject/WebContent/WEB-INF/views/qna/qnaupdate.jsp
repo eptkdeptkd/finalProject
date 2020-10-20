@@ -1,32 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+#frm{
+	font-family: 'Poor Story', cursive;
+}
+#frm th{
+	width: 110px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    color: #e76f51;
+}
+#frm td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+#frm input{
+	border: none;
+	border-right: 2px;
+	border-top: 0px;
+	border-left: 0px;
+	border-bottom: 1px solid black;
+	border-radius:2px;
+	width: 200px;
+}
+</style>
 
   <section id="menu" class="section">
     <div class="section_container">
     <div align="center">
+    <br>
     <h2> 글 수정 </h2>
+	<br><hr><br>
 
 	<form id="frm" method="get">
 	<input type="hidden" name="seq" value="${oneQna.seq }">
 	<input type="hidden" name="id" value="${oneQna.id }">
 		<table>
 			<tr>
-				<td>id: 
+				<th>작성자</th>
+				<td>
 				<input type="text" name="id"  value='${oneQna.id }' size="60" disabled="disabled"/>
 				</td>
 			</tr>
 			<tr>
-				<td>제목: <input type="text" name="title" id="updateQnaTtl" value="${oneQna.title }">
-				</td>
-			</tr>
-			<tr>
-				<td>내용: <textarea rows="10" cols="50" name="content" id="updateQnaCon">${oneQna.content }</textarea>
-				</td>
-			</tr>
-			<tr>
+				<th>제목</th>
 				<td>
-				비밀글
+				<input type="text" name="title" id="updateQnaTtl" value="${oneQna.title }">
+				</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td>
+				 <textarea rows="9" cols="80" name="content" id="updateQnaCon">${oneQna.content }</textarea>
+				</td>
+			</tr>
+			<tr>
+				<th>비밀글</th>
+				<td>
 				<c:if test="${oneQna.secret eq 1}">
 					<input type="checkbox" name="secret" id="secret" value="" checked="checked">
 				</c:if>
@@ -36,7 +71,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td colspan="2" align="center">
 					<button type="button" id="update">글 수정</button>
 					<button type="button" id="delete">글 삭제</button>
 				</td>

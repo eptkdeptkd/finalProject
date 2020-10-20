@@ -11,7 +11,7 @@
 </insert>
 
 <select id="getTotOrder" parameterType="java.lang.String" resultType="java.lang.Integer">
-	<![CDATA[SELECT COUNT(*) FROM CC_ORDER WHERE ODATE >= #{today} AND DEL < 1]]>
+	SELECT NVL(COUNT(*),0) FROM CC_ORDER <![CDATA[WHERE ODATE >= #{today} AND DEL < 1]]>
 </select>
 
 <select id="getOrderSeqList" parameterType="cc.factory.com.dto.orderParam" resultType="cc.factory.com.dto.orderParam">

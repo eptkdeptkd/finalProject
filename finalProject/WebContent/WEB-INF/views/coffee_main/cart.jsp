@@ -186,7 +186,7 @@ $("#order").click(function(){
 					swal('', data+"번째 방문이시므로 1000원 할인되었습니다", "success");
             	}
 
-				/*
+				
 				var IMP = window.IMP; // 생략해도 괜찮습니다.
 				IMP.init("imp34353297"); 
 			
@@ -227,7 +227,7 @@ $("#order").click(function(){
 				        alert("결제 실패 하였습니다 -> " + rsp.error_msg);
 				    }
 				  });
-				  */
+				  /*
 				$.ajax({
 		    		url:"order.do",
 		    		data:{"id":"${login.id}", "name":oname, "price":price, "coffee_seq":cfseq, "detail":detail,"seqArr":seq },
@@ -247,7 +247,7 @@ $("#order").click(function(){
 		    			alert("error");
 		    		}
 		    	});		
-		    	
+		    	*/
     		},
     		error:function(){
     			alert("error");
