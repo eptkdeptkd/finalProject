@@ -13,120 +13,121 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cc.factory.com.dto.coffeeDto;
 
-
 @Controller
 public class MemberController {
-	
+
 	@Autowired
 	MemberService service;
 
-	@RequestMapping(value = "login.do", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "login.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login() {
-		System.out.println("MemberController login()");		
+		System.out.println("MemberController login()");
 		return "login.tiles";
 	}
-	
-	@RequestMapping(value = "regi.do", method = {RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "regi.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String regi() {
 		System.out.println("MemberController regi()");
 		return "regi.tiles";
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value = "getId.do", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "getId.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String getId(MemberDto mem) {
 		System.out.println("MemberController getId()");
-		
+
 		int count = service.getId(mem);
 		String msg = "";
-		if(count > 0) {
+		if (count > 0) {
 			msg = "YES";
-		}else {
+		} else {
 			msg = "NO";
 		}
 		return msg;
 	}
-	
-	@RequestMapping(value = "regiAf.do", method={RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "regiAf.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String regiAf(MemberDto dto) {
 		System.out.println("MemberController regiAf " + new Date());
-		
+
 		boolean b = service.addmember(dto);
-		if(b) {
+		if (b) {
 			System.out.println("회원 가입되었습니다 " + new Date());
 			return "login.tiles";
 		}
 		System.out.println("가입되지 않았습니다 " + new Date());
-		
+
 		return "regi.tiles";
 	}
-	
-	@RequestMapping(value = "loginAf.do", method={RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String loginAf(MemberDto dto, HttpServletRequest req) {
 		System.out.println("MemberController loginAf()");
-		
+
 		MemberDto login = service.login(dto);
-		
-		if(login != null && !login.getId().equals("")) {
+
+		if (login != null && !login.getId().equals("")) {
 			// session
 			req.getSession().setAttribute("login", login);
-			//req.getSession().setMaxInactiveInterval(60 * 60 * 8);
-			
+			// req.getSession().setMaxInactiveInterval(60 * 60 * 8);
+
 			return "redirect:/main.do";
-		}
-		else {
+		} else {
 			return "redirect:/login.do";
-		}		
+		}
 	}
-	
-	@RequestMapping(value = "sessionOut.do", method={RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "sessionOut.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String sessionOut(HttpServletRequest req) {
 		req.getSession().removeAttribute("login");
 		return "redirect:/main.do";
 	}
-	
-	//추가
-	@RequestMapping(value = "updateId.do", method={RequestMethod.GET,RequestMethod.POST})
-	public String updateId(MemberDto dto) {
+
+	// 추가
+
+	@RequestMapping(value = "updateId.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String updateId(HttpServletRequest req, MemberDto dto) {
 		System.out.println("MemberController updateId " + new Date());
 		service.updateId(dto);
+		// 이전 세션 없애고
+		req.getSession().removeAttribute("login");
+		// 새로운 세션 등록
+		MemberDto login = service.login(dto);
+		if (login != null && !login.getId().equals("")) {
+			// session
+			req.getSession().setAttribute("login", login);
+		}
+
 		return "redirect:/mypage.do";
 	}
-	
-	@RequestMapping(value = "deleteId.do", method={RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "deleteId.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String deleteId(HttpServletRequest req, MemberDto dto) {
 		System.out.println("MemberController deleteId " + new Date());
 		service.deleteId(dto);
 		req.getSession().removeAttribute("login");
 		return "redirect:/main.do";
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value = "bestMember.do", method = { RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "bestMember.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public List<MemberDto> bestMember() {
 		List<MemberDto> mlist = service.bestMember();
-		
-		for(int i=0; i<mlist.size(); i++) {
+
+		for (int i = 0; i < mlist.size(); i++) {
 			String sid = mlist.get(i).getName();
-			int mid = sid.length()/2;
+			int mid = sid.length() / 2;
 			String s = "";
-			for(int j=0; j<sid.length(); j++) {
-				if(j == mid) s += "*";
-				else s += sid.charAt(j);
+			for (int j = 0; j < sid.length(); j++) {
+				if (j == mid)
+					s += "*";
+				else
+					s += sid.charAt(j);
 			}
 			sid = s;
 			mlist.get(i).setName(sid);
 		}
-		
+
 		return mlist;
 	}
 }
-
-
-
-
-
-
-
-
-

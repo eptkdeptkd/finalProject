@@ -110,7 +110,7 @@ public class mainController {
 	
 	@ResponseBody
 	@RequestMapping(value = "order.do", method = RequestMethod.POST, produces ="application/String; charset=UTF-8")
-	public String order(orderDto dto) { 
+	public String order(orderDto dto, HttpServletRequest req) { 
 		System.out.println("mainController order -> "+dto.getDetail());
 		
 		String msg = "";
@@ -127,6 +127,13 @@ public class mainController {
 		
 		if(b) {
 			msg = "1/정상적으로 주문이 완료되었습니다";
+			MemberDto mem = ((MemberDto)req.getSession().getAttribute("login"));
+			String id = mem.getId();
+			if(id != null && id != "") {
+				int vc = service.getVisitCount(id);
+				mem.setVisitcount(vc);
+			}
+			req.getSession().setAttribute("login", mem);	
 		}else {
 			msg = "0/주문 과정 중 오류가 발생하였습니다";
 		}

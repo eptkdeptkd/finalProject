@@ -191,7 +191,7 @@
 
 	//목록으로
 	$("#goList").click(function() {
-		alert("goList");
+		//alert("goList");
 		$("#frm").attr("action", "qna.do").submit();
 	});
 

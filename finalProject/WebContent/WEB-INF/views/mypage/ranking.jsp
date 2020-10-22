@@ -52,7 +52,7 @@
 
 
 	<div>
-	<h1><img src="image/ranking44.png" width="90"height="70">Charless Factory Top 3<img src="image/ranking3.png" width="90"height="70"></h1>
+	<h1><img src="image/ranking44.PNG" width="90"height="70">Charless Factory Top 3<img src="image/ranking3.PNG" width="90"height="70"></h1>
 		<br>
 		<div id="bCoffee" align="center"></div>
 		
