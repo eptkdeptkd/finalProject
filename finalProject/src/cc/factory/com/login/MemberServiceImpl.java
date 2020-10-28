@@ -2,6 +2,8 @@ package cc.factory.com.login;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,8 +32,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberDto login(MemberDto dto) {		
-		return memberDao.login(dto);		
+	public MemberDto login(MemberDto mem, HttpSession session) {		
+		MemberDto result = memberDao.login(mem);
+		System.out.println("MemberServiceImpl 임플임");
+		if (result != null) {	//true 일경우 세션 등록
+			//세션 변수 등록
+			session.setAttribute("login", result);
+		}
+		return result;		
 	}
 
 	@Override
@@ -48,6 +56,7 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberDto> bestMember() {
 		return memberDao.bestMember();
 	}
+
 }
 
 

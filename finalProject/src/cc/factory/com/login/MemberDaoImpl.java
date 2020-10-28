@@ -34,9 +34,10 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public MemberDto login(MemberDto dto) {
-		MemberDto mem = sqlSession.selectOne(namespace + "login", dto);
-		return mem;
+	public MemberDto login(MemberDto mem) {
+		System.out.println("===> Mybatis로 loginCheck() 기능 처리");
+		// 검색이 안되면 0을 반환해주기 때문에 0과 비교해서 참이면 false, 틀리면 true를 반환
+		return  sqlSession.selectOne(namespace + "login", mem);
 	}
 
 	

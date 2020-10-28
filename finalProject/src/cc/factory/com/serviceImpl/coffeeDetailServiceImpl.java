@@ -131,6 +131,7 @@ public class coffeeDetailServiceImpl implements coffeeDetailService {
 	public List<orderDetailDto> myOrderList(orderParam param) {
 		
 		List<Integer> seqList = dao.myOrderList(param);
+		
 		List<orderDetailDto> list = new ArrayList<>();
 		
 		for(int i=0; i<seqList.size(); i++) {
@@ -138,6 +139,8 @@ public class coffeeDetailServiceImpl implements coffeeDetailService {
 			orderDetailDto dto = dao.myOrderDtoList(seq);
 			int status = dao.myOrderStat(seq);
 			dto.setOrderStatus(status);
+			
+			//System.out.println("dto stat = " +dto.getOrderStatus());
 			list.add(dto);
 		}
 		return list;

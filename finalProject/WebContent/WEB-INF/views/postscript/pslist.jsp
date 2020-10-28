@@ -2,38 +2,52 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/oj/pslist.css">
+<style>
+.cart_table tr td{
+}
 
+.pagination .page-link{
+	 color: black; 
+	 font-family: 'Poor Story', cursive;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #feb546;
+    border-color: white;
+}
+
+</style>
 <!-- 검색 -->
 <section id="menu" class="section">
         <div class="section_container">
-<div class="box_border" style="margin-top: 5px; margin-bottom: 10px">
+        <h1>후기 게시판</h1>
+<div class="box_border menu_admin" style="margin-top: 5px; margin-bottom: 10px">
 <form action="" name="frmForm1" id="_frmFormSearch" method="get">
-<table style="margin-left: auto; margin-right: auto; margin-top: 3px; margin-bottom: 3px">
+<table class="cart_table" style="margin-left: auto; margin-right: auto; margin-top: 3px; margin-bottom: 3px">
 <tr>
-	<td>검색</td>
-	<td style="padding-left: 5px">
+	<td>
 		<select id="_choice" name="choice">
 			<option value="" selected="selected">선택</option>
 			<option value="title">제목</option>
 			<option value="content">내용</option>
-			<option value="writer">작성자</option>		
+			<option value="writer">작성자</option>
 		</select>
 	</td>
-	<td style="padding-left: 5px">
-		<input type="text" id="_searchWord" name="searchWord">		
+	<td>
+		<input type="text" id="_searchWord" name="searchWord">
 	</td>
-	<td style="padding-left: 5px">
-		<span class="button blue">
-			<button type="button" id="btnSearch">검색</button>
-		</span>
+	<td>
+			<button class="order_btn1" type="button" id="btnSearch">검색</button>
 	</td>
 </tr>
 </table>
 </form>
 </div>
 
-
-<table class="list_table" style="width: 85%" id="_list_table">
+<div align="center">
+<table class="list_table cart_table" style="width: 70%" id="_list_table">
 <colgroup>
 	<col style="width:70px">
 	<col style="width:auto">
@@ -45,6 +59,7 @@
 </tr>
 
 </table>
+</div>
 <br><br>
 
 <!-- paging -->
@@ -52,11 +67,11 @@
 	<nav aria-label="Page navigation">
 		<ul class="pagination" id="pagination" style="justify-content: center;"></ul>
 	</nav>
+	<div class="order_btn">
+			<button  type="button" id="btnwrite">후기남기기</button>
+		</div>
 </div>
 
-<div style="">
-	<button type="button" id="btnwrite">후기남기기</button>
-</div>
 <br><br>
 </div>
 </section>

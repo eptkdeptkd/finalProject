@@ -15,7 +15,7 @@ public class CalendarDaoImpl implements CalendarDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	private String namespace = "Calendar.";
+	String namespace = "Calendar.";
 
 	@Override
 	public List<CalendarDto> getCalList() {

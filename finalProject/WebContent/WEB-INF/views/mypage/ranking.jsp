@@ -172,7 +172,7 @@ $(document).ready(function() {
 				console.log(clist[i]);
 				app += "<td>";
 				app += "<div class='bClim'>";
-				app	+= "<div style='position: relative; z-index: 1;'><img class='bCof' src='http://192.168.0.195:8090/finalProject/upload/"+clist[i].newname+"'></div>";
+				app	+= "<div style='position: relative; z-index: 1;'><a href='coffeeDetailMove.do?seq=" + clist[i].seq + "'><img class='bCof' src='http://192.168.0.195:8090/finalProject/upload/"+clist[i].newname+"'></a></div>";
 				app += "</div>";
 				app	+= "<div class='rankMark' style='position: relative	; z-index: 2; top: -290px; left: 7px;'><span>"+ (i+1) +"위</span></div></td>";
 				

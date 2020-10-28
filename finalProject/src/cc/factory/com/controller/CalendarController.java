@@ -64,6 +64,8 @@ public class CalendarController {
 										  calparam.getTitle(), 
 										  calparam.getContent(),
 										  yyyyMmdd);
+		System.out.println("addCalendar Dto"+dto.toString());
+		
 		
 		service.addCalendar(dto);
 		model.addAttribute("year", calparam.getYear());

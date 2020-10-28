@@ -23,26 +23,6 @@ select{
     border-color: white;
 }
 
-.searBtn {
-    border: 1px solid var(--color-orange);
-    border-radius: var(--size-border-radius);
-    font-size: var(--font-regular);
-    position: relative;
-    background-color: transparent;
-    cursor: pointer;
-    font-family: 'Poor Story', cursive;
-    margin: 10px 10px 10px 10px;
-    
-}
-
-.searBtn:hover {
-    background-color: var(--color-orange);
-    color: var(--color-white);
-    font-size: var(--font-regular);
-    font-family: 'Poor Story', cursive;
-    margin: 10px 10px 10px 10px;
-}
-
 .list_table{
   font-family: 'Poor Story', cursive;
 }
@@ -50,12 +30,14 @@ select{
 	background-color: #e76f51;
 }
 .list_table tr{
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #bdbdbd;
 }
 </style>
 
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/dw/qna.css">
 
   <section class="section">
   <div class="section_container">
@@ -122,7 +104,7 @@ select{
 </c:if>
 
 <c:if test="${!empty login }">
-<a href="qnawrite.do">글쓰기</a>
+<button type="button" class="searBtn" onclick="location.href='qnawrite.do'">글쓰기</button>
 </c:if>
 
 </div>

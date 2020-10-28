@@ -8,8 +8,11 @@ public interface MemberDao {
 	
 	int getId(MemberDto mem);
 	boolean addmember(MemberDto mem);
-	MemberDto login(MemberDto dto);
+	
+	MemberDto login(MemberDto mem);
+	
 	boolean updateId(MemberDto mem);
 	boolean deleteId(MemberDto mem);
+	
 	List<MemberDto> bestMember();
 }

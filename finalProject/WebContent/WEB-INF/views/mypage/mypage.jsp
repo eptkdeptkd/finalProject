@@ -7,6 +7,8 @@
 	System.out.print(session.getAttribute("login"));
 %>
 <style>
+
+
 #frm input{
 	padding: 20px 10px 10px;
 	border: none;
@@ -38,7 +40,21 @@
 .mypt table tr:last-child {
 	border-bottom: 1px solid #a52a2a;
 }
+.mypt table tr:hover {
+	background-color: var(--color-orange);
+}
 
+.gradeTable{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.gradeTable td{
+	text-align: center;
+}
+.gradeTable .midGrd{
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
 hr {
 	display: block;
 	height: 1px;
@@ -51,8 +67,8 @@ hr {
 	border: 1px solid black;	
 }
 .couponTable tr td{
-	padding: 20px 20px 20px 20px;	
-	align-items: ce
+	padding: 20px 15px 20px 15px;	
+	align-items: center;
 }
 /* The Modal (background) */
 .searchModal2 {
@@ -174,10 +190,10 @@ hr {
 						id="vote">투표</button></li>
 			</ul>
 		</div>
-		<br> <br>
+		<br><br><br>
 
 
-		<div class="mypt">
+		<div class="mypt" align="center">
 			<div id="lis1">
 				<!-- 공지사항 -->
 				<table>
@@ -187,7 +203,7 @@ hr {
 						<th>작성일</th>
 					</tr>
 					<c:forEach var="inf" items="${ilist }" varStatus="vs" end="9">
-						<tr>
+						<tr onclick="location.href='infodetail.do?seq=${inf.seq }'">
 							<td>${vs.count }</td>
 							<td>${inf.title }</td>
 							<td>${inf.wdate }</td>
@@ -207,7 +223,7 @@ hr {
 						<th>작성일</th>
 					</tr>
 					<c:forEach var="qna" items="${qlist }" varStatus="vs" end="9">
-						<tr>
+						<tr onclick="location.href='qnadetail.do?seq=${qna.seq }'">
 							<td>${vs.count }</td>
 							<td>${qna.title }</td>
 							<td>${qna.readcount }</td>
@@ -228,7 +244,7 @@ hr {
 						<th>작성일</th>
 					</tr>
 					<c:forEach var="psc" items="${rlist }" varStatus="vs" end="9">
-						<tr>
+						<tr onclick="location.href='psdetail.do?seq=${psc.seq }'">
 							<td>${vs.count }</td>
 							<td>${psc.title}</td>
 							<td>${psc.readcount }</td>
@@ -247,14 +263,12 @@ hr {
 						<th>번호</th>
 						<th>타이틀</th>
 						<th>투표수</th>
-						<th>투표여부</th>
 					</tr>
 					<c:forEach var="pol" items="${plist }" varStatus="vs" end="9">
-						<tr>
+						<tr onclick="location.href='pollresult.do?pollid=${pol.pollid }'">	<!-- 투표결과페이지로만 들어오는 값 추가해야함  -->
 							<td>${vs.count }</td>
 							<td>${pol.question}</td>
 							<td>${pol.polltotal }</td>
-							<td>${pol.vote }</td>
 						</tr>
 					</c:forEach>
 				</table>
@@ -341,9 +355,6 @@ hr {
 									<br> <br>
 									<table>
 										<tr>
-											<td>
-											엽
-											</td>
 										
 										<td>
 									<c:choose>
@@ -436,17 +447,22 @@ hr {
 								<!--  -->
 								<div align="center">
 									<br>
-									<table border="1">
+									<table class="gradeTable">
+									<colgroup>
+										<col width="250px;">
+										<col width="250px;">
+										<col width="250px;">
+									</colgroup>
 										<tr>
-											<td><i class="fas fa-crown fa-3x" style="color:#cd7f32;"></i></td>
-											<td><i class="fas fa-crown fa-3x" style="color:silver;"></i></td>
-											<td><i class="fas fa-crown fa-3x" style="color:gold;"></i></td>
+											<td style="padding-bottom: 40px;"><i class="fas fa-crown fa-3x" style="color:#cd7f32;"></i></td>
+											<td style="padding-bottom: 40px;" class="midGrd"><i class="fas fa-crown fa-3x" style="color:silver;"></i></td>
+											<td style="padding-bottom: 40px;"><i class="fas fa-crown fa-3x" style="color:gold;"></i></td>
 										</tr>
 										
 										<tr>
 											<td>최초 회원 가입시</td>
-											<td>주문횟수 몇회 이상시</td>
-											<td>주문횟수 몇회 이상시</td>
+											<td class="midGrd">50회 이상 주문시</td>
+											<td>100회 이상 주문시</td>
 										</tr>
 									</table>
 									<br>

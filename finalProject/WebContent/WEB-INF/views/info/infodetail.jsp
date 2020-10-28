@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 
-<section id="menu" class="section" style="padding-top: 300px; padding-bottom: 120px;">
+<section id="menu" class="section" style="padding-top: 100px; padding-bottom: 120px;">
     <div class="section_container">
 
 		<div align="center" >
@@ -27,25 +27,27 @@
 			<i class="far fa-calendar-alt" style="color: #8A4B08;">&nbsp${info.wdate}</i>
 			
 			<hr>
-			 ${info.title}
+			<span style="font-family: 'Stylish', sans-serif; font-size:28px;"> ${info.title}</span>
 			<hr>
-			
+			<br>
+			<div align="center">
 				<c:if test="${info.oldfilename ne null}">
-					<img src="http://192.168.0.195:8090/finalProject/upload/${info.filename }">	
+					<img src="http://192.168.0.195:8090/finalProject/upload/${info.filename }" style="max-width: 1200px;" >	
 				</c:if>
 				<c:if test="${info.oldfilename eq null}">
 					&nbsp;	
 				</c:if>
-			
+			</div>
 			<!-- <hr> -->
 			<br><br>
 			<!-- <hr> -->
 			
 			
-			<pre >${info.content}</pre>
+			<pre style="font-family: 'Stylish', sans-serif; font-size:32px;">${info.content}</pre>
+			<br>
 			<hr>
 				<span>
-					<c:if test="${info.id eq login.id}">
+					<c:if test="${login.auth eq 1}">
 			<!-- 			<a id="_btnUpdate" class="category_btn" style="border: 1px solid #aeaeae; color: #000; text-decoration: none;">수정하기</a>
 						<a id="_btnDel" class="category_btn" style="border: 1px solid #aeaeae; color: #000; text-decoration: none;">삭제하기</a> -->
 					
@@ -80,13 +82,13 @@
 			<div style="padding: 50px 0px;">
 				<%-- 댓글이 총 ${count}개 있습니다   --%>
 				<form name="ReForm" id="ReForm" method="post" action="">
-				<div style="float: left; width: 90%">
+				<div style="float: left; width: 87%">
 					<input type="hidden" id="seq" name="seq" value="${info.seq}">
 					<textarea style="width:100%; border-color: #aeaeae;" name="content" id="content"></textarea>
-					</div>
-					<div>
-					<input type="button" onclick="Confirm()" id="btnRe" class="category_btn" style="background-color: orange;" value="작성완료">
-					</div>
+				</div>
+				<div>
+					<input type="button" onclick="Confirm()" id="btnRe" class="category_btn" style="background-color: orange;" value="댓글작성">
+				</div>
 				
 					<input type="hidden" name="info_Seq" value="${info.seq}"/>
 					<input type="hidden" name="id" value="${login.id}"/>
@@ -103,7 +105,7 @@
 						<col style="width:20%">
 					</colgroup> 
 			
-					<thead style="padding:10px;color: #369;font-weight: bold;vertical-align: top; border-bottom: 3px solid #036;background: #f3f6f7;">
+					<thead style="padding:20px; hecolor: #369;font-weight: bold;vertical-align: top; border-bottom: 3px solid #036;background: #f2f2f2;">
 						<tr>
 							<th>아이디</th><th>내용</th><th>작성일</th>
 						</tr>
@@ -174,6 +176,35 @@
 			});
 			
 			</script> -->
+			
+			
+			
+			<div style="text-align: justify; padding-bottom: 50px; font-size: 18px; padding-top: 100px; font-weight: bold;">
+				<c:if test="${empty infoBefore }">
+					<span style="padding-left: 500px;color:#aeaeae;">이 전 글이 없습니다</span>
+				</c:if>
+				<c:if test="${infoBefore.title ne null }">
+					<a href="infodetail.do?seq=${infoBefore.seq }" style="color: #000;text-decoration: none;">
+						<span style="color: #aeaeae; padding-left: 100px;">이전글 : </span> <span style="padding-left: 300px;color: #aeaeae;padding-right: 20px;"> ${infoBefore.title} </span> <i class="fas fa-eye" style="color: #aeaeae;">&nbsp; ${infoBefore.readcount}</i> 
+					</a>
+				</c:if>
+				
+					
+				<hr>
+				
+				<c:if test="${empty infoNext}">
+					<span style="padding-left: 500px;color:#aeaeae;">다음 글이 없습니다</span>
+				</c:if>
+				<c:if test="${infoNext.title ne null }">
+					<a href="infodetail.do?seq=${infoNext.seq }" style="color: #000;text-decoration: none;">
+						<span style="color: #aeaeae; padding-left: 100px;">다음글 : </span> <span style="padding-left: 300px;color:#aeaeae;padding-right: 20px;"> ${infoNext.title} </span><i class="fas fa-eye" style="color: #aeaeae;"> &nbsp; ${infoNext.readcount}</i> 
+					</a>
+				</c:if>
+			</div>
+			
+			
+			
+			
 			
 </div>
 </section>

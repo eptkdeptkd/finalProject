@@ -203,13 +203,14 @@ $("#order").click(function(){
 			
 				    	$.ajax({
 				    		url:"order.do",
-				    		//data:{"id":${loginDto.id}, "coffee_seq":seq, "price":price },
-				    		data:{"id":"aaa", "name":oname, "price":price, "coffee_seq":cfseq, "detail":detail },
+				    		data:{"id":"${login.id}", "name":oname, "price":price, "coffee_seq":cfseq, "detail":detail,"seqArr":seq},
 				    		type:"post",
 				    		success:function(msg){
 					    		var sp = msg.indexOf("/");
-					    		var msg1 = msg.substring(0,sp);
-								var msg2 = msg.substring(sp+1);
+					    		console.log("sp =  " + sp);
+					    		console.log("msg = " + msg);
+					    		var msg1 = msg.substr(0,sp);
+								var msg2 = msg.substr(sp+1);
 					    		
 								alert(msg2);
 								if(msg1=="1"){

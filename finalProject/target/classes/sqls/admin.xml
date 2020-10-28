@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="Admin">
-
+ 
 <insert id="uploadFile" parameterType="cc.factory.com.dto.coffeeDto">
 	INSERT INTO CC_COFFEE(SEQ, NAME, PRICE, NEWNAME, ORIGINNAME,INFO,ORDER_COUNT,KIND)
 	VALUES(SEQ_COFFEE.NEXTVAL, #{name}, #{price}, #{newname}, #{originname},#{info},0,#{kind} )

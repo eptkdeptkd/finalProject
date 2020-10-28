@@ -3,7 +3,6 @@
 <%@page import="cc.factory.com.dto.PollDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 		
@@ -45,6 +44,14 @@
 				<input type="hidden" name="recordCountPerPage" id="_recordCountPerPage" value="${(empty recordCountPerPage)?0:recordCountPerPage }">
 			
 			
+			<%-- <c:if test="${empty login }">
+			empty
+			</c:if>
+			
+			<c:if test="${not empty login }">
+			no empty   ${login.pwd }
+			</c:if> --%>
+			
 			
 				<table>
 					<tr>
@@ -66,8 +73,8 @@
 								</a>
 							</span>
 							
-							
-						<c:if test="${info.auth eq 1 }">
+						<%-- <c:if test="${info.auth eq 3}"> --%>
+						<c:if test="${login.auth eq 1}">
 							<span>
 								<a href="#none" id="btnWrite" title="글 작성하기" style="color: #000;text-decoration: none;">		
 									<img src="image/write.png" alt="글 작성하기" style="width: 30px; height: 30px;" />글쓰기
@@ -107,7 +114,7 @@
 				<div style="background-color: #ffffff; text-align: center;">
 					<c:if test="${info.del eq 1}">
 						<div  style="float: left; padding: 20px;" >
-							<img src="image/infodelete.png" alt="" style="width: 360px; height: 320px;">	
+							<img src="image/infodelete.png" alt="" style="width: 350px; height: 320px;">	
 						</div>
 					</c:if>
 				
@@ -116,8 +123,8 @@
 						<c:if test="${info.oldfilename eq null}">
 							<div  style="float: left; padding: 20px;" >
 								<a href="infodetail.do?seq=${info.seq }" style="color: #000;text-decoration: none;">
-									<img src="image/emptyimage.jpg" alt="" style="width: 360px; height: 320px;">	
-									<h2 style="font-family: 'Stylish', sans-serif;color: orange;">${info.title}</h2>
+									<img src="image/emptyimage.jpg" alt="" style="width: 350px; height: 320px;">	
+									<h2 style="font-family: 'Stylish', sans-serif;color: orange; ">${info.title}</h2>
 									<%-- <br>${info.id} --%>
 									<i class="fas fa-eye" style="color: #8A4B08;">조회수 &nbsp; ${info.readcount}</i> 
 								</a>
@@ -127,8 +134,8 @@
 				 		<c:if test="${info.oldfilename ne null}">
 							<div  style="float: left; padding: 20px;" >
 								<a href="infodetail.do?seq=${info.seq }" style="color: #000; text-decoration: none;">
-									<img src="http://192.168.0.195:8090/finalProject/upload/${info.filename }" style="width: 360px; height: 320px;">	
-									<h2 style="font-family: 'Stylish', sans-serif; color: orange;">${info.title}</h2>
+									<img src="http://192.168.0.195:8090/finalProject/upload/${info.filename }" style="width: 350px; height: 320px;">	
+									<h2 style="font-family: 'Stylish', sans-serif; color: orange; font-size:22px;">${info.title}</h2>
 									<i class="fas fa-eye" style="color: #8A4B08;">조회수 &nbsp; ${info.readcount}</i> 
 								</a>	
 							</div>

@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import cc.factory.com.dto.InfoDto;
 import cc.factory.com.dto.InfoParam;
 import cc.factory.com.dto.InfoReDto;
+import cc.factory.com.login.MemberDto;
 import cc.factory.com.service.InfoService;
 import cc.factory.com.util.PdsUtil;
 
@@ -33,6 +34,12 @@ public class InfoController {
 		//System.out.println("choice:" + param.getChoice());
 		//System.out.println("searchWord:" + param.getSearchWord());
 
+		/*
+		 * MemberDto mem = (MemberDto) req.getSession().getAttribute("login"); String id
+		 * = (String) mem.getId();
+		 */
+		
+		
 		// paging 처리
 		int sn = param.getPageNumber(); // 현재 페이지
 		int start = sn * param.getRecordCountPerPage() + 1; // 1 11 21
@@ -182,6 +189,9 @@ public class InfoController {
 	public String infodetail(int seq, Model model) {
 
 		InfoDto info = service.getInfo(seq);
+		InfoDto infoBefore = service.getInfo(seq+1);
+		InfoDto infoNext = service.getInfo(seq-1);
+		
 		List<InfoReDto> infoReList = service.getInfoReList(seq);
 		service.readCount(seq);
 		
@@ -190,6 +200,9 @@ public class InfoController {
 		//System.out.println("Info Detail Dto = " + info.toString());
 
 		model.addAttribute("info", info);
+		model.addAttribute("infoBefore",infoBefore);
+		model.addAttribute("infoNext",infoNext);
+		
 		model.addAttribute("infoReList", infoReList);
 		model.addAttribute("count",count);
 

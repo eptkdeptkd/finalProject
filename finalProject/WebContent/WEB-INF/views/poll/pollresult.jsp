@@ -115,7 +115,7 @@ $(document).ready(function(){
 		    type: 'pie',
 		    name: '응답률 ',
 		    innerSize: '50%',
-		    size: '150%',
+		    size: '110%',
 		    data: <%=request.getAttribute("jsonData") %>
 		  }]
 		});

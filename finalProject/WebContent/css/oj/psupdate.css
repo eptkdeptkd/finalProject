@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+@charset "UTF-8";
+
+
+
+.pswrite {
+	display: flex;
+	justify-content: center;
+}
+
+
+.pstextarea {
+	width: 107%;
+	height: 150px;
+	resize: none;	
+}
+
+.h1 {
+	margin: 60px;
+}
+
+.btn {
+    border: 1px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    position: relative;
+    left: 14.7%;
+}
+
+.btn:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+}
+
+
+
+#frm{
+	font-family: 'Poor Story', cursive;
+}
+#frm th{
+    padding: 17px;
+    display:flex;
+    justify-content: center;
+    color: #e76f51;
+    
+}
+#frm td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+}
+#frm input{
+	width: 107%;
+	padding: 21px 10px 10px;
+	border: none;  /* 테두리 */
+	border-bottom: 1px solid #999;
+	font-size: 18px;color: #000000;
+	outline: none;
+}
+
+.list_table{
+	align-items: center;
+	font-family: 'Poor Story', cursive;
+}

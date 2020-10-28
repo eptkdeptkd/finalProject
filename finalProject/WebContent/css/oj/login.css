@@ -6,9 +6,30 @@ body {
     cursor: default;
 }
 
+.section {
+    padding: 180px 0 100px 0;
+    margin: auto;
+    text-align: center;
+}
+
 .main_wrap {
-	background: url(../image/psloginbg.jpg) no-repeat;
+	background: url(../../image/psloginbg.jpg) no-repeat;
 	background-size: 100% 100%;
+}
+
+.login_btn {
+    border: 3px solid var(--color-orange);
+    border-radius: 10px;
+    font-size: var(--font-regular);
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    width: 41.5%;
+    height: 45px;
+    margin: 0;
+    left : 13.5px;
+    background-color: #fff3e0;  
+    line-height: 10px;
 }
 
 .btnlogin{
@@ -18,7 +39,7 @@ body {
        border: 5px solid #d9cbb3;
        color: #81d4fa;
        text-align: center;
-       width: 45%;
+       width: 38.5%;
        height: 45px;
        margin: 5;  
 }
@@ -34,7 +55,7 @@ body {
 
 .logintext input {
 	height: 50px;
-	border: 5px solid #81d4fa;
+	border: 3px solid orange;
 	border-radius: 10px;
 	font-size: 18px;
 }
@@ -42,7 +63,7 @@ body {
 form {
     width: 320px;
     padding: 60px 25px 80px;
-    margin: 50px auto;
+    margin: 12px auto;
     display: flex;
     flex-direction: column;
 }

@@ -95,6 +95,7 @@ public class coffeeDetailDaoImpl implements coffeeDetailDao {
 
 	@Override
 	public List<Integer> myOrderList(orderParam param) {
+		
 		return sqlSession.selectList(ns+"myOrderList",param);
 	}
 

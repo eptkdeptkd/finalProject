@@ -44,7 +44,7 @@ String url = String.format("%s?year=%s&month=%s", "calendar.do", year, month);
 <tr>
 	<th>관리자</th>
 	<td>
-		<input type="text"  name="id" value="${login.name }" readonly="readonly">
+		<input type="text"  name="id" value="${login.id }" readonly="readonly">
 	</td>
 </tr>
 

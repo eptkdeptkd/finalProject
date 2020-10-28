@@ -32,13 +32,11 @@
 				</p>
 
 				<hr>
-
+				
+				<iframe width="1100" height="620" src="https://www.youtube.com/embed/l_7B8CNVyNA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>			
 			</div>
 
 			<div>
-
-
-				<img src="image/coffee3.PNG" width="800">
 
 				<hr>
 				<h1>C.A.F.E Practice<img src="image/coffee7.PNG" width="100"></h1>
@@ -51,6 +49,8 @@
 					정식으로 출범한 찰스의 커피 공장 C.A.F.E Practice는 최상급 커피 원두 재배, 윤리적 책임 완수를 원칙하며,
 					<br>소규모 농가에서부터 대규모 농장에 이르기까지 모든 커피 농가가 참여할 수 있도록 운영되고 있습니다.
 				</p>
+				
+				<img src="image/coffee3.PNG" width="800">
 			</div>
 
 			<hr>

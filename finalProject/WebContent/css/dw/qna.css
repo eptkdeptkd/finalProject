@@ -1,0 +1,48 @@
+.searBtn {
+	border: 1px solid var(--color-orange);
+	border-radius: var(--size-border-radius);
+	font-size: var(--font-regular);
+	position: relative;
+	background-color: transparent;
+	cursor: pointer;
+	font-family: 'Poor Story', cursive;
+	margin: 10px 10px 10px 10px;
+}
+
+.searBtn:hover {
+	background-color: var(--color-orange);
+	color: var(--color-white);
+	font-size: var(--font-regular);
+	font-family: 'Poor Story', cursive;
+	margin: 10px 10px 10px 10px;
+}
+
+#frm {
+	font-family: 'Poor Story', cursive;
+}
+
+#frm th {
+	width: 110px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	color: #e76f51;
+}
+
+#frm td {
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+}
+
+#frm input {
+	border: none;
+	border-right: 2px;
+	border-top: 0px;
+	border-left: 0px;
+	border-bottom: 1px solid black;
+	border-radius: 2px;
+	width: 300px;
+}

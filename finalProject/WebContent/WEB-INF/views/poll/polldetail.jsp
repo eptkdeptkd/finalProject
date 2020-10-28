@@ -15,7 +15,7 @@
 		<form id="_frmForm" action="polling.do" method="post">
 		
 			<c:if test="${poll.filename ne null}">
-				<img src="http://localhost:192.168.0.195/finalProject/upload/${poll.filename }" style="width: 300px; height: 250px;">	
+				<img src="http://192.168.0.195:8090/finalProject/upload/${poll.filename }" style="width: 570px; height: 450px;">	
 			</c:if>
 			
 			
@@ -60,7 +60,7 @@
 				<input type="radio" name="pollsubid" ${vs.count==1?"checked='checked'":""} 
 								value="${psub.pollsubid }">
 				
-				<input type="text" name="answer" style=" border: 1px solid #fff;padding-left: 10px;outline: none;font-family: 'Stylish', sans-serif;font-size: 22px;"
+				<input type="text" name="answer" style=" border: 1px solid #fff;padding-left: 6px;outline: none;font-family: 'Stylish', sans-serif;font-size: 20px;"
 								value="${psub.answer }" readonly="readonly">
 				</c:forEach>
 				<br>

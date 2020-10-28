@@ -9,10 +9,16 @@
 <html>
 <head>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/oj/login.css">
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<style type="text/css">
+.asd{
+	margin-left: 15px;
+}
+
+</style>
 
 <!-- cookie -->
 <script src="http://lab.alexcican.com/set_cookies/cookie.js"
@@ -56,9 +62,9 @@
         <input type="password" id="_pwd" name="pwd" data-msg="Password를 " size="20px" title="패스워드"  placeholder="PASSWORD">
         </div>
         
-        <div class="">
-        <button type="button" class="btnlogin" id="_btnLogin">로그인</button>
-        <button type="button" class="btnlogin" id="_btnRegi">회원가입</button>
+        <div class="asd"><!--category_btn  -->
+        <button type="button" class="login_btn" id="_btnLogin">로그인</button>
+        <button type="button" class="login_btn" id="_btnRegi">회원가입</button>
         </div>
         
     </form>
@@ -67,14 +73,22 @@
 
 
 	<script type="text/javascript">
+		var message = '${msg}';
+		if(message !== '') {
+			swal("warning!", message, "warning").then(function(){
+			location.href="${pageContext.request.contextPath}/login.do";
+			});
+		}
 		$("#_btnLogin").click(function() {
 			//alert("login click");
 
 			if ($("#_userid").val().trim() == "") {
-				alert($("#_userid").attr("data-msg") + "입력해 주십시오");
+			//	alert($("#_userid").attr("data-msg") + "입력해 주십시오");
+			swal("warning!", "ID를 입력해주세요", "warning");
 				$("#_userid").focus();
 			} else if ($("#_pwd").val().trim() == "") {
-				alert("Password를 입력해 주십시오");
+			//	alert("Password를 입력해 주십시오");
+			swal("warning!", "PW를 입력해주세요", "warning");
 				$("#_pwd").focus();
 			} else {
 				$("#_frmForm").attr({

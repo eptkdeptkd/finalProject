@@ -5,7 +5,32 @@
 	display: flex;							/* CSS의 flex는 엘리먼트들의 크기나 위치를 쉽게 잡아주는 도구입니다 */
 	justify-content: center; 				/* 기본축의 양쪽 끝단을 기준으로, 아이템을 어떻게 균등 배분 정렬할지 결정. */
 	align-items: center;  					/* 교차축 기준으로 아이템을 정렬. */
-	height: 100vh;
+	height: 90%;
+}
+
+.regi_btn {
+    border: 1px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    position: absolute;
+    background-color: transparent;
+    cursor: pointer;
+    width: 88px;
+    top: 50%;
+    right: 0;
+}
+
+.regi_btn1 {
+    border: 1px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    width: 20%;
+    height: 45px;
+    left: 36%;
+    line-height: 2.3;
 }
 
 .login-form{position: relative; z-index: 2;}		/* 원래 있던 위치를 기준으로 좌표를 지정합니다. */
@@ -16,8 +41,10 @@
 }
 .int-area {
 	width: 700px; position: relative;
-	margin-top: 20px;	
+	margin-top: 20px;
+	justify-content: center;	
 }
+
 .int-area:first-child{margin-top: 0;}
 .int-area input {
 	width: 70%;
@@ -30,12 +57,12 @@
 }
 .int-area label{
 	position: absolute; left: 10px; top:15px;
-	font-size: 18px; color: #81d4fa;
-	/*transition:all .5s ease;			 transition:정해진 시간 동안 요소의 속성값을 부드럽게 변화시킬 수 있습니다. */
+	font-size: 15px; color: #dd2c00;
+	transition:all .5s ease;			/* transition:정해진 시간 동안 요소의 속성값을 부드럽게 변화시킬 수 있습니다. */
 }											/* ease 기본값 으로 전환*/
 .int-area label.warning{
 	color:red !important;
-	/*animation:warning.3s ease;				 요소의 현재 스타일을 다른 스타일로 천천히 변화시킬 수 있습니다. */
+	animation:warning.3s ease;				 /*요소의 현재 스타일을 다른 스타일로 천천히 변화시킬 수 있습니다. */
 	animation-iteration-count: 3;  			/* 애니메이션 효과의 반복 횟수를 설정합니다. */
 }
 
@@ -51,6 +78,7 @@
 	top: -2px;
 	font-size: 13px; color: #000000;
 }
+
 .btn-area {margin-top: 30px;}
 .btn-area button{
 	

@@ -141,12 +141,16 @@ public class mypageController {
 		MemberDto dto = (MemberDto) req.getSession().getAttribute("login");
 		String id = dto.getId();
 		
+		
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyyMMdd");
 		Date time = new Date();
 		String t = format1.format(time);
 		
 		orderParam param = new orderParam(id,t);
 		List<orderDetailDto> list =  fSvc.myOrderList(param);
+		
+		//System.out.println("list = "+list.size());
+		
 		model.addAttribute("list",list);
 		
 		return "myOrder.tiles";

@@ -1,34 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<style>
-#frm{
-	font-family: 'Poor Story', cursive;
-}
-#frm th{
-	width: 110px;
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-    color: #e76f51;
-}
-#frm td {
-    width: 350px;
-    padding: 10px;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-}
-#frm input{
-	border: none;
-	border-right: 2px;
-	border-top: 0px;
-	border-left: 0px;
-	border-bottom: 1px solid black;
-	border-radius:2px;
-	width: 200px;
-}
-</style>
+
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/dw/qna.css">
 
   <section id="menu" class="section">
     <div class="section_container">
@@ -72,8 +46,8 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="button" id="update">글 수정</button>
-					<button type="button" id="delete">글 삭제</button>
+					<button type="button" class="searBtn" id="update">글 수정</button>
+					<button type="button" class="searBtn" id="delete">글 삭제</button>
 				</td>
 			</tr>
 		</table>
@@ -87,25 +61,24 @@
 //글 수정
 $("#update").click(function() {
 
-	var titl = $("#updateQnaTtl").val()
-	var cont = $("#updateQnaCon").val()
+	var titl = $("#updateQnaTtl").val();
+	var cont = $("#updateQnaCon").val();
+		if (titl == '' || titl == null) {
+		alert('제목을 입력해주세요');
+		return false;
+	}
 	if (cont == '' || cont == null) {
 		alert('내용을 입력해주세요');
 		return false;
 	}
-	if (titl == '' || titl == null) {
-		alert('제목을 입력해주세요');
-		return false;
-	}
+
 	 if ($("#secret").is(":checked") == true) {
-		alert("체크함");
+		//alert("체크함");
 		$("input[name=secret]").val("1");
 	} else {
-		alert("안함");
+		//alert("안함");
 		$("input[name=secret]").val("0");
 	}  
-		
-	
 	alert("수정");
 	$("#frm").attr("action", "qnaupdateAf.do").submit();	
 });
@@ -113,7 +86,7 @@ $("#update").click(function() {
 //글 삭제
 //db 돌릴때 연결 댓글 삭제와 동시에 요것 삭제
 $("#delete").click(function() {
-	alert("삭제");
+	//alert("삭제");
 	$("#frm").attr("action", "qnadelete.do").submit();	
 });
 </script>
